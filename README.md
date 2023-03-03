@@ -10,7 +10,7 @@ language:
 - en
 ---
 
-**[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](https://huggingface.co/hollowstrawberry/stable-diffusion-guide/blob/main/README.md#index)**
+**[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**
 
 &nbsp;
 
@@ -145,8 +145,6 @@ Here you can select your model and VAE. We will go over what these are and how y
 
    * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
       * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
-
-   <img src="images/prompt.png"/>
    
    ![Prompts](images/prompt.png)
 
