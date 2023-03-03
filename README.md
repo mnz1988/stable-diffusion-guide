@@ -212,13 +212,13 @@ An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/1
 
 # Upscaling <a name="upscale"></a>[▲](#index)
 
-You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder, or paste the direct download link into the `custom_urls` text box in collab. They will then be available in Hires fix, SD Upscale, Ultimate SD Upscaler, and Extras.
+You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, SD Upscale, Ultimate SD Upscaler, and Extras.
 
-The collab comes with a few of them, including Remacri, which is one of the best for all sorts of images.
+The collab comes with several of them, including Remacri, which is one of the best for all sorts of images.
 
-* [A few notable ones can be downloaded here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg).
-* Above are also the 2 files you must put into `stable-diffusion-webui/models/LDSR` if you want to use the advanced yet slow LDSR upscaler.
-* [Upscale wiki](https://upscale.wiki/wiki/Model_Database) with dozens of historical choices.
+* A few notable ones can be [downloaded here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
+* LDSR is an advanced yet slow upscaler, its model and config can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN) and both must be placed in `stable-diffusion-webui/models/LDSR`.
+* The [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contains dozens of historical choices.
 
 Coming soon: How to use ultimate upscaler.
 
