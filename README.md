@@ -8,7 +8,7 @@ tags:
 - stable-diffusion-webui
 ---
 
-# Index
+# Index <a name="index"></a>
 
 * [Introduction](#intro)
 * [Installation](#install)
@@ -27,7 +27,7 @@ tags:
  
 &nbsp;
 
-# Introduction <a name="intro"></a>
+# Introduction <a name="intro"></a>[▲](#index)
 
 Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models", which function like the brain of the AI, and can make almost anything given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
 
@@ -35,7 +35,7 @@ The images you create may be used for any purpose, depending on the used model's
 
 &nbsp;
 
-# Installation <a name="install"></a>
+# Installation <a name="install"></a>[▲](#index)
 
 * __**Requirements:**__ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM and 4 GB of VRAM. I will only cover the case where you are running Windows 10/11 and using an NVIDIA graphics card series 16XX, 20XX or 30XX (though 10XX also work). AMD users are out of luck, as it's very inconsistent to get it working. Same with Linux and Mac, though it's possible to do it.
 
@@ -45,18 +45,22 @@ The images you create may be used for any purpose, depending on the used model's
 
 &nbsp;
 
-# Getting Started <a name="start"></a>
+# Getting Started <a name="start"></a>[▲](#index)
 
 Before generating some images, here are some useful steps you can follow to improve your experience.
 
-1. **Edit your starting parameters:** <a name="params"></a> If you're using the collab, skip this step. If you're using the launcher, turn on **medvram** and **xformers**. Then, set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae`. All of these should offer minor but significant improvements to performance.
+1. **Edit your starting parameters** <a name="params"></a>[↑](#index)
+    If you're using the collab, skip this step.
+
+    If you're using the launcher, turn on **medvram** and **xformers**. Then, set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae`. All of these should offer minor but significant improvements to performance.
     * If your graphics card has more than 8 GB of VRAM, you may turn off medvram to make generations faster. However, medvram still allows you to generate larger images and more images at the same time.
     * If your graphics card has 4 or 6 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
     * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. Then, use your computer's local IP in the same WiFi network to access the interface.
     * If you're using the original stable-diffusion-webui, you can add these parameters by editing your webui-user.bat, right next to `set COMMANDLINE_ARGS=`
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
-1. **Getting a model:** <a name="model"></a> The model is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
+1. **Getting a model** <a name="model"></a>[▲](#index)
+    The model is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
     * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I remixed the two options above into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix). While AOM3 is extremely capable for NSFW, the popular [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) hentai model may also fit your needs.
     * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of raw creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
     * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate). It can do almost anything, but specially photographs. Very intricate results.
@@ -68,7 +72,8 @@ Before generating some images, here are some useful steps you can follow to impr
 
     Please note that models in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses. Be careful.
 
-1. **Getting a VAE:** <a name="vae"></a> Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
+1. **Getting a VAE** <a name="vae"></a>[▲](#index)
+    Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
     There are practically only 3 different VAEs out there worth talking about:
     * [anime vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), also known as the AnythingV3 vae, also known as the orangemix vae. All anime models use this.
@@ -79,7 +84,8 @@ Before generating some images, here are some useful steps you can follow to impr
    
     *Collab:* You will have to place it in your Google Drive, in `MyDrive/sd/stable-diffusion-webui/models/VAE`.
 
-1. **Launching and settings:** <a name="launch"></a> It is finally time to launch the WebUI.  
+1. **Launching and settings** <a name="launch"></a>[▲](#index)
+    It is finally time to launch the WebUI.  
     *Launcher:* Press the button on the launcher and wait patiently for it to start. Then, it will open the interface in your browser. It's like a website, but on your computer.  
     *Collab:* Press the play buttons, **in order, one at a time**. Wait for each one to finish before pressing the next one. **You may skip the ControlNet section this time**. When the final step is finished, it will produce a link you can use to access the interface as a website. This will be open as long as the page stays open.
 
@@ -88,7 +94,7 @@ Before generating some images, here are some useful steps you can follow to impr
     * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`.
     * Scroll back up, click the big orange **Apply settings** button, then **Reload UI** next to it. You can now change your model as well as your VAE from the top of the page at any time.
 
-1. **Prompts:** <a name="prompt"></a>
+1. **Prompts** <a name="prompt"></a>[▲](#index)
 
     On the first tab, **txt2img**, you'll be making most of your images. This is where you'll find your *prompt* and *negative prompt*.  
     Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want and get a good image. You have to be specific. *Very* specific.  
@@ -110,7 +116,7 @@ Before generating some images, here are some useful steps you can follow to impr
 
     Note that when you surround something in `(parentheses)`, it will have emphasis or more **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you still use normal parentheses to go lower, like `(this:0.5)`.
 
-1. **Generation parameters** <a name="gen"></a>
+1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
     * *Sampling method:* These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
     * *Sampling steps:* These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
@@ -131,7 +137,7 @@ Before generating some images, here are some useful steps you can follow to impr
 
 &nbsp;
   
-# Extensions <a name="extensions"></a>
+# Extensions <a name="extensions"></a>[▲](#index)
 
 *Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
 
@@ -146,23 +152,19 @@ Here are some useful extensions, I hugely recommend the first 2:
 
 &nbsp;
 
-# Loras <a name="lora"></a>
+# Loras <a name="lora"></a>[▲](#index)
 
 LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier](#prompt), but Loras are larger and often more capable. Technical details omitted.
 
-Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Models are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in.
+Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Models are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensor` format, same as models.
 
-They can be downloaded from [civitai](https://civitai.com) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensor` format, same as models.
-
-Place your lora files in the `stable-diffusion-webui/models/Lora` folder. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear.
-
-When you click a Lora in that menu it will get added to your prompt. It will look like this: `<lora:filename:1` The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image.
+Place your lora files in the `stable-diffusion-webui/models/Lora` folder. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt. It will look like this: `<lora:filename:1` The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image.
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
-&nbps;
+&nbsp;
 
-# Upscalers <a name="upscale"></a>
+# Upscalers <a name="upscale"></a>[▲](#index)
 
 You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder.
 
