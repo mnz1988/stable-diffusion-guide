@@ -43,7 +43,7 @@ The images you create may be used for any purpose, depending on the used model's
 
 The easiest way to use Stable Diffusion is through Google Collab. It borrows Google's computers to use AI, with variable time limitations, usually a few hours every day. You will need a Google account (or several, wink wink) and we will be using Google Drive for ease of access.
 
-If you instead want to run it on your own computer, [scroll down](#install).
+If you instead want to run it on your own computer, [scroll down ▼](#install).
 
 1. Enter [this page](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
@@ -88,7 +88,7 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 
 Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
 The top of your page should look something like this:  
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/top.png"/>  
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/top.png"/>  
 Here you can select your model and VAE. We will go over what these are and how you can get more of them.
 
 
@@ -137,7 +137,7 @@ Here you can select your model and VAE. We will go over what these are and how y
     * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
         * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.pt). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
-    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/prompt.png"/>
+    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/prompt.png"/>
 
     After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
     You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
@@ -147,7 +147,7 @@ Here you can select your model and VAE. We will go over what these are and how y
 1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
     The rest of the parameters in the starting page will look something like this:
-    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/parameters.png"/>
+    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/parameters.png"/>
 
     * **Sampling method:** These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
     * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
@@ -171,7 +171,7 @@ Here you can select your model and VAE. We will go over what these are and how y
 # Extensions <a name="extensions"></a>[▲](#index)
 
 *Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.  
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/extensions.png"/>
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/extensions.png"/>
 
 Here are some useful extensions. Most of these come installed in the collab, and I hugely recommend you manually add the first 2 if you're running locally:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
@@ -192,7 +192,7 @@ Loras can represent a character, an artstyle, poses, clothes, or even a human fa
 
 Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/extranetworks.png"/>
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/extranetworks.png"/>
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
