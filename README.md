@@ -163,8 +163,8 @@ Here you can select your model and VAE. We will go over what these are and how y
    * **Sampling method:** These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
    * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
    * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires. fix`
-   * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will create at the same time, which is limited by your graphics card. Batch count is how many repeats of those to produce. Batches have sequential seeds, more on seeds below.
-   * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range. It gets strange outside that.
+   * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will generate at the same time, which is limited by its VRAM. Batch *count* is how many repetitions of those to produce. Batches have sequential seeds, more on seeds below.
+   * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range. It may get strange outside that.
    * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces almost exacly the same image every time.
   
    **Hires. fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
@@ -199,7 +199,7 @@ Here are some useful extensions. Most of these come installed in the collab, and
 
 LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#prompt), but Loras are larger and often more capable. Technical details omitted.
 
-Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensors` format, same as most checkpoints.
+Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
 
 Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
@@ -217,7 +217,7 @@ The collab comes with a few of them, including Remacri, which is one of the best
 
 * [A few notable ones can be downloaded here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg).
 * Above are also the 2 files you must put into `stable-diffusion-webui/models/LDSR` if you want to use the advanced yet slow LDSR upscaler.
-* [Upscale wiki](https://upscale.wiki/wiki/Model_Database)
+* [Upscale wiki](https://upscale.wiki/wiki/Model_Database) with dozens of historical choices.
 
 Coming soon: How to use ultimate upscaler.
 
@@ -278,3 +278,5 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 # Lora Training <a name="train"></a>o[▲](#index)
 
    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
+
+   Coming soon.
