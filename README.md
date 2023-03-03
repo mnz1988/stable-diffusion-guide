@@ -86,7 +86,11 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 
 # Getting Started <a name="start"></a>[▲](#index)
 
-Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.
+Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
+The top of your page should look something like this:  
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/top.png"/>  
+Here you can select your model and VAE. We will go over what these are and how you can get more of them.
+
 
 1. **Models** <a name="model"></a>[▲](#index)
 
@@ -100,14 +104,14 @@ Before or after generating your first few images, you will want to take a look a
     *Launcher:* It will let you choose the path to your models folder. Otherwise the models normally go into `stable-diffusion-webui/models/Stable-diffusion`.
 
     *Collab:* Copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
-
+    
     Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses. Be careful.
 
 1. **VAEs** <a name="vae"></a>[▲](#index)
 
     Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
-    If you're using the collab, you should already have the below VAEs, which you can select at the top of the page, next to your models.
+    If you're using the collab, you should already have the below VAEs, as I told you to select them before running.
 
     There are practically only 3 different VAEs out there worth talking about:
     * [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), also known as the orangemix vae. All anime models use this.
@@ -133,6 +137,8 @@ Before or after generating your first few images, you will want to take a look a
     * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
         * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.pt). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
+    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/prompt.png"/>
+
     After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
     You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
 
@@ -140,7 +146,8 @@ Before or after generating your first few images, you will want to take a look a
 
 1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
-    At the top of the page you'll be able to choose your checkpoint and VAE, and we've already covered the prompt. Here are the rest of the options:
+    The rest of the parameters in the starting page will look something like this:
+    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/parameters.png"/>
 
     * **Sampling method:** These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
     * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
@@ -163,9 +170,10 @@ Before or after generating your first few images, you will want to take a look a
   
 # Extensions <a name="extensions"></a>[▲](#index)
 
-*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
+*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.  
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/extensions.png"/>
 
-Here are some useful extensions, most of these come installed in the collab, and I hugely recommend the first 2 if you're running locally:
+Here are some useful extensions. Most of these come installed in the collab, and I hugely recommend you manually add the first 2 if you're running locally:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
 * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of its own guide (coming soon). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
@@ -183,6 +191,8 @@ LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest tech
 Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensors` format, same as most checkpoints.
 
 Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/extranetworks.png"/>
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
@@ -206,7 +216,8 @@ Coming soon: How to use ultimate upscaler.
 
 # Lora Training <a name="train"></a>[▲](#index)
 
-    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
+   * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
+
 
     
     
