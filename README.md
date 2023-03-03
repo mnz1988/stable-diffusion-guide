@@ -25,8 +25,9 @@ tags:
 * [Extensions](#extensions)
 * [Loras](#lora)
 * [Upscalers](#upscale)
-* ControlNet
-* Tips for training character Loras
+* [ControlNet](#controlnet)
+* [Lora Training](#train)
+    * [Tips for training character Loras](#trainchars)
  
 &nbsp;
 
@@ -149,7 +150,7 @@ Before or after generating your first few images, you will want to take a look a
     * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces almost exacly the same image every time.
   
     **Hires. fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
-    * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. Also see [Upscalers ▼](#upscale). 
+    * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. I recommend the Remacri upscaler, see [Upscalers ▼](#upscale). 
     * **Hires steps:** I recommend at least half as many as your sampling steps. Higher values aren't always better, and they take a long time, so be conservative here.
     * **Denoising strength:** The most important parameter. Near 0.0, no detail will be added to the image. Near 1.0, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image, to add enough detail as the image gets larger, without *destroying* any original details you like.
     
@@ -181,17 +182,31 @@ LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest tech
 
 Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensors` format, same as most checkpoints.
 
-Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or for collab, paste the direct download link to their file into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
 &nbsp;
 
-# Upscalers <a name="upscale"></a>[▲](#index)
+# Upscaling <a name="upscale"></a>[▲](#index)
 
-You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder.
+You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder, or paste the direct download link into the `custom_urls` text box in collab. They will then be available in Hires fix, SD Upscale, Ultimate SD Upscaler, and Extras.
 
-* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there, and the files necessary to make LDSR work.
+The collab comes with a few of them, including Remacri, which is one of the best for all sorts of images.
+
+* [A few notable ones can be downloaded here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg).
+* Above are also the 2 files you must put into `stable-diffusion-webui/models/LDSR` if you want to use the advanced yet slow LDSR upscaler.
 * [Upscale wiki](https://upscale.wiki/wiki/Model_Database)
 
 Coming soon: How to use ultimate upscaler.
+
+&nbsp;
+
+# ControlNet <a name="controlnet"></a>[▲](#index)
+
+# Lora Training <a name="train"></a>[▲](#index)
+
+    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
+
+    
+    
