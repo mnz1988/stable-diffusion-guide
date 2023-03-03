@@ -49,7 +49,7 @@ The easiest way to use Stable Diffusion is through Google Collab. It borrows Goo
 
 If you instead want to run it on your own computer, [scroll down ▼](#install).
 
-1. Enter [this page](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
+1. Open [this page](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
 1. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. This is now your personalized collab which will save your settings, and you should open it from your Google Drive from now on. Check the original for updates as frequently as you like.
 
@@ -146,7 +146,9 @@ Here you can select your model and VAE. We will go over what these are and how y
    * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
       * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/prompt.png"/>
+   <img src="images/prompt.png"/>
+   
+   ![Prompts](images/prompt.png)
 
    After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
    You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
@@ -278,7 +280,7 @@ You can also use ControlNet in img2img, in which the input image and sample imag
 I would also recommend the Scribble model, which lets you draw a crude sketch and turn it into a finished piece with the help of your prompt.  
 There are also alternative **diff** versions of each ControlNet model, which produce slightly different results. You can [try them](https://civitai.com/models/9868/controlnet-pre-trained-difference-models) if you want, but I personally haven't.
 
-# Lora Training <a name="train"></a>o[▲](#index)
+# Lora Training <a name="train"></a>[▲](#index)
 
    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
 
