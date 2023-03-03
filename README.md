@@ -96,7 +96,7 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
 The top of your page should look similar to this:
 
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/top.png"/>
+![Top](images/top.png)
 
 Here you can select your model and VAE. We will go over what these are and how you can get more of them. The collab has additional settings here too, you should ignore them for now.
 
@@ -158,7 +158,8 @@ Here you can select your model and VAE. We will go over what these are and how y
 1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
    The rest of the parameters in the starting page will look something like this:
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/parameters.png"/>
+   
+   ![Parameters](images/parameters.png)
 
    * **Sampling method:** These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
    * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
@@ -182,7 +183,7 @@ Here you can select your model and VAE. We will go over what these are and how y
 # Extensions <a name="extensions"></a>[▲](#index)
 
 *Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.  
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/extensions.png"/>
+![Extensions](images/extensions.png)
 
 Here are some useful extensions. Most of these come installed in the collab, and I hugely recommend you manually add the first 2 if you're running locally:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
@@ -203,7 +204,7 @@ Loras can represent a character, an artstyle, poses, clothes, or even a human fa
 
 Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/extranetworks.png"/>
+![Extra Networks](images/extranetworks.png)
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
@@ -233,7 +234,7 @@ I will demonstrate how ControlNet may be used. For this I chose a popular image 
 
 First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, click *Enable*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the uploaded image or it will start drawing. We can ignore the other settings.
 
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/controlnet.png"/>
+![Control Net](images/controlnet.png)
 
 * **Canny**
 
@@ -241,9 +242,9 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
    <details>
    <summary>Canny example, click to open</summary>
-   <br>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/canny1.png"/>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/canny2.png"/>
+   
+   ![Canny preprocessed image](images/canny1.png)
+   ![Canny output image](images/canny2.png)
    </details>
 
 * **Depth**
@@ -252,9 +253,9 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
    <details>
    <summary>Depth example, click to open</summary>
-   <br>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/depth1.png"/>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/depth2.png"/>
+   
+   ![Depth preprocessed image](images/depth1.png)
+   ![Depth output image](images/depth2.png)
    </details>
 
 * **Openpose**
@@ -263,9 +264,9 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
    <details>
    <summary>Openpose example, click to open</summary>
-   <br>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/openpose1.png"/>
-   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/openpose2.png"/>
+   
+   ![Open Pose preprocessed image](images/openpose1.png)
+   ![Open Pose output image](images/openpose2.png)
    </details>
 
 You will notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
@@ -278,8 +279,10 @@ You can also use ControlNet in img2img, in which the input image and sample imag
 I would also recommend the Scribble model, which lets you draw a crude sketch and turn it into a finished piece with the help of your prompt.  
 There are also alternative **diff** versions of each ControlNet model, which produce slightly different results. You can [try them](https://civitai.com/models/9868/controlnet-pre-trained-difference-models) if you want, but I personally haven't.
 
+&nbsp;
+
 # Lora Training <a name="train"></a>[▲](#index)
 
-   * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
+   * **Character Loras** <a name="trainchars"></a>[▲](#index)
 
    Coming soon.
