@@ -84,7 +84,7 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 
 # Getting Started <a name="start"></a>[▲](#index)
 
-Before or after generating your first few images, here are several useful steps you can follow to improve your experience and results.
+Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.
 
 1. **Models** <a name="model"></a>[▲](#index)
 
