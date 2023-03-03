@@ -17,10 +17,10 @@ tags:
     1. [Getting a model](#model)
     1. [Getting a VAE](#vae)
     1. [Launching and settings](#launch)
-    1. [Prompts](#prompts)
+    1. [Prompts](#prompt)
     1. [Generation parameters](#gen)
 * [Extensions](#extensions)
-* Loras
+* [Loras](#lora)
 * [Upscalers](#upscale)
 * ControlNet
 * Tips for training character Loras
@@ -56,15 +56,17 @@ Before generating some images, here are some useful steps you can follow to impr
     * If you're using the original stable-diffusion-webui, you can add these parameters by editing your webui-user.bat, right next to `set COMMANDLINE_ARGS=`
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
-1. **Getting a model:** <a name="model"></a> There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
-    * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down and choose the AOM3 option)* offers more realism, advanced lighting, softer shading, and more lewdness. I remixed the two options above into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix).
-    * For creative art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
-    * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate), it can do almost anything, specially photographs.
+1. **Getting a model:** <a name="model"></a> The model is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
+    * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I remixed the two options above into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix). While AOM3 is extremely capable for NSFW, the popular [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) hentai model may also fit your needs.
+    * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of raw creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
+    * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate). It can do almost anything, but specially photographs. Very intricate results.
     * The [Uber Realistic Porn Merge](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) is self-explanatory.
      
     *Launcher:* It will let you choose the path to your models folder. Otherwise the models normally go into `stable-diffusion-webui/models/Stable-diffusion`.
 
     *Collab:* copy the **direct download link to the file** and put it in `MODEL_LINK:`. Turn on `safetensors`, and `Use_temp_storage` if you don't want to save it to your google drive. After the first time you use the collab, you may place more models manually into your Google Drive folder at: `MyDrive/sd/stable-diffusion-webui/models/Stable-diffusion`
+
+    Please note that models in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses. Be careful.
 
 1. **Getting a VAE:** <a name="vae"></a> Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
@@ -86,7 +88,7 @@ Before generating some images, here are some useful steps you can follow to impr
     * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`.
     * Scroll back up, click the big orange **Apply settings** button, then **Reload UI** next to it. You can now change your model as well as your VAE from the top of the page at any time.
 
-1. **Prompts:** <a name="prompts"></a>
+1. **Prompts:** <a name="prompt"></a>
 
     On the first tab, **txt2img**, you'll be making most of your images. This is where you'll find your *prompt* and *negative prompt*.  
     Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want and get a good image. You have to be specific. *Very* specific.  
@@ -105,6 +107,8 @@ Before generating some images, here are some useful steps you can follow to impr
 
     After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.
     You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
+
+    Note that when you surround something in `(parentheses)`, it will have emphasis or more **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you still use normal parentheses to go lower, like `(this:0.5)`.
 
 1. **Generation parameters** <a name="gen"></a>
 
@@ -127,26 +131,42 @@ Before generating some images, here are some useful steps you can follow to impr
 
 &nbsp;
   
-# **Extensions:** <a name="extensions"></a>
+# Extensions <a name="extensions"></a>
 
-    *Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
+*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
 
-    Here are some useful extensions, I hugely recommend the first 2:
-    * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
-    * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
-    * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of its own guide. It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
-    * [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows.
-    * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
-    * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
-    * [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
+Here are some useful extensions, I hugely recommend the first 2:
+* [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
+* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
+* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of its own guide. It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
+* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows.
+* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
+* [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
+* [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
 
 &nbsp;
 
-# **Upscalers:** <a name="upscale"></a>
+# Loras <a name="lora"></a>
+
+LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier](#prompt), but Loras are larger and often more capable. Technical details omitted.
+
+Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Models are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in.
+
+They can be downloaded from [civitai](https://civitai.com) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensor` format, same as models.
+
+Place your lora files in the `stable-diffusion-webui/models/Lora` folder. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear.
+
+When you click a Lora in that menu it will get added to your prompt. It will look like this: `<lora:filename:1` The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image.
+
+An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
+
+&nbps;
+
+# Upscalers <a name="upscale"></a>
 
 You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder.
 
-* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there.
+* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there, and the files necessary to make 
 * [Upscale wiki](https://upscale.wiki/wiki/Model_Database)
 
 Coming soon: How to use ultimate upscaler.
