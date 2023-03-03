@@ -75,7 +75,7 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 
 1. Run the program. You will see a few options. First, turn on **medvram** and **xformers**. You may skip medvram if you have 12 or more GB of VRAM.
 
-1. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae` . Any extra options should be separated by spaces.
+1. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae --theme dark` . Any extra options should be separated by spaces.
     * If your graphics card has less than 8 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
     * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. After launching, use your computer's local IP in the same WiFi network to access the interface.
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
@@ -271,7 +271,9 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
 You will notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
 
-In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good example is depth+openpose, to get a specific character pose in a specific environment, or even a specific pose with specific hand gestures.
+In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good use is when one of them is Openpose, to get a specific character pose in a specific environment, or with specific hand gestures or details. Observe:
+
+![Open Pose + Scribble](images/openpose_scribble.png)
 
 You can also use ControlNet in img2img, in which the input image and sample image both will have a certain effect on the result. I do not have much experience with this method.
 
