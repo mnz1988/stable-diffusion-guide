@@ -50,6 +50,7 @@ The images you create may be used for any purpose, depending on the used model's
 Before generating some images, here are some useful steps you can follow to improve your experience.
 
 1. **Edit your starting parameters** <a name="params"></a>[↑](#index)
+
     If you're using the collab, skip this step.
 
     If you're using the launcher, turn on **medvram** and **xformers**. Then, set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae`. All of these should offer minor but significant improvements to performance.
@@ -60,6 +61,7 @@ Before generating some images, here are some useful steps you can follow to impr
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
 1. **Getting a model** <a name="model"></a>[▲](#index)
+
     The model is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
     * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I remixed the two options above into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix). While AOM3 is extremely capable for NSFW, the popular [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) hentai model may also fit your needs.
     * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of raw creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
@@ -73,6 +75,7 @@ Before generating some images, here are some useful steps you can follow to impr
     Please note that models in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses. Be careful.
 
 1. **Getting a VAE** <a name="vae"></a>[▲](#index)
+
     Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
     There are practically only 3 different VAEs out there worth talking about:
@@ -85,6 +88,7 @@ Before generating some images, here are some useful steps you can follow to impr
     *Collab:* You will have to place it in your Google Drive, in `MyDrive/sd/stable-diffusion-webui/models/VAE`.
 
 1. **Launching and settings** <a name="launch"></a>[▲](#index)
+
     It is finally time to launch the WebUI.  
     *Launcher:* Press the button on the launcher and wait patiently for it to start. Then, it will open the interface in your browser. It's like a website, but on your computer.  
     *Collab:* Press the play buttons, **in order, one at a time**. Wait for each one to finish before pressing the next one. **You may skip the ControlNet section this time**. When the final step is finished, it will produce a link you can use to access the interface as a website. This will be open as long as the page stays open.
