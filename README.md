@@ -87,8 +87,10 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 # Getting Started <a name="start"></a>[▲](#index)
 
 Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
-The top of your page should look something like this:  
-<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/top.png"/>  
+The top of your page should look something like this:
+
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/top.png"/>
+
 Here you can select your model and VAE. We will go over what these are and how you can get more of them.
 
 
