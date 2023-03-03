@@ -231,7 +231,7 @@ If you're on collab, you should enable the `all_control_models` option. On Windo
 
 I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
 
-First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, check *Enabled*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the uploaded image or it will start drawing. We can ignore the other settings.
+First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, click *Enable*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the uploaded image or it will start drawing. We can ignore the other settings.
 
 <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/controlnet.png"/>
 
@@ -268,9 +268,12 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/openpose2.png"/>
    </details>
 
-You may notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
+You will notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
 
 In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good example is depth+openpose, to get a specific character pose in a specific environment, or even a specific pose with specific hand gestures.
+
+You can also use ControlNet in img2img, in which the input image and sample image both will have a certain effect on the result. I do not have much experience with this method.
+
 
 I would also recommend the Scribble model, which lets you draw a crude sketch and turn it into a finished piece with the help of your prompt.  
 There are also alternative **diff** versions of each ControlNet model, which produce slightly different results. You can [try them](https://civitai.com/models/9868/controlnet-pre-trained-difference-models) if you want, but I personally haven't.
