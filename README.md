@@ -32,7 +32,7 @@ tags:
 
 # Introduction <a name="intro"></a>[▲](#index)
 
-Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models", which function like the brain of the AI, and can make almost anything given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
+Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models", which function like the brain of the AI, and can make almost anything, given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
 
 The images you create may be used for any purpose, depending on the used model's license. Whether they are "yours" in a legal sense varies by local laws and is often inconclusive. Neither I or any of the people involved in Stable Diffusion or its models are responsible for anything you make, and you are expressively forbidden from creating illegal or harmful content.
 
@@ -49,10 +49,11 @@ If you instead want to run it on your own computer, [scroll down](#install).
 2. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. 
 
 3. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
+    * You can save the file now if you want, and whenever you add something later.
 
-4. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, then, a public gradio link will appear, which you can open in a new tab to start using Stable Diffusion. **Keep both of these tabs open!**
+7. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, while a few progress messages appear. Then, a public gradio link will be created, which you can open in a new tab to start using Stable Diffusion. **Keep both of these tabs open!**
 
-5. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can do better, as well as things other than anime. Also, what are all of these options? [Scroll down](#start) to get started.
+8. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can do better, as well as things other than anime. Also, what are all of these options? [Scroll down ▼](#start) to get started.
 
 &nbsp;
 
@@ -66,19 +67,19 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 
 3. Run the program. You will see a few options. First, turn on **medvram** and **xformers**. You may skip medvram if you have 12 or more GB of VRAM.
 
-4. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae`
+4. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae` . Any extra options should be separated by spaces.
     * If your graphics card has less than 8 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
-    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. Then, use your computer's local IP in the same WiFi network to access the interface.
+    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. After launching, use your computer's local IP in the same WiFi network to access the interface.
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
 5. Click **Launch** and wait for a browser window to open with the interface. It may take a while the first time.
 
 6. The page is now open. It's your own private website. The starting page is where you can make your images. But first, we'll go to the **Settings** tab. There will be sections of settings on the left.
     * In the *Stable Diffusion* section, scroll down and increase **Clip Skip** from 1 to 2. This is said to produce better images, specially for anime.
-    * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`.
+    * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`
     * Scroll back up, click the big orange **Apply settings** button, then **Reload UI** next to it.
 
-7. You can now generate some images, but you only have the basic model available. It's not great, at most it can make some paintings. Also, what are all of these options? See [below](#start) to get started.
+7. You are more than ready to generate some images, but you only have the basic model available. It's not great, at most it can make some paintings. Also, what are all of these options? See [below ▼](#start) to get started.
 
 &nbsp;
 
@@ -148,7 +149,7 @@ Before or after generating your first few images, you will want to take a look a
     * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces almost exacly the same image every time.
   
     **Hires. fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
-    * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. Also see [Upscalers](#upscale). 
+    * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. Also see [Upscalers ▼](#upscale). 
     * **Hires steps:** I recommend at least half as many as your sampling steps. Higher values aren't always better, and they take a long time, so be conservative here.
     * **Denoising strength:** The most important parameter. Near 0.0, no detail will be added to the image. Near 1.0, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image, to add enough detail as the image gets larger, without *destroying* any original details you like.
     
@@ -176,11 +177,11 @@ Here are some useful extensions, most of these come installed in the collab, and
 
 # Loras <a name="lora"></a>[▲](#index)
 
-LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier](#prompt), but Loras are larger and often more capable. Technical details omitted.
+LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#prompt), but Loras are larger and often more capable. Technical details omitted.
 
 Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB and sometimes several hundreds of MB. Bigger Loras are not necessarily better. They come in `.safetensors` format, same as most checkpoints.
 
-Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or for collab, paste the direct download link to their file into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or for collab, paste the direct download link to their file into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
 
