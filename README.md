@@ -18,9 +18,10 @@ tags:
     1. [Getting a VAE](#vae)
     1. [Launching and settings](#launch)
     1. [Prompts](#prompts)
-    1. [Adding extensions](#extensions)
+    1. [Generation parameters](#gen)
+* [Extensions](#extensions)
 * Loras
-* Upscaling
+* [Upscalers](#upscale)
 * ControlNet
 * Tips for training character Loras
  
@@ -103,6 +104,49 @@ Before generating some images, here are some useful steps you can follow to impr
         * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors) and put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
     After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.
-    You can also save your prompts to reuse later with the buttons below Generate. Click **Save style** and give it a name. Later, you can open your *Styles* dropdown to choose, then click *Apply selected styles to the current prompt*.
+    You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
+
+1. **Generation parameters** <a name="gen"></a>
+
+    * *Sampling method:* These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
+    * *Sampling steps:* These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
+    * *Width and Height:* 512x512 is the default, you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires. fix`
+    * *Batch Count and Batch Size:* Batch *size* is how many images your graphics card will create at the same time, which is limited by your graphics card. Batch count is how many repeats of those to produce. Batches have sequential seeds, more on seeds below.
+    * *CFG Scale:* "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range. It gets strange outside that.
+    * *Seed:* A number that guides the creation of your image. The same seed with the same prompt and parameters produces almost exacly the same image every time.
   
-1. **Adding extensions:** <a name="extensions"></a>
+    *Hires. fix:* Lets you create larger images without distortion. Usually used at 2x scale. When selected, more options appear:
+    * *Upscaler:* The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. Also see [Upscalers](#upscale). 
+    * *Hires steps:* I recommend at least half as many as your sampling steps. Higher values aren't always better.
+    * *Denoising strength:* The most important parameter. Near 0, no detail will be added to the image. Near 1, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image.
+    
+    Others:
+    * *Restore faces:* May improve realistic faces. I never need it with the models and prompts listed in this guid as well as hires fix.
+    * *Tiling:* Used to produce repeating textures to put on a grid. Not very useful.
+    * *Script:* Lets you access useful features and extensions such as `X/Y/Z Plot` which lets you compare images with varying parameters on a grid.
+
+&nbsp;
+  
+# **Extensions:** <a name="extensions"></a>
+
+    *Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
+
+    Here are some useful extensions, I hugely recommend the first 2:
+    * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
+    * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
+    * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of its own guide. It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
+    * [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows.
+    * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
+    * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
+    * [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
+
+&nbsp;
+
+# **Upscalers:** <a name="upscale"></a>
+
+You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder.
+
+* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there.
+* [Upscale wiki](https://upscale.wiki/wiki/Model_Database)
+
+Coming soon: How to use ultimate upscaler.
