@@ -244,8 +244,17 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
    Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
 
-   ![X Y Z plot of models and ethnicities](#XYZplot)
+   ![X Y Z plot of models and ethnicities](images/XYZplot.png)
 
+* **Prompt Matrix** <a name="matrix"></a>[▲](#index)
+
+   Similar conceptually to S/R from before, but more in-depth. It works by showing each possible combination of terms listed between the `|` symbol in your prompt, for example: `young man|tree|city` will always contain "young man", but we'll see what happens when we add or remove "tree" and "city". Unlike S/R it also lets you use commas.
+
+   Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
+
+   Here is a comparison using the anime negative prompt I showed you [much earlier ▲](#prompt) in this guide. We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
+
+   ![Prompt matrix of negative prompt sections](images/promptmatrix.png)
 
 &nbsp;
 
