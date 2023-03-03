@@ -8,6 +8,8 @@ tags:
 - stable-diffusion-webui
 ---
 
+[If you're in the main page, click here to open this document in full width](https://huggingface.co/hollowstrawberry/stable-diffusion-guide/blob/main/README.md)
+
 # Index <a name="sdguide-index"></a>
 
 * [Introduction](#sdguide-intro)
