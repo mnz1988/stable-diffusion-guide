@@ -37,6 +37,8 @@ Stable Diffusion is a very powerful AI image generation software you can run on 
 
 The images you create may be used for any purpose, depending on the used model's license. Whether they are "yours" in a legal sense varies by local laws and is often inconclusive. Neither I or any of the people involved in Stable Diffusion or its models are responsible for anything you make, and you are expressively forbidden from creating illegal or harmful content.
 
+This guide is up to date with the best practices as of March 2023. One week is like a year in AI time, so this guide may be outdated by the time you read it. Hopefully it is still useful.
+
 &nbsp;
 
 # Google Collab <a name="collab"></a>[▲](#index)
@@ -47,14 +49,17 @@ If you instead want to run it on your own computer, [scroll down ▼](#install).
 
 1. Enter [this page](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
-2. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. 
+1. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. This is now your personalized collab which will save your settings, and you should open it from your Google Drive from now on. Check the original for updates as frequently as you like.
 
-3. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
-    * You can save the file now if you want, and whenever you add something later.
+1. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
 
-7. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, while a few progress messages appear. Then, a public gradio link will be created, which you can open in a new tab to start using Stable Diffusion. **Keep both of these tabs open!**
+1. If you're already familiar with Stable Diffusion, you may paste links to your desired resources in the `custom_urls` text box. We will add some links later in this guide. Links must be **direct downloads** to each file (ideally from civitai or huggingface), and must be separated by commas.
 
-8. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can do better, as well as things other than anime. Also, what are all of these options? [Scroll down ▼](#start) to get started.
+1. You can save the file now if you want, and whenever you change something in this page later.
+
+1. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, while a few progress messages appear near the bottom. Then, a **public link** will be created, which you can open in a new tab to start using Stable Diffusion. **Keep the collab tab open!** (It may be difficult to keep both tabs open on mobile)
+
+1. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can go further. Also, what are all of these options? [Scroll down ▼](#start) to get started.
 
 &nbsp;
 
@@ -87,11 +92,11 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 # Getting Started <a name="start"></a>[▲](#index)
 
 Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
-The top of your page should look something like this:
+The top of your page should look similar to this:
 
 <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/top.png"/>
 
-Here you can select your model and VAE. We will go over what these are and how you can get more of them.
+Here you can select your model and VAE. We will go over what these are and how you can get more of them. The collab has additional settings here too, you should ignore them for now.
 
 
 1. **Models** <a name="model"></a>[▲](#index)
@@ -178,7 +183,7 @@ Here you can select your model and VAE. We will go over what these are and how y
 Here are some useful extensions. Most of these come installed in the collab, and I hugely recommend you manually add the first 2 if you're running locally:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
-* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of its own guide (coming soon). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
+* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
 * [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows.
 * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images. It is an optional launch setting in the collab.
 * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
@@ -215,6 +220,18 @@ Coming soon: How to use ultimate upscaler.
 &nbsp;
 
 # ControlNet <a name="controlnet"></a>[▲](#index)
+
+ControlNet is an extremely powerful recent technology for Stable Diffusion. It lets you analyze information about any previously existing image and use it to guide the generation of your AI images. We'll see what this means in a moment.
+
+If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least the Canny, Depth and Openpose models.
+
+I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "input image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
+
+First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, check *Enabled*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my input image.
+
+<img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/controlnet.png"/>
+
+There are also alternative "difference" versions of each ControlNet model, which produce slightly different results. You can try them if you want.
 
 # Lora Training <a name="train"></a>[▲](#index)
 
