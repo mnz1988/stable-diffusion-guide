@@ -191,7 +191,7 @@ An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/1
 
 You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder.
 
-* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there, and the files necessary to make 
+* [Some notable ones here](https://mega.nz/folder/LYdRSK7Y#9_eYXeUDqNbGpQ-FIdYTkg), including Remacri which might be the best one out there, and the files necessary to make LDSR work.
 * [Upscale wiki](https://upscale.wiki/wiki/Model_Database)
 
 Coming soon: How to use ultimate upscaler.
