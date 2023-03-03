@@ -26,7 +26,11 @@ language:
    1. [Generation parameters](#gen)
 * [Extensions](#extensions)
 * [Loras](#lora)
-* [Upscalers](#upscale)
+* [Upscaling](#upscale)
+* [Scripts](#scripts)
+   * [X/Y/Z Plot](#plot)
+   * [Prompt Matrix](#matrix)
+   * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Lora Training](#train)
     * [Tips for training character Loras](#trainchars)
@@ -176,7 +180,7 @@ Here you can select your model and VAE. We will go over what these are and how y
    Others:
    * **Restore faces:** May improve realistic faces. I never need it with the models and prompts listed in this guide as well as hires fix.
    * **Tiling:** Used to produce repeating textures to put on a grid. Not very useful.
-   * **Script:** Lets you access useful features and extensions, such as `X/Y/Z Plot` which lets you compare images with varying parameters on a grid. Very powerful.
+   * **Script:** Lets you access useful features and extensions, such as [X/Y/Z Plot ▼](#plot) which lets you compare images with varying parameters on a grid. Very powerful.
 
 &nbsp;
   
@@ -189,7 +193,7 @@ Here are some useful extensions. Most of these come installed in the collab, and
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
 * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
-* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows.
+* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
 * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images. It is an optional launch setting in the collab.
 * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
 * [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
@@ -212,7 +216,9 @@ An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/1
 
 # Upscaling <a name="upscale"></a>[▲](#index)
 
-You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, SD Upscale, Ultimate SD Upscaler, and Extras.
+As mentioned in [Generation Parameters ▲](#parameters), normally you shouldn't go above 768 width or height when generating an image. Instead you should use `Hires. fix` with your choice of upscaler and an appropiate denoising level. Hires fix is limited by your VRAM however, so you may be interested in [Ultimate Upscaler ▼](#ultimate) to go even larger.
+
+You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, Ultimate Upscaler, and Extras.
 
 The collab comes with several of them, including Remacri, which is one of the best for all sorts of images.
 
@@ -220,7 +226,26 @@ The collab comes with several of them, including Remacri, which is one of the be
 * LDSR is an advanced yet slow upscaler, its model and config can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) and both must be placed in `stable-diffusion-webui/models/LDSR`.
 * The [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contains dozens of historical choices.
 
-Coming soon: How to use ultimate upscaler.
+In the future I may present examples for each upscaler.
+
+&nbsp;
+
+# Scripts <a name="scripts"></a>[▲](#index)
+
+Scripts can be found at the bottom of your generation parameters in txt2img or img2img.
+
+* **X/Y/Z Plot** <a name="plot"></a>[▲](#index)
+
+   Capable of generating a series of images, usually with the exact same seed, but varying parameters of your choice. Can compare almost anything you want, including different models, parts of your prompt, sampler, upscaler and much more. You can have 1, 2, or 3 variable parameters, hence the X, Y and Z.
+
+   Your parameters in X/Y/Z Plot are separated by commas, but anything else can go inbetween. The most common parameter to compare is **S/R Prompt**, where the first term is a phrase in your prompt and each term afterwards will replace the original. Knowing this, you can compare, say, Lora intensity, like this:
+
+   `<lora:my lora:0.4>, <lora:my lora:0.6>, <lora:my lora:0.8>, <lora:my lora:1>`
+
+   Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
+
+   ![X Y Z plot of models and ethnicities](#XYZplot)
+
 
 &nbsp;
 
@@ -271,7 +296,14 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
 * **Scribble**
 
-   Lets you make a crude sketch and convert it into a finished piece with the help of your prompt. Example soon.
+   Lets you make a simple sketch and convert it into a finished piece with the help of your prompt. For this one I asked a friend:
+
+   <details>
+   <summary>Scribble example, click to open</summary>
+   
+   ![Scribble sample image](images/scribble1.png)
+   ![Scribble output image](images/scribble2.png)
+   </details>
 
 You will notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
 
