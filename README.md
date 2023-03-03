@@ -6,6 +6,8 @@ tags:
 - webui
 - automatic1111
 - stable-diffusion-webui
+language:
+- en
 ---
 
 **[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](https://huggingface.co/hollowstrawberry/stable-diffusion-guide/blob/main/README.md#index)**
@@ -151,6 +153,8 @@ Here you can select your model and VAE. We will go over what these are and how y
 
     Note that when you surround something in `(parentheses)`, it will have more emphasis or **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you must still use normal parentheses to go lower, like `(this:0.5)`.
 
+    Also note that hands and feet are famously difficult for AI to generate. These methods improve your chances, but you may need to do img2img inpainting, photoshopping, or advanced techniques with [ControlNet ▼](#controlnet) to get it right.
+
 1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
     The rest of the parameters in the starting page will look something like this:
@@ -223,20 +227,52 @@ Coming soon: How to use ultimate upscaler.
 
 ControlNet is an extremely powerful recent technology for Stable Diffusion. It lets you analyze information about any previously existing image and use it to guide the generation of your AI images. We'll see what this means in a moment.
 
-If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least the Canny, Depth and Openpose models.
+If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least the Canny, Depth and Openpose models, which I will show here.
 
-I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "input image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
+I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
 
-First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, check *Enabled*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my input image.
+First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, check *Enabled*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the uploaded image or it will start drawing. We can ignore the other settings.
 
 <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/controlnet.png"/>
 
-There are also alternative "difference" versions of each ControlNet model, which produce slightly different results. You can try them if you want.
+* **Canny**
+   The Canny method extracts the hard edges of the sample image. It is useful for many different types of images, specially where you want to preserve small details and the general look of an image. Observe:
+
+   <details>
+   <summary>Canny example, click to open</summary>
+   <br>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/canny1.png"/>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/canny2.png"/>
+   </details>
+
+* **Depth**
+   The Depth method extracts the 3D elements of the sample image. It is best suited for complex environments and general composition. Observe:
+
+   <details>
+   <summary>Depth example, click to open</summary>
+   <br>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/depth1.png"/>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/depth2.png"/>
+   </details>
+
+* **Openpose**
+   The Openpose method extracts the human poses of the sample image. It helps tremendously to get the desired shot and composition of your generated characters. Observe:
+
+   <details>
+   <summary>Openpose example, click to open</summary>
+   <br>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/openpose1.png"/>
+   <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/openpose2.png"/>
+   </details>
+
+You may notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you will set the preprocessor to None. This is extremely powerful with external tools such as Blender.
+
+In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good example is depth+openpose, to get a specific character pose in a specific environment, or even a specific pose with specific hand gestures.
+
+I would also recommend the Scribble model, which lets you draw a crude sketch and turn it into a finished piece with the help of your prompt.
+
+There are also alternative "difference" versions of each ControlNet model, which produce slightly different results. You can try them if you want, but I personally haven't.
 
 # Lora Training <a name="train"></a>[▲](#index)
 
    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
-
-
-    
-    
