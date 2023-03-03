@@ -114,18 +114,18 @@ Here you can select your model and VAE. We will go over what these are and how y
 
     *Collab:* Copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
     
-    Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses. Be careful.
+    Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses, so be careful. Additionally, when choosing models you may have a choice between fp32, fp16 and pruned. They all produce the same images within a tiny margin of error, so just go with the smallest file (fp16-pruned). If you want to use them for training or merging, go with the biggest one instead.
 
 1. **VAEs** <a name="vae"></a>[▲](#index)
 
     Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
-    If you're using the collab, you should already have the below VAEs, as I told you to select them before running.
+    If you're using the collab in this guide, you should already have the below VAEs, as I told you to select them before running.
 
     There are practically only 3 different VAEs out there worth talking about:
     * [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), also known as the orangemix vae. All anime models use this.
     * [vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors), the latest from Stable Diffusion itself. Used by photorealism models and such.
-    * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the waifu diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
+    * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the Waifu Diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
 
     *Launcher:* It lets you choose the default VAE, otherwise put them in the `stable-diffusion-webui/models/VAE` folder.
 
@@ -271,8 +271,8 @@ In the Settings tab there is a ControlNet section where you can enable *multiple
 
 I would also recommend the Scribble model, which lets you draw a crude sketch and turn it into a finished piece with the help of your prompt.
 
-There are also alternative "difference" versions of each ControlNet model, which produce slightly different results. You can try them if you want, but I personally haven't.
+There are also alternative **diff** versions of each ControlNet model, which produce slightly different results. You can [try them](https://civitai.com/models/9868/controlnet-pre-trained-difference-models) if you want, but I personally haven't.
 
-# Lora Training <a name="train"></a>[▲](#index)
+# Lora Training <a name="train"></a>o[▲](#index)
 
    * **Tips for training character Loras** <a name="trainchars"></a>[▲](#index)
