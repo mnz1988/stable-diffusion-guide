@@ -11,7 +11,7 @@ tags:
 # Index
 
 * [Introduction](#intro)
-* [Installation](#inst)
+* [Installation](#install)
 * [Getting Started](#start)
     1. [Edit your starting parameters](#params)
     1. [Getting a model](#model)
@@ -19,6 +19,10 @@ tags:
     1. [Launching and settings](#launch)
     1. [Prompts](#prompts)
     1. [Adding extensions](#extensions)
+* Loras
+* Upscaling
+* ControlNet
+* Tips for training character Loras
  
 &nbsp;
 
@@ -28,11 +32,17 @@ Stable Diffusion is a very powerful AI image generation software you can run on 
 
 The images you create may be used for any purpose, depending on the used model's license. Whether they are "yours" in a legal sense varies by local laws and is often inconclusive. Neither I or any of the people involved in Stable Diffusion or its models are responsible for anything you make, and you are expressively forbidden from creating illegal or harmful content.
 
-# Installing <a name="inst"></a>
+&nbsp;
+
+# Installation <a name="install"></a>
 
 * __**Requirements:**__ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM and 4 GB of VRAM. I will only cover the case where you are running Windows 10/11 and using an NVIDIA graphics card series 16XX, 20XX or 30XX (though 10XX also work). AMD users are out of luck, as it's very inconsistent to get it working. Same with Linux and Mac, though it's possible to do it.
+
 * __**Installer:**__ The easiest way is to download the latest release [HERE](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases). 
+
 * __**Alternative:**__ If you don't meet the hardware requirements, don't worry, you can still use Stable Diffusion for free to its full extent through Google Collab. It borrows Google's computers to use AI, with variable time limitations, usually a few hours every day. To get started, [go here](https://colab.research.google.com/github/TheLastBen/fast-stable-diffusion/blob/main/fast_stable_diffusion_AUTOMATIC1111.ipynb#scrollTo=PjzwxTkPSPHf) and follow the steps.
+
+&nbsp;
 
 # Getting Started <a name="start"></a>
 
@@ -68,7 +78,7 @@ Before generating some images, here are some useful steps you can follow to impr
 
 1. **Launching and settings:** <a name="launch"></a> It is finally time to launch the WebUI.  
     *Launcher:* Press the button on the launcher and wait patiently for it to start. Then, it will open the interface in your browser. It's like a website, but on your computer.  
-    *Collab:* Press the play buttons, **in order, one at a time**. Wait for each one to finish before pressing the next one. When the final step is finished, it will produce a link you can use to access the interface as a website. This will be open as long as the page stays open. You may also want to give it a password before starting.
+    *Collab:* Press the play buttons, **in order, one at a time**. Wait for each one to finish before pressing the next one. **You may skip the ControlNet section this time**. When the final step is finished, it will produce a link you can use to access the interface as a website. This will be open as long as the page stays open.
 
     The starting page is where you can make your images. But first, we'll go to the Settings tab. There will be sections on the left.
     * In the *Stable Diffusion* section, scroll down and increase **Clip Skip** from 1 to 2. This is said to produce better images, specially for anime. You can also set your VAE from here, but I have a better idea:
