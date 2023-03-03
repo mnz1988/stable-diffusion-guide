@@ -144,7 +144,7 @@ Here you can select your model and VAE. We will go over what these are and how y
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
    * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
-      * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.pt). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
+      * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
    <img src="https://huggingface.co/hollowstrawberry/stable-diffusion-guide/resolve/main/images/prompt.png"/>
 
@@ -227,7 +227,7 @@ Coming soon: How to use ultimate upscaler.
 
 ControlNet is an extremely powerful recent technology for Stable Diffusion. It lets you analyze information about any previously existing image and use it to guide the generation of your AI images. We'll see what this means in a moment.
 
-If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least the Canny, Depth and Openpose models, which I will show here.
+If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension ▲](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least the Canny, Depth and Openpose models, which I will show here.
 
 I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
 
