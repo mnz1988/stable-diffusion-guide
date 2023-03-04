@@ -36,7 +36,10 @@ language:
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Lora Training](#train)
-    * [Tips for training character Loras](#trainchars)
+    * [Creating a dataset](#dataset)
+    * [Training Parameters](#trainparams)
+    * [Testing your results](#traintest)
+    * [Tips for Character Loras](#trainchars)
 * [...vtubers?](#vtubers)
  
 &nbsp;
@@ -383,10 +386,58 @@ Here are some classic resources if you want to read about the topic in depth. Th
 * [Lora Training on Rentry](https://rentry.org/lora_train)
 * [Training Science on Rentry](https://rentry.org/lora-training-science)
 * [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb#scrollTo=WNn0g1pnHfk5)
+* [List of trainer parameters](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
 
 With those way smarter resources out of the way, I'll try to produce a short and simple guide for you to get your own character, artstyle, or concept Lora.
 
-   * **Character Loras** <a name="trainchars"></a>[▲](#index)
+1. We will be using [this collab document](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments). You can copy it into your own Google Drive if you want.
+
+1. Click the play button on *A: Mount your google drive* and give it access when it asks you to. Do the same for *B: Installation*. Proceed to the next step while it installs.
+
+1. Scroll down to *C: Settings* but don't run it yet. Here in **Start** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models.
+
+1. **Creating a dataset** <a name="dataset"></a>[▲](#index)
+  
+   This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing tags for those images.
+
+   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [safebooru](https://safebooru.org/), [gelbooru](https://gelbooru.com/) or [danbooru](https://danbooru.donmai.us/). You will need at least 10 images, ideally 20 or more. You can get hundreds of them if you want.
+  
+   1. You may tag the images yourself, which is slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically scan and generate accurate tags for all of your images.
+  
+   1. Optionally add the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to your webui, through which you can quickly edit the tags of many files at once.
+  
+   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_conceptname`, which each contain your images and matching tags. Like this:
+  
+      ![Folder structure for training](https://i.imgur.com/zpbs8FB.png)
+
+   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. Then, your inner folder should be called `10_mylora` or something similar.
+  
+   1. Upload the entire parent folder into your Google Drive's `lora_training/datasets` folder.
+  
+1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
+
+   * Under **Files**, you don't need to change anything.
+   * Under **Steps**, follow the instructions to calculate your `max_train_steps`. I recommend at least 400 total steps, which should take 15-20 minutes. You can set your `lr_warmup_steps` to around your image count.
+   * Under **Training**, `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5.
+   * A note about `network_dim`: The dim is the size of your Lora. Most people train at dim 128, which produces 144 MB Loras, and it's way overkill. I'd recommend dim 16 for most cases. You can go as low as 1 and it will still work reasonably well.
+
+1. You can now run *C: Settings*, wait for the model to download, and finally start the training with *D: Cook the Lora*.
+
+1. **Testing your results** <a name="traintest"></a>[▲](#index)
+
+   Some time has passed and your Lora finished training/cooking. Go and download your Lora from `lora_training/output` in your Google Drive. But hey, there's multiple - by default, a copy of your Lora will save every 2 epochs, allowing you to test its progress. If you train it for many epochs, you may be able to identify the optimal point between "undercooked" and "overcooked".
+
+   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and refuses to do anything other than what it was told. If you didn't have enough training data at all, it can be both things at once!
+
+   Using what we learned in [X/Y/Z Plot ▲](#plot), we can make a chart of the different epochs of our Lora:
+
+   ![Comparison of Lora training results](images/loratrain.png)
+
+   Look at that, it gets more detailed over time! This was a successful character Lora, at least at first glance. You would need to test different seeds, prompts and scenarios to be sure.
+
+   It is common that your Lora "fries" or distorts your images when used at high weights such as 1, specially if it's overcooked. A weight of 0.5 to 0.8 is acceptable here, you may need to tweak the learning rate and network dim for this. If you're reading this and know the magic sauce, let us know.
+
+* **Tips for character Loras** <a name="trainchars"></a>[▲](#index)
 
    Coming soon.
 
