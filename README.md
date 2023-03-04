@@ -256,9 +256,10 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
    Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
 
-   Here is a comparison using the anime negative prompt I showed you [much earlier ▲](#prompt) in this guide. We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
+   Here is a comparison using the negative prompts I showed you [much earlier ▲](#prompt) in this guide. We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
 
-   ![Prompt matrix of negative prompt sections](images/promptmatrix.png)
+   ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
+   ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
 
 &nbsp;
 
