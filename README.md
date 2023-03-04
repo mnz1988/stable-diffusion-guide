@@ -349,7 +349,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    <details>
    <summary>Scribble example, click to expand</summary>
    
-   ![Scribble sample image](images/scribble1.png)
+   ![Scribble sample image](images/scribble1.jpg)
    ![Scribble output image](images/scribble2.png)
    </details>
 
