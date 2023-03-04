@@ -36,7 +36,7 @@ language:
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Lora Training for beginners](#train)
-    * [Creating a dataset](#dataset)
+    * [Creating a dataset](#datasets)
     * [Training Parameters](#trainparams)
     * [Testing your results](#traintest)
     * [Tips for Character Loras](#trainchars)
@@ -396,7 +396,7 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
 1. Scroll down to *C: Settings* but don't run it yet. Here in **Start** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models.
 
-1. **Creating a dataset** <a name="dataset"></a>[▲](#index)
+1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
    This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing tags for those images.
 
