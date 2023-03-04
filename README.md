@@ -35,7 +35,7 @@ language:
    * [Prompt Matrix](#matrix)
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
-* [Lora Training](#train)
+* [Lora Training for beginners](#train)
     * [Creating a dataset](#dataset)
     * [Training Parameters](#trainparams)
     * [Testing your results](#traintest)
@@ -376,19 +376,19 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 &nbsp;
 
-# Lora Training <a name="train"></a>[▲](#index)
+# Lora Training for beginners <a name="train"></a>[▲](#index)
 
 To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, but there are many variables involved, and a lot of work depending on your workflow. It's somewhere between an art and a science.
 
-You can do it on your own computer if you have at least 8 GB of VRAM. However, I will cover the case of using a Google Collab document again for this express purpose.
+You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Collab document for learning purposes.
 
-Here are some classic resources if you want to read about the topic in depth. This website may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
+Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
 * [Lora Training on Rentry](https://rentry.org/lora_train)
 * [Training Science on Rentry](https://rentry.org/lora-training-science)
-* [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb#scrollTo=WNn0g1pnHfk5)
+* [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
 * [List of trainer parameters](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
 
-With those way smarter resources out of the way, I'll try to produce a short and simple guide for you to get your own character, artstyle, or concept Lora.
+With those way smarter resources out of the way, I'll try to produce a short and simple guide for you to make your own character, artstyle, or concept Lora.
 
 1. We will be using [this collab document](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments). You can copy it into your own Google Drive if you want.
 
@@ -433,13 +433,25 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
    ![Comparison of Lora training results](images/loratrain.png)
 
-   Look at that, it gets more detailed over time! This was a successful character Lora, at least at first glance. You would need to test different seeds, prompts and scenarios to be sure.
+   Look at that, it gets more detailed over time! The last image is without any Lora for comparison. This was a successful character Lora, at least at first glance. You would need to test different seeds, prompts and scenarios to be sure.
 
-   It is common that your Lora "fries" or distorts your images when used at high weights such as 1, specially if it's overcooked. A weight of 0.5 to 0.8 is acceptable here, you may need to tweak the learning rate and network dim for this. If you're reading this and know the magic sauce, let us know.
+   It is common that your Lora "fries" or distorts your images when used at high weights such as 1, specially if it's overcooked. A weight of 0.5 to 0.8 is acceptable here, you may need to tweak the learning rate and network dim for this, or other variables not found in this collab. If you're reading this and know the magic sauce, let us know.
 
-* **Tips for character Loras** <a name="trainchars"></a>[▲](#index)
+   After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one collab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
 
-   Coming soon.
+* **Additional Lora tips** <a name="trainchars"></a>[▲](#index)
+
+   The most important thing for characters and concepts is the tags. You want a varied dataset of images in different poses and such, sure, but if they're tagged incorrectly it's not gonna work.
+
+   When training a character or concept lora you should set `keep_tokens` to 1, and ensure that the first tag in your text files is always your **activation tag**. An activation tag is how we'll invoke your Lora to work.
+
+   Having done that, you want to remove or "prune" tags that are intrinsic to your character or concept. For example, if a character always has cat ears, you want to remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag.
+
+   You may also prune clothing tags, by only listing the most relevant clothes in the tags and remove anything redundant, such as keeping "tie" but removing "red tie". This will make those clothes absorb the relevant details as well. You can even define an additional activation tag for each set of important clothes, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
+
+   Style Loras meanwhile don't really need an activation tag, as they should always be active. They will absorb the artstyle naturally, and will work at varying weights.
+
+   This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc.
 
 &nbsp;
 
@@ -447,7 +459,7 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
 That's it, that's the end of this guide for now. Thank you for reading. If you want to correct me or contribute to the guide you can open an issue or pull request and I'll take a look soon.
 
-I have [a separate repo that aggregates vtuber Loras among other things, specially Hololive](https://huggingface.co/hollowstrawberry/holotard). If you're interested in that.
+I have [a separate repo that aggregates vtuber Loras, specially Hololive](https://huggingface.co/hollowstrawberry/holotard). If you're interested in that.
 
 Cheers.
 
