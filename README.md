@@ -263,13 +263,33 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
    ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
    ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
 
+* **Ultimate Upscale** <a name="ultimate"></a>[▲](#index)
+
+   An improved version of a builtin script, it can be added as an [extension ▲] and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
+
+   1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
+
+   1. From txt2img or the Image Browser extension send it directly into img2img, along with its prompt and parameters.
+
+   1. Set the **Denoising** somewhere between 0.1 and 0.4. If you go higher you most likely will experience mutations.
+
+   1. Go down to **Scripts** and choose **Ultimate SD Upscale**. Then, set your parameters like this, with your desired size and upscaler, and the **"Chess" Type**:
+   
+      ![Ultimate upscale parameters](images/ultimate.png)
+
+      * If you have enough VRAM, you may increase the **Tile width** as well as the **Padding**. For example, doubling both of them. **Tile height** can remain at 0 and it'll match the width.
+     
+      * It is not necessary to set the **Seams fix** unless you encounter visible seams between regions in the final image.
+     
+   1. Generate your image and wait. You can watch the squares get sharper if you have image previews enabled.
+
 &nbsp;
 
 # ControlNet <a name="controlnet"></a>[▲](#index)
 
 ControlNet is an extremely powerful recent technology for Stable Diffusion. It lets you analyze information about any previously existing image and use it to guide the generation of your AI images. We'll see what this means in a moment.
 
-If you're on collab, you should enable the `all_control_models` option. On Windows, you should first install the ControlNet [extension ▲](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least Canny, Depth, Openpose and Scribble, which I will show here.
+If you're using the collab in this guide, you should enable the `all_control_models` option. Otherwise, you should first install the ControlNet [extension ▲](#extensions), then go [here](https://civitai.com/models/9251/controlnet-pre-trained-models) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least Canny, Depth, Openpose and Scribble, which I will show here.
 
 I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
 
@@ -282,7 +302,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Canny method extracts the hard edges of the sample image. It is useful for many different types of images, specially where you want to preserve small details and the general look of an image. Observe:
 
    <details>
-   <summary>Canny example, click to open</summary>
+   <summary>Canny example, click to expand</summary>
    
    ![Canny preprocessed image](images/canny1.png)
    ![Canny output image](images/canny2.png)
@@ -293,7 +313,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Depth method extracts the 3D elements of the sample image. It is best suited for complex environments and general composition. Observe:
 
    <details>
-   <summary>Depth example, click to open</summary>
+   <summary>Depth example, click to expand</summary>
    
    ![Depth preprocessed image](images/depth1.png)
    ![Depth output image](images/depth2.png)
@@ -304,7 +324,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Openpose method extracts the human poses of the sample image. It helps tremendously to get the desired shot and composition of your generated characters. Observe:
 
    <details>
-   <summary>Openpose example, click to open</summary>
+   <summary>Openpose example, click to expand</summary>
    
    ![Open Pose preprocessed image](images/openpose1.png)
    ![Open Pose output image](images/openpose2.png)
@@ -312,10 +332,10 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
 
 * **Scribble**
 
-   Lets you make a simple sketch and convert it into a finished piece with the help of your prompt. For this one I asked a friend:
+   Lets you make a simple sketch and convert it into a finished piece with the help of your prompt. This is the only example not using the sample image above.
 
    <details>
-   <summary>Scribble example, click to open</summary>
+   <summary>Scribble example, click to expand</summary>
    
    ![Scribble sample image](images/scribble1.png)
    ![Scribble output image](images/scribble2.png)
@@ -335,6 +355,6 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 # Lora Training <a name="train"></a>[▲](#index)
 
-   * **Character Loras** <a name="trainchars"></abe[▲](#index)
+   * **Character Loras** <a name="trainchars"></a>[▲](#index)
 
    Coming soon.
