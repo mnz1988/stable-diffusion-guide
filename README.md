@@ -39,7 +39,7 @@ language:
     * [Creating a dataset](#datasets)
     * [Training Parameters](#trainparams)
     * [Testing your results](#traintest)
-    * [Tips for Character Loras](#trainchars)
+    * [Additional tips](#trainchars)
 * [...vtubers?](#vtubers)
  
 &nbsp;
@@ -441,7 +441,7 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
    After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one collab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
 
-* **Additional Lora tips** <a name="trainchars"></a>[▲](#index)
+* **Additional tips** <a name="trainchars"></a>[▲](#index)
 
    The most important thing for characters and concepts is the tags. You want a varied dataset of images in different poses and such, sure, but if they're tagged incorrectly it's not gonna work.
 
