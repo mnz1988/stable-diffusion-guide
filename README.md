@@ -11,9 +11,10 @@ language:
 - en
 ---
 
-**[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**
+**[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**  
+**(The index won't work otherwise).**
 
-**The index won't work otherwise.**
+**[🇪🇸🇲🇽 HAZ CLICK AQUÍ PARA VER ESTA GUÍA EN ESPAÑOL]
 
 &nbsp;
 
@@ -46,49 +47,47 @@ language:
 
 # Introduction <a name="intro"></a>[▲](#index)
 
-Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models", which function like the brain of the AI, and can make almost anything, given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
+Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models" which function like the brain of the AI, and can make almost anything, given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
 
 The images you create may be used for any purpose, depending on the used model's license. Whether they are "yours" in a legal sense varies by local laws and is often inconclusive. Neither I or any of the people involved in Stable Diffusion or its models are responsible for anything you make, and you are expressively forbidden from creating illegal or harmful content.
 
-This guide is up to date with the best practices as of March 2023. One week is like a year in AI time, so this guide may be outdated by the time you read it. Hopefully it is still useful.
+This guide is up to date with the best practices as of March 2023. One week is like a year in AI time, so hopefully it is still useful by the time you read it.
 
 &nbsp;
 
 # Google Collab <a name="collab"></a>[▲](#index)
 
-The easiest way to use Stable Diffusion is through Google Collab. It borrows Google's computers to use AI, with variable time limitations, usually a few hours every day. You will need a Google account (or several, wink wink) and we will be using Google Drive for ease of access.
+The easiest way to use Stable Diffusion is through Google Collab. It borrows Google's computers to use AI, with variable time limitations, usually a few hours every day. You will need at least one Google account and we will be using Google Drive to store your settings and resulting images.
 
 If you instead want to run it on your own computer, [scroll down ▼](#install).
 
-1. Open [this page](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
+1. Open [THIS PAGE](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
-1. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. This is now your personalized collab which will save your settings, and you should open it from your Google Drive from now on. Check the original for updates as frequently as you like.
+1. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. This is now your personalized collab which will save your settings, and you should open it from your Google Drive from now on. If the original receives an update you'll have to replace yours to benefit from it.
 
-1. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
+1. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, VAEs, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
 
 1. If you're already familiar with Stable Diffusion, you may paste links to your desired resources in the `custom_urls` text box. We will add some links later in this guide. Links must be **direct downloads** to each file (ideally from civitai or huggingface), and must be separated by commas.
 
-1. You can save the file now if you want, and whenever you change something in this page later.
-
 1. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, while a few progress messages appear near the bottom. Then, a **public link** will be created, which you can open in a new tab to start using Stable Diffusion. **Keep the collab tab open!** (It may be difficult to keep both tabs open on mobile)
 
-1. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can go further. Also, what are all of these options? [Scroll down ▼](#start) to get started.
+1. You can now make some decent anime images thanks to the default **Anything 4.5** model. But we can do more. Also, what are all of these options? [Scroll down ▼](#start) to get started.
 
 &nbsp;
 
 # Local Installation (Windows + Nvidia) <a name="install"></a>[▲](#index)
 
-To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM and 4 GB of VRAM (preferably 8). I will only cover the case where you are running Windows 10/11 and using an NVIDIA graphics card series 16XX, 20XX or 30XX (though 10XX also work). My apologies to AMD, Linux, and Mac users, but their cases are harder to cover. If you don't meet the hardware requirements, you can just proceed with the Google Collab method [above](#collab).
+To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM and 4 GB of VRAM (preferably 8). I will only cover the case where you are running Windows 10/11 and using an NVIDIA graphics card series 16XX, 20XX or 30XX (though 10XX also work). My apologies to AMD, Linux, and Mac users, but their cases are harder to cover. If you don't meet the hardware requirements, you can just proceed with the Google Collab method [above ▲](#collab).
 
 1. Get the latest release from [this page](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases). 
 
-1. Run the installer, choose a simple location to install to, and wait for it to finish.
+1. Run the installer, choose an easy and accessible location to install to, and wait for it to finish.
 
 1. Run the program. You will see a few options. First, turn on **medvram** and **xformers**. You may skip medvram if you have 12 or more GB of VRAM.
 
-1. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae --theme dark` . Any extra options should be separated by spaces.
-    * If your graphics card has less than 8 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
-    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. After launching, use your computer's local IP in the same WiFi network to access the interface.
+1. Set your **Additional Launch Options** to: `--opt-channelslast --no-half-vae --theme dark` . Any extra options should be separated by spaces.
+    * If your graphics card has 4-6 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
+    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen --enable-insecure-extension-access` . After launching, use your computer's local IP in the same WiFi network to access the interface. You can also add a password like `--gradio-auth name:1234` .
     * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
 
 1. Click **Launch** and wait for a browser window to open with the interface. It may take a while the first time.
@@ -109,47 +108,47 @@ If you followed the instructions above, the top of your page should look similar
 
 ![Top](images/top.png)
 
-Here you can select your model and VAE. We will go over what these are and how you can get more of them. The collab has additional settings here too, you should ignore them for now.
+Here you can select your checkpoint and VAE. We will go over what these are and how you can get some. The collab has additional settings here too, you should ignore them for now.
 
 1. **Models** <a name="model"></a>[▲](#index)
 
    The **model**, also called **checkpoint**, is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
-   * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I remixed the two options above into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix).
+   * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down there and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I merged these two options into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix).
    * While AOM3 is extremely capable for NSFW, the popular [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) hentai model may also fit your needs.
-   * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of raw creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
+   * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
    * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate). It can do almost anything, but specially photographs. Very intricate results.
    * The [Uber Realistic Porn Merge](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) is self-explanatory.
 
    If you're using the collab in this guide, copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
 
-   If you're using the launcher, it will let you choose the path to your models folder. Otherwise the models normally go into `stable-diffusion-webui/models/Stable-diffusion`.
+   If you're running the program locally, the models normally go into the `stable-diffusion-webui/models/Stable-diffusion` folder.
 
-   Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses, so be careful. Additionally, when choosing models you may have a choice between fp32, fp16 and pruned. They all produce the same images within a tiny margin of error, so just go with the smallest file (fp16-pruned). If you want to use them for training or merging, go with the biggest one instead.
+   Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses, so be careful. Additionally, when choosing models you may have a choice between fp32, fp16 and pruned. They all produce the same images within a tiny margin of error, so just go with the smallest file (pruned-fp16). If you want to use them for training or merging, go with the largest one instead.
 
-   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to a dropdown.
+   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to its dropdown.
 
 1. **VAEs** <a name="vae"></a>[▲](#index)
 
-   Most models don't come with a VAE built in. The VAE is a small separate model, which "converts your image from AI format into human format". Without it, you'll get faded colors and ugly eyes, among other things.
+   Most checkpoints don't come with a VAE built in. The VAE is a small separate model, which "converts your image into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
    If you're using the collab in this guide, you should already have the below VAEs, as I told you to select them before running.
 
-   There are practically only 3 different VAEs out there worth talking about:
+   There are practically only 3 different VAEs in circulation:
    * [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), also known as the orangemix vae. All anime models use this.
    * [vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors), the latest from Stable Diffusion itself. Used by photorealism models and such.
    * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the Waifu Diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
 
-   If you're using the launcher, it lets you choose the default VAE, otherwise put them in the `stable-diffusion-webui/models/VAE` folder.
+   The VAEs normally go into the `stable-diffusion-webui/models/VAE` folder.
    
    If you did not follow this guide up to this point, you will have to go into the **Settings** tab, then the **Stable Difussion** section, to select your VAE.
 
-   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to a dropdown.
+   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to its dropdown.
 
 1. **Prompts** <a name="prompt"></a>[▲](#index)
 
    On the first tab, **txt2img**, you'll be making most of your images. This is where you'll find your *prompt* and *negative prompt*.  
-   Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want and get a good image. You have to be specific. *Very* specific.  
-   Most people have found a prompt that works for them and they swear by it. I will show you my own personal example of a prompt and negative prompt:
+   Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want. You have to be specific. *Very* specific.  
+   Most people have found a prompt that works for them and they swear by it, often recommended by other people. I will show you my own personal example of a prompt and negative prompt:
    
    * Anime
       * `2d, masterpiece, best quality, anime, highly detailed face, highly detailed eyes, highly detailed background, perfect lighting`
@@ -159,19 +158,19 @@ Here you can select your model and VAE. We will go over what these are and how y
       * `best quality, 4k, 8k, ultra highres, (realistic, photorealistic, RAW photo:1.4), (hdr, sharp focus:1.2), intricate texture, skin imperfections`
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
-   * **EasyNegative:** <a name="promptneg"></a>The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
-      * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For the collab in this guide, paste the link into the `custom_urls` text box. Otherwise put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
+   * **EasyNegative:** <a name="promptneg"></a>The negative prompts above use EasyNegative, which is an *embedding* or "magic word" that encodes many bad things to make your images better. Otherwise you'd have to use a huge negative prompt.
+      * If you're using the collab in this guide you already have this installed. Otherwise, you will have to [download this tiny file](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors), put it in your `stable-diffusion-webui/embeddings` folder, then go to the bottom of your WebUI page and click *Reload UI*. It will then work when you type that word.
 
-   A comparison with and without these negative prompts can be seen in [Prompt Matrix ▼](#matrixneg).
+   A comparison with and without these negative prompts including EasyNegative can be seen [further down ▼](#matrixneg).
 
    ![Prompts](images/prompt.png)
 
    After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
    You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
 
-   <a name="promptweight"></a>Note that when you surround something in `(parentheses)`, it will have more emphasis or **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you must still use normal parentheses to go lower, like `(this:0.5)`.
+   <a name="promptweight"></a>Note that when you surround something in `(parentheses)`, it will have more emphasis or **weight** in your resulting image, equal to `1.1`. The normal weight for every word is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you'll still need parentheses to go lower, like `(this:0.5)`.
 
-   Also note that hands and feet are famously difficult for AI to generate. These methods improve your chances, but you may need to do img2img inpainting, photoshopping, or advanced techniques with [ControlNet ▼](#controlnet) to get it right.
+   Also note that hands and feet are famously difficult for AI to generate. These methods improve your chances, but you may need to do photoshopping, inpainting, or advanced techniques with [ControlNet ▼](#controlnet) to get it right.
 
 1. **Generation parameters** <a name="gen"></a>[▲](#index)
 
@@ -179,15 +178,15 @@ Here you can select your model and VAE. We will go over what these are and how y
    
    ![Parameters](images/parameters.png)
 
-   * **Sampling method:** These dictate how your image is formulated, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
-   * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find good results.
-   * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires. fix`
-   * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will generate at the same time, which is limited by its VRAM. Batch *count* is how many repetitions of those to produce. Batches have sequential seeds, more on seeds below.
-   * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range. It may get strange outside that.
-   * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces almost exacly the same image every time.
+   * **Sampling method:** This is the algorithm that formulates your image, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
+   * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find consistently good results.
+   * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires fix`.
+   * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will generate at the same time, which is limited by its VRAM. Batch *count* is how many times to repeat those. Batches have consecutive seeds, more on seeds below.
+   * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range.
+   * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces the same image every time, except for small details and under some circumstances.
   
-   **Hires. fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
-   * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. I recommend the Remacri upscaler, see [Upscalers ▼](#upscale). 
+   **Hires fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
+   * **Upscaler:** The algorithm to upscale with. `Latent` and its variations are said to produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. I recommend the Remacri upscaler, more about it [here ▼](#upscale). 
    * **Hires steps:** I recommend at least half as many as your sampling steps. Higher values aren't always better, and they take a long time, so be conservative here.
    * **Denoising strength:** The most important parameter. Near 0.0, no detail will be added to the image. Near 1.0, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image, to add enough detail as the image gets larger, without *destroying* any original details you like.
     
@@ -204,12 +203,12 @@ Here you can select your model and VAE. We will go over what these are and how y
  
 ![Extensions](images/extensions.png)
 
-Here are some useful extensions. Most of these come installed in the collab in this guide, and I hugely recommend you manually add the first 2 otherwise:
+Here are some useful extensions. If you're using the collab in this guide you already have most of these, otherwise I hugely recommend you manually add the first 2:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
-* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
-* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
-* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
-* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images. It is an optional launch setting in the collab.
+* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and prompts without them usually don't work, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
+* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you analyze any image and use it as an referene for your own image. Practically speaking, it can create any pose or environment you want.
+* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
+* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
 * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
 * [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
 
@@ -217,11 +216,11 @@ Here are some useful extensions. Most of these come installed in the collab in t
 
 # Loras <a name="lora"></a>[▲](#index)
 
-LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#promptneg), but Loras are larger and often more capable. Technical details omitted.
+LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a sort of smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#promptneg), but Loras are larger and often more capable. Technical details omitted.
 
-Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
+Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, you'll need a Lora. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
 
-Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the collab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw [earlier ▲](#promptweight). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the collab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section either directly below or at the very bottom. Click on the Lora tab and press the **Refresh** button to scan for new Loras. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw [earlier ▲](#promptweight). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
 ![Extra Networks](images/extranetworks.png)
 
@@ -231,7 +230,7 @@ An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/1
 
 # Upscaling <a name="upscale"></a>[▲](#index)
 
-As mentioned in [Generation Parameters ▲](#parameters), normally you shouldn't go above 768 width or height when generating an image. Instead you should use `Hires. fix` with your choice of upscaler and an appropiate denoising level. Hires fix is limited by your VRAM however, so you may be interested in [Ultimate Upscaler ▼](#ultimate) to go even larger.
+As mentioned in [Generation Parameters ▲](#parameters), normally you shouldn't go above 768 width or height when generating an image. Instead you should use `Hires fix` with your choice of upscaler and an appropiate denoising level. Hires fix is limited by your VRAM however, so you may be interested in [Ultimate Upscaler ▼](#ultimate) to go even larger.
 
 You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, Ultimate Upscaler, and Extras.
 
@@ -282,13 +281,13 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
    ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
    </details>
 
-* **Ultimate Upscale** <a name="ultimate"></a>[▲](#index)
+* **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
    An improved version of a builtin script, it can be added as an [extension ▲] and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
 
    1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
 
-   1. From txt2img or the Image Browser extension send it directly into img2img, along with its prompt and parameters.
+   1. From txt2img or the Image Browser extension send it directly into img2img, carrying its prompt and parameters.
 
    1. Set the **Denoising** somewhere between 0.1 and 0.4. If you go higher you most likely will experience mutations.
 
@@ -312,7 +311,7 @@ If you're using the collab in this guide, you should enable the `all_control_mod
 
 I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
 
-First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, click *Enable*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the uploaded image or it will start drawing. We can ignore the other settings.
+First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, click *Enable*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the sample image or it will start drawing. We can ignore the other settings.
 
 ![Control Net](images/controlnet.png)
 
@@ -360,7 +359,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    ![Scribble output image](images/scribble2.png)
    </details>
 
-You will notice that there are 2 results for each method. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender.
+You will notice that there are 2 results for each method except Scribble. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender and Photoshop.
 
 In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good use is when one of them is Openpose, to get a specific character pose in a specific environment, or with specific hand gestures or details. Observe:
 
@@ -380,7 +379,7 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, but there are many variables involved, and a lot of work depending on your workflow. It's somewhere between an art and a science.
 
-You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Collab document for learning purposes.
+You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Collab document for educational purposes.
 
 Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
 * [Lora Training on Rentry](https://rentry.org/lora_train)
@@ -388,7 +387,7 @@ Here are some classic resources if you want to read about the topic in depth. Re
 * [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
 * [List of trainer parameters](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
 
-With those way smarter resources out of the way, I'll try to produce a short and simple guide for you to make your very own Lora for a character, concept, or artstyle.
+With those way smarter resources out of the way, I'll try to produce a simple guide for you to make your very own Lora for a character, concept, or artstyle.
 
 ![Trainer collab](images/trainercollab.png)
 
@@ -396,23 +395,23 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
 1. Click the play button on *A: Mount your google drive* and give it access when it asks you to. Do the same for *B: Installation*. Proceed to the next step while it installs.
 
-1. Scroll down to *C: Settings* but don't run it yet. Here in **Start** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models.
+1. Scroll down to *C: Settings* but don't run it yet. Here in **Start** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models. If you want to train with photographs you may copy the link to the [base SD 1.5 model(https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
 
 1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
-   This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing tags for those images.
+   This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
 
    1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [safebooru](https://safebooru.org/), [gelbooru](https://gelbooru.com/) or [danbooru](https://danbooru.donmai.us/). You will need at least 10 images, ideally 20 or more. You can get hundreds of them if you want.
   
-   1. You may tag the images yourself, which is slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically scan and generate accurate tags for all of your images.
+   1. You may tag the images yourself, which is slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate tags for them.
   
    1. Optionally add the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to your webui, through which you can quickly edit the tags of many files at once.
   
-   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_conceptname`, which each contain your images and matching tags. Like this:
+   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_somename`, which each contain your images and matching tags. Like this:
   
       ![Folder structure for training](https://i.imgur.com/zpbs8FB.png)
 
-   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. Then, your inner folder should be called `10_mylora` or something similar.
+   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
   
    1. Upload the entire parent folder into your Google Drive's `lora_training/datasets` folder.
   
@@ -420,16 +419,16 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
    * Under **Files**, you don't need to change anything.
    * Under **Steps**, follow the instructions to calculate your `max_train_steps`. I recommend at least 400 total steps, which should take 15-20 minutes. You can set your `lr_warmup_steps` to around your image count.
-   * Under **Training**, `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5.
+   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5.
    * A note about `network_dim`: The dim is the size of your Lora. Most people train at dim 128, which produces 144 MB Loras, and it's way overkill. I'd recommend dim 16 for most cases. You can go as low as 1 and it will still work reasonably well.
 
-1. You can now run *C: Settings*, wait for the model to download, and finally start the training with *D: Cook the Lora*.
+1. You can now run *C: Settings*, wait for the model to download, and finally start the training with *D: Cook the Lora*. Let's hope everything goes well. Otherwise you may contact me or seek help for troubleshooting.
 
 1. **Testing your results** <a name="traintest"></a>[▲](#index)
 
    Some time has passed and your Lora finished training/cooking. Go and download your Lora from `lora_training/output` in your Google Drive. But hey, there's multiple - by default, a copy of your Lora will save every 2 epochs, allowing you to test its progress. If you train it for many epochs, you may be able to identify the optimal point between "undercooked" and "overcooked".
 
-   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and refuses to do anything other than what it was told. If you didn't have enough training data at all, it can be both things at once!
+   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and refuses to do anything other than what it was told. If you didn't have enough training data or it was tagged poorly, it can be both things at once!
 
    Using what we learned in [X/Y/Z Plot ▲](#plot), we can make a chart of the different epochs of our Lora:
 
@@ -443,15 +442,13 @@ With those way smarter resources out of the way, I'll try to produce a short and
 
 * **Additional tips** <a name="trainchars"></a>[▲](#index)
 
-   The most important thing for characters and concepts is the tags. You want a varied dataset of images in different poses and such, sure, but if they're tagged incorrectly it's not gonna work.
+   The most important thing for characters and concepts is the tags. You do want a dataset varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
 
-   When training a character or concept lora you should set `keep_tokens` to 1, and ensure that the first tag in your text files is always your **activation tag**. An activation tag is how we'll invoke your Lora to work.
+   When training a character or concept you should place an **activation tag** at the start of every text file, and set `keep_tokens` to 1. An activation tag is how we'll invoke your Lora to work. Having done that, you want to remove or "prune" tags that are intrinsic to your character or concept, such as hair color and eye color. For example, if a character always has cat ears, you want to remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag.
 
-   Having done that, you want to remove or "prune" tags that are intrinsic to your character or concept. For example, if a character always has cat ears, you want to remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag.
+   You may also prune clothing tags, by only listing the most relevant clothes in the tags and removing anything redundant, such as keeping "tie" but removing "red tie". This will make those clothes absorb the relevant details as well. You can even define an additional activation tag for each set of important clothes, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
 
-   You may also prune clothing tags, by only listing the most relevant clothes in the tags and remove anything redundant, such as keeping "tie" but removing "red tie". This will make those clothes absorb the relevant details as well. You can even define an additional activation tag for each set of important clothes, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
-
-   Style Loras meanwhile don't really need an activation tag, as they should always be active. They will absorb the artstyle naturally, and will work at varying weights.
+   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights.
 
    This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc.
 
