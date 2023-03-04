@@ -153,7 +153,9 @@ Here you can select your model and VAE. We will go over what these are and how y
 
    * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
       * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
-   
+
+   A comparison with and without these negative prompts can be seen in [Prompt Matrix ▼](#matrixneg).
+
    ![Prompts](images/prompt.png)
 
    After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
@@ -256,7 +258,7 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
    Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
 
-   Here is a comparison using the negative prompts I showed you [much earlier ▲](#prompt) in this guide. We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
+   <a name="matrixneg"></a>Here is a comparison using the negative prompts I showed you in [Prompts ▲](#prompt). We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
 
    ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
    ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
@@ -333,6 +335,6 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 # Lora Training <a name="train"></a>[▲](#index)
 
-   * **Character Loras** <a name="trainchars"></a>[▲](#index)
+   * **Character Loras** <a name="trainchars"></abe[▲](#index)
 
    Coming soon.
