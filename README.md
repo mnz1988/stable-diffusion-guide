@@ -12,6 +12,8 @@ language:
 
 **[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**
 
+**The index won't work otherwise.**
+
 &nbsp;
 
 # Index <a name="index"></a>
@@ -152,7 +154,7 @@ Here you can select your model and VAE. We will go over what these are and how y
       * `best quality, 4k, 8k, ultra highres, (realistic, photorealistic, RAW photo:1.4), (hdr, sharp focus:1.2), intricate texture, skin imperfections`
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
-   * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
+   * **EasyNegative:** <a name="promptneg"></a>The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
       * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For the collab in this guide, paste the link into the `custom_urls` text box. Otherwise put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
    A comparison with and without these negative prompts can be seen in [Prompt Matrix ▼](#matrixneg).
@@ -162,7 +164,7 @@ Here you can select your model and VAE. We will go over what these are and how y
    After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
    You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
 
-   Note that when you surround something in `(parentheses)`, it will have more emphasis or **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you must still use normal parentheses to go lower, like `(this:0.5)`.
+   <a name="promptweight"></a>Note that when you surround something in `(parentheses)`, it will have more emphasis or **weight** in your resulting image, equal to `1.1`. The normal weight is 1, and each parentheses will multiply by an additional 1.1. You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you must still use normal parentheses to go lower, like `(this:0.5)`.
 
    Also note that hands and feet are famously difficult for AI to generate. These methods improve your chances, but you may need to do img2img inpainting, photoshopping, or advanced techniques with [ControlNet ▼](#controlnet) to get it right.
 
@@ -210,11 +212,11 @@ Here are some useful extensions. Most of these come installed in the collab in t
 
 # Loras <a name="lora"></a>[▲](#index)
 
-LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#prompt), but Loras are larger and often more capable. Technical details omitted.
+LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#promptneg), but Loras are larger and often more capable. Technical details omitted.
 
 Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
 
-Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the collab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the collab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw [earlier ▲](#promptweight). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
 ![Extra Networks](images/extranetworks.png)
 
@@ -252,7 +254,11 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
    Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
 
+   <details>
+   <summary>X/Y/Z Plot example, click to expand</summary>
+   
    ![X Y Z plot of models and ethnicities](images/XYZplot.png)
+   </details>
 
 * **Prompt Matrix** <a name="matrix"></a>[▲](#index)
 
@@ -262,8 +268,12 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
    <a name="matrixneg"></a>Here is a comparison using the negative prompts I showed you in [Prompts ▲](#prompt). We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
 
+   <details>
+   <summary>Prompt matrix examples, click to expand</summary>
+  
    ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
    ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
+   </details>
 
 * **Ultimate Upscale** <a name="ultimate"></a>[▲](#index)
 
@@ -347,7 +357,11 @@ You will notice that there are 2 results for each method. The first is an interm
 
 In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good use is when one of them is Openpose, to get a specific character pose in a specific environment, or with specific hand gestures or details. Observe:
 
+<details>
+<summary>Openpose+Canny example, click to expand</summary>
+  
 ![Open Pose + Canny](images/openpose_canny.png)
+</details>
 
 You can also use ControlNet in img2img, in which the input image and sample image both will have a certain effect on the result. I do not have much experience with this method.
 
