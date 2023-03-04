@@ -14,7 +14,7 @@ language:
 **[CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**  
 **(The index won't work otherwise).**
 
-**[🇪🇸🇲🇽 HAZ CLICK AQUÍ PARA VER ESTA GUÍA EN ESPAÑOL]
+[🇪🇸🇲🇽 HAZ CLICK AQUÍ PARA VER ESTA GUÍA EN ESPAÑOL](spanish.md#index)
 
 &nbsp;
 
