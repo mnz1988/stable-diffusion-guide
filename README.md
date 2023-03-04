@@ -132,6 +132,10 @@ Here you can select your model and VAE. We will go over what these are and how y
    * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the Waifu Diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
 
    *Launcher:* It lets you choose the default VAE, otherwise put them in the `stable-diffusion-webui/models/VAE` folder.
+   
+   If you did not follow this guide up to this point, you will have to go into the **Settings** tab, then the **Stable Difussion** section, to select your VAE.
+
+   Whenever you place a new file you can either restart the UI at the bottom of the page or press the small 🔃 buttons next to a dropdown.
 
 1. **Prompts** <a name="prompt"></a>[▲](#index)
 
