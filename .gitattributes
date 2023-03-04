@@ -36,3 +36,5 @@ images/openpose_scribble.png filter=lfs diff=lfs merge=lfs -text
 images/openpose_canny.png filter=lfs diff=lfs merge=lfs -text
 images/promptmatrix.png filter=lfs diff=lfs merge=lfs -text
 images/XYZplot.png filter=lfs diff=lfs merge=lfs -text
+images/promptmatrix1.png filter=lfs diff=lfs merge=lfs -text
+images/promptmatrix2.png filter=lfs diff=lfs merge=lfs -text
