@@ -283,7 +283,7 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
 
 * **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
-   An improved version of a builtin script, it can be added as an [extension ▲] and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
+   An improved version of a builtin script, it can be added as an [extension ▲](#extensions) and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
 
    1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
 
