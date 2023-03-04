@@ -98,12 +98,11 @@ To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM a
 # Getting Started <a name="start"></a>[▲](#index)
 
 Before or after generating your first few images, you will want to take a look at the information below to improve your experience and results.  
-The top of your page should look similar to this:
+If you followed the instructions above, the top of your page should look similar to this:
 
 ![Top](images/top.png)
 
 Here you can select your model and VAE. We will go over what these are and how you can get more of them. The collab has additional settings here too, you should ignore them for now.
-
 
 1. **Models** <a name="model"></a>[▲](#index)
 
@@ -113,12 +112,14 @@ Here you can select your model and VAE. We will go over what these are and how y
    * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of raw creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
    * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate). It can do almost anything, but specially photographs. Very intricate results.
    * The [Uber Realistic Porn Merge](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) is self-explanatory.
-     
-   *Launcher:* It will let you choose the path to your models folder. Otherwise the models normally go into `stable-diffusion-webui/models/Stable-diffusion`.
 
-   *Collab:* Copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
-    
+   If you're using the collab in this guide, copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
+
+   If you're using the launcher, it will let you choose the path to your models folder. Otherwise the models normally go into `stable-diffusion-webui/models/Stable-diffusion`.
+
    Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses, so be careful. Additionally, when choosing models you may have a choice between fp32, fp16 and pruned. They all produce the same images within a tiny margin of error, so just go with the smallest file (fp16-pruned). If you want to use them for training or merging, go with the biggest one instead.
+
+   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to a dropdown.
 
 1. **VAEs** <a name="vae"></a>[▲](#index)
 
@@ -131,11 +132,11 @@ Here you can select your model and VAE. We will go over what these are and how y
    * [vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors), the latest from Stable Diffusion itself. Used by photorealism models and such.
    * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the Waifu Diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
 
-   *Launcher:* It lets you choose the default VAE, otherwise put them in the `stable-diffusion-webui/models/VAE` folder.
+   If you're using the launcher, it lets you choose the default VAE, otherwise put them in the `stable-diffusion-webui/models/VAE` folder.
    
    If you did not follow this guide up to this point, you will have to go into the **Settings** tab, then the **Stable Difussion** section, to select your VAE.
 
-   Whenever you place a new file you can either restart the UI at the bottom of the page or press the small 🔃 buttons next to a dropdown.
+   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to a dropdown.
 
 1. **Prompts** <a name="prompt"></a>[▲](#index)
 
@@ -152,7 +153,7 @@ Here you can select your model and VAE. We will go over what these are and how y
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
    * **EasyNegative:** The negative prompts above use EasyNegative, which is a *textual inversion embedding* or "magic word" that codifies many bad things to make your images better. Typically one would write a very long, very specific, very redundant, and sometimes silly negative prompt. EasyNegative is as of March 2023 the best choice if you want to avoid that.
-      * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For collab, paste the link into the `custom_urls` text box. For Windows, put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
+      * [Get EasyNegative here](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors). For the collab in this guide, paste the link into the `custom_urls` text box. Otherwise put it in your `stable-diffusion-webui/embeddings` folder. Then, go to the bottom of your WebUI page and click *Reload UI*. It will now work when you type the word.
 
    A comparison with and without these negative prompts can be seen in [Prompt Matrix ▼](#matrixneg).
 
@@ -192,10 +193,11 @@ Here you can select your model and VAE. We will go over what these are and how y
   
 # Extensions <a name="extensions"></a>[▲](#index)
 
-*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.  
+*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
+ 
 ![Extensions](images/extensions.png)
 
-Here are some useful extensions. Most of these come installed in the collab, and I hugely recommend you manually add the first 2 if you're running locally:
+Here are some useful extensions. Most of these come installed in the collab in this guide, and I hugely recommend you manually add the first 2 otherwise:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
 * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
@@ -212,7 +214,7 @@ LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest tech
 
 Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, they fall short. That's where Loras come in. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
 
-Place your lora files in the `stable-diffusion-webui/models/Lora` folder, or paste the direct download link into the `custom_urls` text box in collab. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the collab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section. Click on the Lora tab and press the **Refresh** button, and your loras should appear. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw in [Prompts ▲](#prompt). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
 
 ![Extra Networks](images/extranetworks.png)
 
@@ -226,9 +228,9 @@ As mentioned in [Generation Parameters ▲](#parameters), normally you shouldn't
 
 You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, Ultimate Upscaler, and Extras.
 
-The collab comes with several of them, including Remacri, which is one of the best for all sorts of images.
+The collab in this guide comes with several of them, including **Remacri**, which is one of the best for all sorts of images.
 
-* A few notable ones can be [downloaded here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
+* A few notable ones can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
 * LDSR is an advanced yet slow upscaler, its model and config can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) and both must be placed in `stable-diffusion-webui/models/LDSR`.
 * The [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contains dozens of historical choices.
 
