@@ -6,6 +6,7 @@ tags:
 - webui
 - automatic1111
 - stable-diffusion-webui
+- lora
 language:
 - en
 ---
@@ -36,6 +37,7 @@ language:
 * [ControlNet](#controlnet)
 * [Lora Training](#train)
     * [Tips for training character Loras](#trainchars)
+* [...vtubers?](#vtubers)
  
 &nbsp;
 
@@ -144,7 +146,7 @@ Here you can select your model and VAE. We will go over what these are and how y
 
    On the first tab, **txt2img**, you'll be making most of your images. This is where you'll find your *prompt* and *negative prompt*.  
    Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want and get a good image. You have to be specific. *Very* specific.  
-   I will show you an example of a prompt and negative prompt:
+   Most people have found a prompt that works for them and they swear by it. I will show you my own personal example of a prompt and negative prompt:
    
    * Anime
       * `2d, masterpiece, best quality, anime, highly detailed face, highly detailed eyes, highly detailed background, perfect lighting`
@@ -260,9 +262,11 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
    ![X Y Z plot of models and ethnicities](images/XYZplot.png)
    </details>
 
+   **Tip:** It appears possible to do S/R with commas by using quotes like this (note no spaces between the commas and quotes): `"term 1, term 2","term 3, term 4","term 5, term 6"`
+
 * **Prompt Matrix** <a name="matrix"></a>[▲](#index)
 
-   Similar conceptually to S/R from before, but more in-depth. It works by showing each possible combination of terms listed between the `|` symbol in your prompt, for example: `young man|tree|city` will always contain "young man", but we'll see what happens when we add or remove "tree" and "city". Unlike S/R it also lets you use commas.
+   Similar conceptually to S/R from before, but more in-depth. It works by showing each possible combination of terms listed between the `|` symbol in your prompt, for example: `young man|tree|city` will always contain "young man", but we'll see what happens when we add or remove "tree" and "city". You can use commas and spaces just fine between the `|`.
 
    Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
 
@@ -371,6 +375,29 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 # Lora Training <a name="train"></a>[▲](#index)
 
+To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, but there are many variables involved, and a lot of work depending on your workflow. It's somewhere between an art and a science.
+
+You can do it on your own computer if you have at least 8 GB of VRAM. However, I will cover the case of using a Google Collab document again for this express purpose.
+
+Here are some classic resources if you want to read about the topic in depth. This website may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
+* [Lora Training on Rentry](https://rentry.org/lora_train)
+* [Training Science on Rentry](https://rentry.org/lora-training-science)
+* [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb#scrollTo=WNn0g1pnHfk5)
+
+With those way smarter resources out of the way, I'll try to produce a short and simple guide for you to get your own character, artstyle, or concept Lora.
+
    * **Character Loras** <a name="trainchars"></a>[▲](#index)
 
    Coming soon.
+
+&nbsp;
+
+# ...vtubers? <a name="vtubers"></a>[▲](#index)
+
+That's it, that's the end of this guide for now. Thank you for reading. If you want to correct me or contribute to the guide you can open an issue or pull request and I'll take a look soon.
+
+I have [a separate repo that aggregates vtuber Loras among other things, specially Hololive](https://huggingface.co/hollowstrawberry/holotard). If you're interested in that.
+
+Cheers.
+
+&nbsp;
