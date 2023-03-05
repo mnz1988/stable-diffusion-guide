@@ -11,7 +11,7 @@
 * [Extensiones](#extensions)
 * [Loras](#lora)
 * [Imágenes Grandes](#upscale)
-* [Scripts](#scripts)
+* [Scripts](#imgscripts)
    * [X/Y/Z Plot](#plot)
    * [Prompt Matrix](#matrix)
    * [Ultimate Upscaler](#ultimate)
@@ -229,7 +229,7 @@ En el futuro puede que muestre una comparación de diferentes upscalers.
 
 &nbsp;
 
-# Scripts <a name="scripts"></a>[▲](#index)
+# Scripts <a name="imgscripts"></a>[▲](#index)
 
 Los Scripts se encuentran al final de tus opciones de generación de imágenes, tanto en txt2img como img2img.
 
