@@ -394,11 +394,11 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
   
    1. Opcionalmente puedes agregar otra extensión llamada [Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) la cual te permite editar los tags de todos tus archivos al mismo tiempo.
   
-   1. Una vez que tus imágenes y descripciones estén listos, ponlos en una carpeta con la siguiente estructura: Una carpeta con el nombre de tu proyecto, la cual contiene al menos 1 carpeta en el formato `repeticiones_nombre`, la cual contiene tus archivos de entrenamiento. Así:
+   1. Una vez que tus imágenes y descripciones estén listas, ponlas en una carpeta con la siguiente estructura: Una carpeta con el nombre de tu proyecto, la cual contiene al menos 1 carpeta en el formato `repeticiones_nombre`, la cual contiene tus archivos de entrenamiento. Así:
   
-      ![Estructura de carpetas](https://i.imgur.com/zpbs8FB.png)
+      ![Estructura de carpetas](images/trainfolder.png)
 
-   1. Decide tu número de repeticiones. Asumiendo que tienes alrededor de 20 imágenes, recomiendo al menos 10 repeticiones. En tal caso, tu carpeta interior se llamará `10_minuevolora` o algo similar.
+   1. Aquí es donde decides tu número de repeticiones, con el nombre de la carpeta interior. Asumiendo que tienes solo 20 imágenes, recomiendo 10 o 20 repeticiones. En tal caso, tu carpeta interior se llamará `10_minuevolora` o algo similar.
   
    1. Sube la carpeta exterior y todos sus contenidos (la que tiene el nombre de tu proyecto) a tu Google Drive, en la carpeta `lora_training/datasets/`.
   
