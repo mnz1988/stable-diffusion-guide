@@ -183,19 +183,17 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
 # Extensiones <a name="extensions"></a>[▲](#index)
 
 *Stable Diffusion WebUI* es el programa que estamos ocupando y éste permite añadir extensiones muy útiles. Para ello dirígete a la pestaña **Extensions** luego a **Install from URL**, y pega allí estos enlaces de github. Luego presiona *Install* y espera que se instale. Finalmente ve a **Installed** y presiona *Apply and restart UI*.
-
-Esperando traducción.
  
-![Extensions](images/extensions.png)
+![Extensiones](images/extensions.png)
 
-Here are some useful extensions. Most of these come installed in the collab in this guide, and I hugely recommend you manually add the first 2 otherwise:
-* [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
-* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and rarely work at all if you go outside them, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
-* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you take AI data from any image and use it as an input for your image. Practically speaking, it can create any pose or environment you want. Very powerful if used with external tools succh as Blender.
-* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A semi-advanced script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
-* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images. It is an optional launch setting in the collab.
-* [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
-* [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
+Aquí hay algunas extensiones útiles. Si usas el collab de esta guía la mayoría ya están instaladas, sino, recomiendo enormemente instalar manualmente las primeras 2.
+* [Image Browser (bugfix)](https://github.com/aka7774/sd_images_browser) - Navegador de Imágenes, permite ver todas las imágenes wue has creado y rápidamente enviarlas con sus parámetros a txt2img, img2img, etc.
+* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Completamente esencial para hacer anime, te muestra las tags de booru existentes mientras escribes tu prompt. Los modelos de anime funcionan a través de estos tags, haciendo de ésta una de las mejores extensiones. Ojo que no todas las tags funcionan siempre, sobre todo si son poco comunes.
+* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - Enorme extensión con [su propia guía ▼](#controlnet). Te permite analizar cualquier imagen existente y usarla como muestra para guiar tus propias imágenes. En términos prácticos, te permite replicar cualquier pose o ambiente que desees.
+* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - Un script usable desde img2img que permite hacer imágenes enormes aunque tengas poca vram, dividiéndolas en secciones aunque sea más lento. [Ver su guía aquí ▼](#ultimate).
+* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normalmente no es posible crear escenas de dos personajes, ya que el prompt hace que se fusionen sus características. Esta extensión permite dividir la imagen en: todo, izquierda, derecha; permitiendo así tener escenas naturales con 2 personajes o temas al mismo tiempo.
+* [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - Un script para tener prompts semi-aleatorios. Un poco complejo.
+* [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Permite convertir modelos de 7 GB o 4 GB a 2 GB, seleccionando  `safetensors`, `fp16`, y `no-ema`. Estos modelos "pruneados" funcionan prácticamente igual para generar imágenes. La mayoría de modelos hoy en día vienen en este formato de todas formas.
 
 &nbsp;
 
@@ -217,19 +215,17 @@ Un ejemplo de Lora es [Thicker Lines Anime Style](https://civitai.com/models/139
 
 # Imágenes Grandes <a name="upscale"></a>[▲](#index)
 
-Esperando traducción.
+Como [mencionamos anteriormente ▲](#parameters), normalmente no debes generar imágenes sobre 768 de ancho y alto. Debes usar Hires fix, con un "upscaler" (algoritmo) y denoising (intensidad) apropiados. Hires fix está limitado por tu VRAM, por lo que te puede interesar [Ultimate Upscaler ▼](#ultimate).
 
-As mentioned in [Generation Parameters ▲](#parameters), normally you shouldn't go above 768 width or height when generating an image. Instead you should use `Hires. fix` with your choice of upscaler and an appropiate denoising level. Hires fix is limited by your VRAM however, so you may be interested in [Ultimate Upscaler ▼](#ultimate) to go even larger.
+Es posible descargar upscalers adicionales y ponerlos en tu carpeta `stable-diffusion-webui/models/ESRGAN`. Así funcionarán con Hires fix, Ultimate Upscaler, y Extras.
 
-You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, Ultimate Upscaler, and Extras.
+El collab de esta guía viene con varios de estos, incluyendo **Remacri**, uno de los mejores para todo tipo de imágenes. Se puede encontrar aquí abajo.
 
-The collab in this guide comes with several of them, including **Remacri**, which is one of the best for all sorts of images.
+* Algunos upscalers notables [se pueden encontrar aquí](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
+* LDSR es un upscaler avanzado pero lento, sus dos archivos [se encuentran aquí](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) y deben ser puestos en `stable-diffusion-webui/models/LDSR`.
+* La [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contiene docenas de opciones históricas.
 
-* A few notable ones can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
-* LDSR is an advanced yet slow upscaler, its model and config can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) and both must be placed in `stable-diffusion-webui/models/LDSR`.
-* The [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contains dozens of historical choices.
-
-In the future I may present examples for each upscaler.
+En el futuro puede que muestre una comparación de diferentes upscalers.
 
 &nbsp;
 
