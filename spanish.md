@@ -39,7 +39,9 @@ Esta guía está actualizada hasta Marzo de 2023. Una semana es como un año par
 
 La manera más facil de usar Stable Diffusion es a través de Google Collab. Con él tomas prestado los computadores de Google para usar la IA, con tiempo limitado, comúnmente varias horas al día. Necesitarás al menos una cuenta de Google y utilizaremos el Google Drive para guardar tus imágenes.
 
-Si deseas correr el programa en tu propio computador, [baja aquí ▼](#install).
+Si en su lugar deseas correr el programa en tu propio computador, [baja aquí ▼](#install).
+
+Aquí las instrucciones del collab. Estaremos usando el stable-diffusion-webui de Automatic1111.
 
 1. Abre [esta página](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
@@ -51,35 +53,35 @@ Si deseas correr el programa en tu propio computador, [baja aquí ▼](#install)
 
 1. Presiona el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Start 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será un **public link** lo cual indica que está listo, y puedes abrir este enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del collab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
 
-1. Ahora puedes hacer algunas imágenes decentes gracias al modelo por defecto llamado **Anything 4.5**. Pero podemos hacer más que ello, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para empezar.
+1. Ahora puedes hacer algunas imágenes decentes gracias al modelo por defecto llamado **Anything 4.5**. Pero podemos hacer más que ello, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para aprender las bases.
 
 &nbsp;
 
 # Instalación Local (Windows + Nvidia) <a name="install"></a>[▲](#index)
 
-Esperando traducción.
+Para correr Stable Diffusion en tu propio computador necesitarás al menos 16 GB de RAM y 4 GB de VRAM (idealmente 8). Por ahora sólo voy a explicar el caso en que uses Windows 10/11 y poseas una tarjeta gráfica NVIDIA de serie 10XX o mayor. Mis disculpas si tienes AMD o usas Linux o Mac, pero con ellos es más complejo. Si no cumples estas condiciones aún puedes usar el Google Collab [aquí arriba ▲](#collab).
 
-To run Stable Diffusion on your own computer you'll need at least 16 GB of RAM and 4 GB of VRAM (preferably 8). I will only cover the case where you are running Windows 10/11 and using an NVIDIA graphics card series 16XX, 20XX or 30XX (though 10XX also work). My apologies to AMD, Linux, and Mac users, but their cases are harder to cover. If you don't meet the hardware requirements, you can just proceed with the Google Collab method [above](#collab).
+Aquí las instrucciones de instalación. Utilizaremos un launcher para correr el stable-diffusion-webui de Automatic1111.
 
-1. Get the latest release from [this page](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases). 
+1. Obtén el instalador más reciente desde [esta página](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases). 
 
-1. Run the installer, choose a simple location to install to, and wait for it to finish.
+1. Corre el instalador (dile a Windows que no es un virus) y selecciona una ubicación sencilla y accesible en donde instalar. Espera a que termine.
 
-1. Run the program. You will see a few options. First, turn on **medvram** and **xformers**. You may skip medvram if you have 12 or more GB of VRAM.
+1. Corre el programa, éste es el launcher. Verás algunas opciones. Primero activa **medvram** y **xformers**. Si tu gráfica tiene 12 GB de VRAM o más no es necesario medvram.
 
-1. Set your *Additional Launch Options* to: `--opt-channelslast --no-half-vae --theme dark` . Any extra options should be separated by spaces.
-    * If your graphics card has less than 8 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
-    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen`. After launching, use your computer's local IP in the same WiFi network to access the interface.
-    * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
+1. En la casilla de texto que dice *Additional Launch Options* pega lo siguiente: `--opt-channelslast --no-half-vae --theme dark` . Si añades más opciones sepáralas con espacios.
+   * Si tu gráfica tiene 4 o 6 GB de VRAM añade `--opt-split-attention-v1` lo cual puede ayudar un poco.
+   * Si deseas correr el programa en un dispositivo y usarlo a través de otro dispositivo en la misma red de WiFi (como en tu teléfono), puedes añadir `--listen --enable-insecure-extension-access` . Tras iniciar el programa podrás conectarte desde el navegador usando la IP local en el puerto 7860. También puedes añadir una contraseña con `--gradio-auth nombre:contr` .
+   * Puedes encontrar todas las opciones [aquí](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings).
 
-1. Click **Launch** and wait for a browser window to open with the interface. It may take a while the first time.
+1. Presiona **Launch** y espera a que cargue y/o termine de instalar. Cuando termine se abrirá una ventana en tu navegador.
 
-1. The page is now open. It's your own private website. The starting page is where you can make your images. But first, we'll go to the **Settings** tab. There will be sections of settings on the left.
-    * In the *Stable Diffusion* section, scroll down and increase **Clip Skip** from 1 to 2. This is said to produce better images, specially for anime.
-    * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`
-    * Scroll back up, click the big orange **Apply settings** button, then **Reload UI** next to it.
+1. La página está abierta, es tu propio sitio web privado. Aquí en la pestaña principal (txt2img) es donde harás casi todas tus imágenes. Pero primero iremos a la pestaña **Settings**, y veremos algunas secciones del lado izquierdo.
+   * En la sección de *Stable Diffusion* baja al final y aumenta el **Clip skip** de 1 a 2. Se dice que produce mejores imágenes.
+   * En la sección *User Interface*, baja hasta **Quicksettings list** y cámbialo a `sd_model_checkpoint, sd_vae` .
+   * Vuelve a subir y presiona el gran **Apply settings**, luego **Reload UI**.
 
-1. You are more than ready to generate some images, but you only have the basic model available. It's not great, at most it can make some paintings. Also, what are all of these options? See [below ▼](#start) to get started.
+1. Ahora estás más que listo para generar imágenes, pero sólo tienes el modelo básico. No es muy bueno, sirve para pinturas entre otras cosas. Además, ¿qué son todas estas opciones? Ve [aquí abajo ▼](#start) para aprender las bases.
 
 &nbsp;
 
