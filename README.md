@@ -31,7 +31,7 @@ language:
 * [Extensions](#extensions)
 * [Loras](#lora)
 * [Upscaling](#upscale)
-* [Scripts](#scripts)
+* [Scripts](#imgscripts)
    * [X/Y/Z Plot](#plot)
    * [Prompt Matrix](#matrix)
    * [Ultimate Upscaler](#ultimate)
@@ -244,7 +244,7 @@ In the future I may present examples for each upscaler.
 
 &nbsp;
 
-# Scripts <a name="scripts"></a>[▲](#index)
+# Scripts <a name="imgscripts"></a>[▲](#index)
 
 Scripts can be found at the bottom of your generation parameters in txt2img or img2img.
 
