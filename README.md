@@ -409,11 +409,11 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
   
    1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_somename`, which each contain your images and matching tags. Like this:
   
-      ![Folder structure for training](https://i.imgur.com/zpbs8FB.png)
+      ![Folder structure for training](images/trainfolder.png)
 
-   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
+   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. If you have only 20 images, I'd recommend 10 to 20 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
   
-   1. Upload the entire parent folder (the one with your proyect's name) into your Google Drive's `lora_training/datasets` folder.
+   1. Upload the entire parent folder (the one with your project's name) into your Google Drive's `lora_training/datasets` folder.
   
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
