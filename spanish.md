@@ -231,63 +231,63 @@ En el futuro puede que muestre una comparación de diferentes upscalers.
 
 # Scripts <a name="scripts"></a>[▲](#index)
 
-Esperando traducción.
-
-Scripts can be found at the bottom of your generation parameters in txt2img or img2img.
+Los Scripts se encuentran al final de tus opciones de generación de imágenes, tanto en txt2img como img2img.
 
 * **X/Y/Z Plot** <a name="plot"></a>[▲](#index)
 
-   Capable of generating a series of images, usually with the exact same seed, but varying parameters of your choice. Can compare almost anything you want, including different models, parts of your prompt, sampler, upscaler and much more. You can have 1, 2, or 3 variable parameters, hence the X, Y and Z.
+   Capaz de generar una serie de imágenes, por lo general con la misma seed, pero cambiando algunos otros parámetros que tú elijas. Permite comparar casi cualquier cosa que desees, como diferentes modelos, partes de tu prompt, sampler, upscaler y mucho más. Puedes tener 1, 2 ó 3 parámetros variables, de allí el X, Y, Z.
 
-   Your parameters in X/Y/Z Plot are separated by commas, but anything else can go inbetween. The most common parameter to compare is **S/R Prompt**, where the first term is a phrase in your prompt and each term afterwards will replace the original. Knowing this, you can compare, say, Lora intensity, like this:
+   Debes separar tus parámetros con comas, y cualquier otra cosa puede ir entre medio. El parámetro más común es **S/R Prompt**, donde antes de la coma escribes una parte de tu prompt, y cada coma precede una frase que la reemplazará. Sabiendo esto, podemos comparar, por ejemplo, el peso/intensidad de un Lora, así:
+   
+   `<lora:mi lora:0.4>, <lora:mi lora:0.6>, <lora:mi lora:0.8>, <lora:mi lora:1>`
 
-   `<lora:my lora:0.4>, <lora:my lora:0.6>, <lora:my lora:0.8>, <lora:my lora:1>`
-
+   Aquí abajo he hecho una comparación de diferentes **modelos** (en las columnas) y rostros de diferentes países con **S/R Prompt** (en las filas):
+   
    Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
 
    <details>
-   <summary>X/Y/Z Plot example, click to expand</summary>
+   <summary>Ejemplo de X/Y/Z Plot, click para expandir</summary>
    
-   ![X Y Z plot of models and ethnicities](images/XYZplot.png)
+   ![X Y Z plot de modelos y países](images/XYZplot.png)
    </details>
 
-   **Tip:** It appears possible to do S/R with commas by using quotes like this (note no spaces between the commas and quotes): `"term 1, term 2","term 3, term 4","term 5, term 6"`
+   **Consejo:** Parece posible hacer S/R incluyendo comas si utilizas comillas de la siguiente forma, sin espacio entre cada coma y comilla: `"frase 1, frase 2","frase 3, fase 4","frase 5, frase 6"`
 
 * **Prompt Matrix** <a name="matrix"></a>[▲](#index)
 
-   Similar conceptually to S/R from before, but more in-depth. It works by showing each possible combination of terms listed between the `|` symbol in your prompt, for example: `young man|tree|city` will always contain "young man", but we'll see what happens when we add or remove "tree" and "city". You can use commas and spaces just fine between the `|`.
+   Un concepto similar al S/R anterior, pero con mayor profundidad. Lo que hace es una cuadrícula, la cual muestra cada posible combinación de términos, donde los términos estarán separados con un `|` en tu prompt. Por ejemplo, `young man|tree, grass|city` - aquí "young man" siempre será considerado, pero podremos ver qué pasa al añadir o quitar "tree, grass" y/o "city".
+   
+   Dentro del script puedes elegir hacerlo con tu prompt o tu negative prompt, y si quieres que los términos adicionales se introduzcan al inicio o al final.
 
-   Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
-
-   <a name="matrixneg"></a>Here is a comparison using the negative prompts I showed you in [Prompts ▲](#prompt). We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
+   <a name="matrixneg"></a>Aquí hay una comparación de los negative prompt que te mostré [anteriormente ▲](#prompt). Podemos ver cómo EasyNegative afecta la imagen, cómo el resto del negative prompt afecta la imagen, y luego ambos juntos:
 
    <details>
-   <summary>Prompt matrix examples, click to expand</summary>
+   <summary>Ejemplo de Prompt Matrix, click para expandir</summary>
   
-   ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
-   ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
+   ![Prompt matrix negativo de anime](images/promptmatrix1.png)
+   ![Prompt matrix negativo de fotos](images/promptmatrix2.png)
    </details>
 
 * **Ultimate Upscale** <a name="ultimate"></a>[▲](#index)
 
-   An improved version of a builtin script, it can be added as an [extension ▲] and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
+   Ésta es una versión mejorada de un script básico y debe ser añadida como una [extensión ▲](#extensions) para ser usada desde **img2img**. Su propósito es agrandar una imagen así añadiendo más detalles, sobrepasando el límite de tu gráfica dado que divide la imagen en secciones, aunque esto sea más lento. Aquí las instrucciones:
 
-   1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
+   1. Genera tu imagen normalmente hasta un ancho y largo de 768, y aplica Hires fix si es que puedes.
 
-   1. From txt2img or the Image Browser extension send it directly into img2img, along with its prompt and parameters.
-
-   1. Set the **Denoising** somewhere between 0.1 and 0.4. If you go higher you most likely will experience mutations.
-
-   1. Go down to **Scripts** and choose **Ultimate SD Upscale**. Then, set your parameters like this, with your desired size and upscaler, and the **"Chess" Type**:
+   1. Desde txt2img o la extensión del navegador de imágenes, envía directamente la imagen con sus parámetros a img2img.
    
-      ![Ultimate upscale parameters](images/ultimate.png)
+   1. Ajusta el  **Denoising** entre 0.1 y 0.4. Valores más grandes probablemente introduzcan mutaciones en tu imagen.
 
-      * If you have enough VRAM, you may increase the **Tile width** as well as the **Padding**. For example, doubling both of them. **Tile height** can remain at 0 and it'll match the width.
+   1. Baja a **Scripts** y elije **Ultimate SD Upscale**. Configúralo de la siguiente forma, con el tamaño y upscaler que desees, y con el **Type "Chess"**:
+   
+      ![Ultimate upscale](images/ultimate.png)
+      
+      * Si tienes suficiente VRAM puedes aumentar el **Tile width** y el **Padding**, por ejemplo duplicando ambos. Así será más rápido. El **Tile height** puede permanecer en 0.
      
-      * It is not necessary to set the **Seams fix** unless you encounter visible seams between regions in the final image.
+      * No es necesario cambiar el **Seams fix** a menos que la imagen final muestre distorsiones visibles entre cada zona cuadrada.
      
-   1. Generate your image and wait. You can watch the squares get sharper if you have image previews enabled.
-
+   1. Genera tu imagen y espera que empiece. Podrás ver cómo los cuadros se vuelven más nítidos si es que tienes activada la previsualización de imágenes.
+   
 &nbsp;
 
 # ControlNet <a name="controlnet"></a>[▲](#index)
