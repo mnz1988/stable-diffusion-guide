@@ -158,8 +158,6 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
 1. **Opciones de generación** <a name="gen"></a>[▲](#index)
 
    Ya te enseñé a elegir un modelo, VAE y escribir tus prompt, ahora podrás saber sobre todo el resto de las opciones disponibles antes de generar una imagen.
-
-   Esperando traducción.
    
    ![Parameters](images/parameters.png)
 
@@ -184,7 +182,7 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
   
 # Extensiones <a name="extensions"></a>[▲](#index)
 
-*Stable Diffusion WebUI* es el programa que estamos ocupando y éste permite añadir extensiones muy útiles. Para ello dirígete a la pestaña **Extensions** luego a **Install from URL**, y pega allí estos enlaces de github. Luego presiona *Install* y espera que se instale. Finalmente ve a **Installed** y presiona *Apply and restart UI*.
+*Stable Diffusion WebUI* es el programa que estamos ocupando y éste permite añadir extensiones muy útiles. Para ello dirígete a la pestaña **Extensions**, luego a **Install from URL**, y pega allí alguno de estos enlaces de github. Luego presiona *Install* y espera que se instale. Cuando termines ve a **Installed** y presiona *Apply and restart UI*.
  
 ![Extensiones](images/extensions.png)
 
