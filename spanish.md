@@ -406,7 +406,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
    * Bajo **Archivos**, no necesitas cambiar nada esta vez.
    * Bajo **Pasos**, puedes cambiar los epochs y batch size según lo descrito. Más epochs te dan más control sobre el progreso de tu Lora, pero debes reducir las repeticiones.
-   * Bajo **Entrenamiento**, el `unet_lr` or "learning rate" (velocidad de aprendizaje) es el parámetro más importanto. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. El dim es el tamaño de tu Lora, y más grande no necesariamente es mejor.
+   * Bajo **Entrenamiento**, el `unet_lr` or "learning rate" (velocidad de aprendizaje) es el parámetro más importante. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. También está el dim, el cual es el tamaño de tu Lora, y más grande no necesariamente es mejor (recomiendo dim/alpha 16).
 
 1. Ahora puedes activar *🇨 Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *🇩 Cocinar el Lora*. Debería tomar 20 a 60 minutos. Si encuentras errores intenta contactarme o buscar ayuda.
 
