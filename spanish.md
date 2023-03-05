@@ -380,9 +380,9 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
 1. Utilizaremos [ESTE COLLAB](https://colab.research.google.com/drive/1WVTkW0IOeiBrs6s79XuJ9r1u42fKw81L?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
 
-1. Presiona el botón de reproducción de *A: Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *B: Instalación*. Mientras se instala, sigue al siguiente paso.
+1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala, sigue al siguiente paso.
 
-1. Baja a *C: Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de todos los modelos anime y produce los mejores resultados para ello. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
+1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de todos los modelos anime y produce los mejores resultados para ello. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
 
 1. **Archivos de entrenamiento** <a name="datasets"></a>[▲](#index)
   
@@ -404,12 +404,11 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
   
 1. **Opciones de entrenamiento** <a name="trainparams"></a>[▲](#index)
 
-   * Bajo **Archivos**, no necesitas cambiar nada.
-   * Bajo **Pasos de Entrenamiento**, sigue las instrucciones para calcular tus pasos totales (`max_train_steps`). Recomiendo al menos 400 pasos totales, lo cual debería tomar 15 o 20 minutos. Puedes editar `lr_warmup_steps` para que sea igual a tu cantidad de imágenes.
-   * Bajo **Opciones de Entrenamiento**, el `unet_lr` or "learning rate" (velocidad de aprendizaje) es el parámetro más importanto. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5.
-   * Nota sobre `network_dim`: El dim es el tamaño de tu Lora. La mayoría de personas entrena Loras con dim 128, los cuales pesan 144 MB, y es totalmente innecesario. Recomiendo un dim de 16 en la mayoría de casos. Puedes incluso bajar a 1 y aún obtener resultados decentes.
+   * Bajo **Archivos**, no necesitas cambiar nada esta vez.
+   * Bajo **Pasos**, puedes cambiar los epochs y batch size según lo descrito. Más epochs te dan más control sobre el progreso de tu Lora, pero debes reducir las repeticiones.
+   * Bajo **Entrenamiento**, el `unet_lr` or "learning rate" (velocidad de aprendizaje) es el parámetro más importanto. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. El dim es el tamaño de tu Lora, y más grande no necesariamente es mejor.
 
-1. Ahora puedes activar *C: Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *D: Cocinar el Lora*. Esperemos que todo salga bien. Sino, intenta contactarme o buscar ayuda para resolver errores.
+1. Ahora puedes activar *🇨 Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *🇩 Cocinar el Lora*. Debería tomar 20 a 60 minutos. Si encuentras errores intenta contactarme o buscar ayuda.
 
 1. **Probar tus resultados** <a name="traintest"></a>[▲](#index)
 
