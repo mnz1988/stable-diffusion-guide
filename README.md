@@ -393,9 +393,9 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
 1. We will be using [THIS COLLAB DOCUMENT](https://colab.research.google.com/drive/1zEm1DlzMfLQe19ly1bAob6Kd22BAl3qL?usp=sharing). You can copy it into your own Google Drive if you want.
 
-1. Click the play button on *A: Mount your google drive* and give it access when it asks you to. Do the same for *B: Installation*. Proceed to the next step while it installs.
+1. Click the play button on *🇦 Mount your google drive* and give it access when it asks you to. Do the same for *🇧 Installation*. Proceed to the next step while it installs.
 
-1. Scroll down to *C: Settings* but don't run it yet. Here in **Start** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
+1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
 
 1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
@@ -411,18 +411,17 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
   
       ![Folder structure for training](https://i.imgur.com/zpbs8FB.png)
 
-   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
+   1. Choose the number of repetitions for your dataset. If you have 20 images, I'd recommend at least 10 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
   
-   1. Upload the entire parent folder into your Google Drive's `lora_training/datasets` folder.
+   1. Upload the entire parent folder (the one with your proyect's name) into your Google Drive's `lora_training/datasets` folder.
   
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
-   * Under **Files**, you don't need to change anything.
-   * Under **Steps**, follow the instructions to calculate your `max_train_steps`. I recommend at least 400 total steps, which should take 15-20 minutes. You can set your `lr_warmup_steps` to around your image count.
-   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5.
-   * A note about `network_dim`: The dim is the size of your Lora. Most people train at dim 128, which produces 144 MB Loras, and it's way overkill. I'd recommend dim 16 for most cases. You can go as low as 1 and it will still work reasonably well.
+   * Under **Files**, you don't need to change anything this time.
+   * Under **Steps**, you can change your number of epochs. One epoch is equal to your number of images multiplied by their number of repetitions. More epochs means more control over your Lora's progress, but if you want more you should decrease your number of repetitions to avoid huge training times. You can also increase the batch size if you have lots of images.
+   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5. You will also find the dim, which is the size of your Lora. I'd recommend dim 16 for most cases, which produces 18 MB Loras. More dim means more capacity for learning but also more capacity to learn garbage.
 
-1. You can now run *C: Settings*, wait for the model to download, and finally start the training with *D: Cook the Lora*. Let's hope everything goes well. Otherwise you may contact me or seek help for troubleshooting.
+1. You can now press play on *🇨 Settings*, wait for the model to download, and finally start the training with *🇩 Cook the Lora*. It should take 20 to 60 minutes if you set a reasonable amount of repetitions and epochs. If it starts counting the steps that means you're in the clear. If you instead encounter an error you can seek troubleshooting or contact me.
 
 1. **Testing your results** <a name="traintest"></a>[▲](#index)
 
