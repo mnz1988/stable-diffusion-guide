@@ -418,7 +418,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
    * Under **Files**, you don't need to change anything this time.
-   * Under **Steps**, you can change your number of epochs. One epoch is equal to your number of images multiplied by their number of repetitions. More epochs means more control over your Lora's progress, but if you want more you should decrease your number of repetitions to avoid huge training times. You can also increase the batch size if you have lots of images.
+   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress, but if you want more you should decrease your number of repetitions to avoid huge training times. You can also increase the batch size if you have lots of images.
    * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5. You will also find the dim, which is the size of your Lora. I'd recommend dim 16 for most cases, which produces 18 MB Loras. More dim means more capacity for learning but also more capacity to learn garbage.
 
 1. You can now press play on *🇨 Settings*, wait for the model to download, and finally start the training with *🇩 Cook the Lora*. It should take 20 to 60 minutes if you set a reasonable amount of repetitions and epochs. If it starts counting the steps that means you're in the clear. If you instead encounter an error you can seek troubleshooting or contact me.
@@ -450,6 +450,8 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
    Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights.
 
    This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc.
+
+   Another tip is having multiple folders with different number of repetitions. Give your highest quality images more repetitions, while some unique concepts but with worse style/quality can have less repetitions such as 1.
 
 &nbsp;
 
