@@ -42,3 +42,5 @@ images/loratrain.png filter=lfs diff=lfs merge=lfs -text
 images/upscalers1.png filter=lfs diff=lfs merge=lfs -text
 images/upscalers2.png filter=lfs diff=lfs merge=lfs -text
 images/upscalers3.png filter=lfs diff=lfs merge=lfs -text
+images/samplers1.png filter=lfs diff=lfs merge=lfs -text
+images/samplers2.png filter=lfs diff=lfs merge=lfs -text
