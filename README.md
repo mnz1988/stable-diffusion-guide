@@ -178,15 +178,15 @@ Here you can select your checkpoint and VAE. We will go over what these are and 
    
    ![Parameters](images/parameters.png)
 
-   * **Sampling method:** This is the algorithm that formulates your image, and each produce different results. The default of `Euler a` is almost always the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`.
-   * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find consistently good results.
+   * **Sampling method:** This is the algorithm that formulates your image, and each produce different results. The default of `Euler a` is often the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`. See below for a comparison.
+   * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find consistently good results. See below for a comparison.
    * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires fix`.
    * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will generate at the same time, which is limited by its VRAM. Batch *count* is how many times to repeat those. Batches have consecutive seeds, more on seeds below.
    * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range.
    * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces the same image every time, except for small details and under some circumstances.
   
    **Hires fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
-   * **Upscaler:** The algorithm to upscale with. `Latent` and its variations are said to produce creative results, and you may also like `R-ESRGAN 4x+` and its anime version. I recommend the Remacri upscaler, more about it [here ▼](#upscale). 
+   * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative and detailed results, but you may also like `R-ESRGAN 4x+` and its anime version. [More explanation and some comparisons further down ▼](#upscale). 
    * **Hires steps:** I recommend at least half as many as your sampling steps. Higher values aren't always better, and they take a long time, so be conservative here.
    * **Denoising strength:** The most important parameter. Near 0.0, no detail will be added to the image. Near 1.0, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image, to add enough detail as the image gets larger, without *destroying* any original details you like.
     
@@ -194,6 +194,22 @@ Here you can select your checkpoint and VAE. We will go over what these are and 
    * **Restore faces:** May improve realistic faces. I never need it with the models and prompts listed in this guide as well as hires fix.
    * **Tiling:** Used to produce repeating textures to put on a grid. Not very useful.
    * **Script:** Lets you access useful features and extensions, such as [X/Y/Z Plot ▼](#plot) which lets you compare images with varying parameters on a grid. Very powerful.
+
+   Here is a comparison of a few popular samplers and various sampling steps:
+
+   <details>
+      <summary>(Click) Sampler comparison - Photography</summary>
+
+      ![samplers with photos](images/samplers1.png)
+   <details>
+
+   <details>
+      <summary>(Click) Sampler comparison - Anime</summary>
+
+      ![samplers with anime](images/samplers2.png)
+   <details>
+
+   An explanation of the samplers used above: `Euler` is a basic sampler. `DDIM` is a faster version, while `DPM++ 2M Karras` is an improved version. Meanwhile we have `Euler a` or "ancestral" which produces more creative results, and `DPM++ 2S a Karras` which is also ancestral and thus similar. Finally `DPM++ SDE Karras` is the slowest and quite unique. There are many other samplers not shown here but most of them are related.
 
 &nbsp;
   
@@ -243,7 +259,7 @@ The collab in this guide comes with several of them, including **Remacri**, whic
 Here are some comparisons. All of them were done at 0.4 denoising strength. Note that some of the differences may be completely up to random chance.
 
 <details>
-   <summary>(Click) Comparison 1: Anime, stylized, fantasy</summary>
+<summary>(Click) Comparison 1: Anime, stylized, fantasy</summary>
 
    **Some details to consider:** The fireballs to the left and right, the texture of the fire around her, the grass and its flowers, the ghost's face, the flowers in her hat, the hands, the eyes (which should be flower-shaped), the things on her waist.
 
@@ -255,7 +271,7 @@ Here are some comparisons. All of them were done at 0.4 denoising strength. Note
 </details>
 
 <details>
-   <summary>(Click) Comparison 2: Anime, detailed, soft lighting</summary>
+<summary>(Click) Comparison 2: Anime, detailed, soft lighting</summary>
 
    **Some details to consider:** The background, the flower and symbol on her hat, the flowers on the branches to the sides, the eyes (which should be flower-shaped), the emblem below her neck, The pattern on the lower half of her dress, as well as the nearby frills and folds.
    
@@ -268,7 +284,7 @@ Here are some comparisons. All of them were done at 0.4 denoising strength. Note
 </details>
 
 <details>
-   <summary>(Click) Comparison 3: Photography, human, nature</summary>
+<summary>(Click) Comparison 3: Photography, human, nature</summary>
 
    **Some details to consider:** The eye on the left, the finger creases, the bracelet, the edge trim on the vest, the flower on the vest, the brooches on the vest, the rocks and vegetation on the bottom left, the trees on the top left, the waterfalls of course.
    
@@ -297,7 +313,7 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
    Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
 
    <details>
-   <summary>X/Y/Z Plot example, click to expand</summary>
+   <summary>(Click) X/Y/Z Plot example</summary>
    
    ![X Y Z plot of models and ethnicities](images/XYZplot.png)
    </details>
@@ -313,11 +329,13 @@ Scripts can be found at the bottom of your generation parameters in txt2img or i
    <a name="matrixneg"></a>Here is a comparison using the negative prompts I showed you in [Prompts ▲](#prompt). We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
 
    <details>
-   <summary>Prompt matrix examples, click to expand</summary>
+   <summary>(Click) Prompt matrix examples</summary>
   
    ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
    ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
    </details>
+
+   **Tip:** When using prompt matrix, the Batch Size will let you generate multiple images or the whole grid all at once.
 
 * **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
@@ -358,7 +376,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Canny method extracts the hard edges of the sample image. It is useful for many different types of images, specially where you want to preserve small details and the general look of an image. Observe:
 
    <details>
-   <summary>Canny example, click to expand</summary>
+   <summary>(Click) Canny example</summary>
    
    ![Canny preprocessed image](images/canny1.png)
    ![Canny output image](images/canny2.png)
@@ -369,7 +387,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Depth method extracts the 3D elements of the sample image. It is best suited for complex environments and general composition. Observe:
 
    <details>
-   <summary>Depth example, click to expand</summary>
+   <summary>(Click) Depth example</summary>
    
    ![Depth preprocessed image](images/depth1.png)
    ![Depth output image](images/depth2.png)
@@ -380,7 +398,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    The Openpose method extracts the human poses of the sample image. It helps tremendously to get the desired shot and composition of your generated characters. Observe:
 
    <details>
-   <summary>Openpose example, click to expand</summary>
+   <summary>(Click) Openpose example</summary>
    
    ![Open Pose preprocessed image](images/openpose1.png)
    ![Open Pose output image](images/openpose2.png)
@@ -391,7 +409,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    Lets you make a simple sketch and convert it into a finished piece with the help of your prompt. This is the only example not using the sample image above.
 
    <details>
-   <summary>Scribble example, click to expand</summary>
+   <summary>(Click) Scribble example</summary>
    
    ![Scribble sample image](images/scribble1.jpg)
    ![Scribble output image](images/scribble2.png)
@@ -402,8 +420,8 @@ You will notice that there are 2 results for each method except Scribble. The fi
 In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good use is when one of them is Openpose, to get a specific character pose in a specific environment, or with specific hand gestures or details. Observe:
 
 <details>
-<summary>Openpose+Canny example, click to expand</summary>
-  
+<summary>(Click) Openpose+Canny example</summary>
+
 ![Open Pose + Canny](images/openpose_canny.png)
 </details>
 
