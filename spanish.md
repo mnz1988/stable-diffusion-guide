@@ -225,7 +225,28 @@ El collab de esta guía viene con varios de estos, incluyendo **Remacri**, uno d
 * LDSR es un upscaler avanzado pero lento, sus dos archivos [se encuentran aquí](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) y deben ser puestos en `stable-diffusion-webui/models/LDSR`.
 * La [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contiene docenas de opciones históricas.
 
-En el futuro puede que muestre una comparación de diferentes upscalers.
+Here are some comparisons. All of them were done at 0.4 denoising strength. Note that some of the differences may be completely up to random chance. Unfortunately I run out of VRAM using LDSR.
+
+<details>
+   <summary>(Click) Comparación 1: Anime, estilizado, fantasía</summary>
+
+   ![Original](images/upscalers1pre.png)
+   ![Comparison](images/upscalers1.png)
+</details>
+
+<details>
+   <summary>(Click) Comparison 2: Anime, detallado, iluminación suave</summary>
+
+   ![Original](images/upscalers2pre.png)
+   ![Comparison](images/upscalers2.png)
+</details>
+
+<details>
+   <summary>(Click) Comparison 3: Fotografía, humano, naturaleza</summary>
+
+   ![Original](images/upscalers3pre.png)
+   ![Comparison](images/upscalers3.png)
+</details>
 
 &nbsp;
 
