@@ -187,7 +187,7 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
    </details>
 
    <details>
-   <summary>(Click) Comparaciónde samplers - Anime</summary>
+   <summary>(Click) Comparación de samplers - Anime</summary>
 
    ![samplers con anime](images/samplers2.png)
    </details>
