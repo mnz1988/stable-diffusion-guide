@@ -39,3 +39,6 @@ images/XYZplot.png filter=lfs diff=lfs merge=lfs -text
 images/promptmatrix1.png filter=lfs diff=lfs merge=lfs -text
 images/promptmatrix2.png filter=lfs diff=lfs merge=lfs -text
 images/loratrain.png filter=lfs diff=lfs merge=lfs -text
+images/upscalers1.png filter=lfs diff=lfs merge=lfs -text
+images/upscalers2.png filter=lfs diff=lfs merge=lfs -text
+images/upscalers3.png filter=lfs diff=lfs merge=lfs -text
