@@ -161,15 +161,15 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
    
    ![Parameters](images/parameters.png)
 
-   * **Sampling method:** Es el algoritmo que genera tu imagen, cada uno con resultados distintos. El por defecto de `Euler a` casi siempre es el mejor, y también obtendrás muy buenos resultados con`DPM++ 2M Karras` y `DPM++ SDE Karras`.
-   * **Sampling steps:** La cantidad de pasos, son "calculados" con anticipacicón y por lo tanto más pasos no siempre es mejor. Yo siempre uso 30 pasos, pero de 20 a 50 encontrarás resultados consistentemente buenos.
+   * **Sampling method:** Es el algoritmo que genera tu imagen, cada uno con resultados distintos. El por defecto de `Euler a` casi siempre es el mejor, y también obtendrás muy buenos resultados con `DPM++ 2M Karras` y `DPM++ SDE Karras`. Una comparación más abajo.
+   * **Sampling steps:** La cantidad de pasos, son "calculados" con anticipacicón y por lo tanto más pasos no siempre es mejor. Yo siempre uso 30 pasos, pero de 20 a 50 encontrarás resultados consistentemente buenos. Una comparación más abajo.
    * **Width and Height:** La resolución de 512x512 es lo normal. Si superas el ancho o alto de 768 tu imagen puede ser distorsionada y deformada. Para producir imágenes más grandes está la opción `Hires fix`.
    * **Batch Count and Batch Size:** El *size* es cuántas imágenes tu tarjeta gráfica producirá al mismo tiempo, lo cual se limita for su VRAM. El *count* son las repeticiones del valor anterior. Los batches tienen seeds consecutivas, más abajo verás las seeds.
    * **CFG Scale:** "Los valores menores producen resultados más creativos". Casi siempre debes dejarlo en 7, pero de 4 a 10 es un rango aceptable.
    * **Seed:** Un número que dicta la generación de tu imagen. La misma seed con el mismo prompt y opciones siempre producirá la misma imagen, salvo detalles menores y algunas excepciones.
   
    **Hires fix:** Esta opción te permite crear imágenes más grandes sin problemas. Por lo general se ocupa para duplicar el ancho y alto. Cuando la actives, aparecerán más opciones:
-   * **Upscaler:** El algoritmo para agrandar la imagen. Se dice que `Latent` crea resultados creativos. Puede que también te guste `R-ESRGAN 4x+` y su variante para anime. Recomiendo el upscaler llamado Remacri, del cual hablo [más abajo ▼](#upscale).
+   * **Upscaler:** El algoritmo para agrandar la imagen. Se dice que `Latent` crea resultados creativos. Puede que también te guste `R-ESRGAN 4x+` y su variante para anime. [Más información y comparaciones más abajo ▼](#upscale).
    * **Hires steps:** Recomiendo al menos la mitad de tus pasos normales. Más pasos no siempre es mejor, y son bastante lentos, así que sé conservador.
    * **Denoising strength:** El valor más importante. Cera de 0.0 tu imagen no tendrá ningún detalle nuevo. Cerca de 1.0, tu imagen cambiará completamente. Recomiendo un valor entre 0.2 y 0.6 dependiendo del caso, lo cual añade suficiente detalle sin *destruir* los detalles existentes que te gusten.
     
@@ -177,6 +177,22 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
    * **Restore faces:** Puede mejorar los rostros reales. Nunca lo he necesitado con los prompt de esta guía y con hires fix.
    * **Tiling:** Sirve para hacer patrones repetitivos como baldosas, no es muy útil.
    * **Script:** Te permite acceder a funciones y extensiones muy útiles, [las cuales explico más abajo ▼](#plot). Por ejemplo, X/Y/Z Plot permite comparar una cuadrícula de imágenes con diferentes opciones. Muy poderoso.
+
+   Aquí comparo algunos samplers populares y varios cantidades de pasos:
+
+   <details>
+   <summary>(Click) Comparación de samplers - Fotografía</summary>
+
+   ![samplers con fotos](images/samplers1.png)
+   </details>
+
+   <details>
+   <summary>(Click) Comparaciónde samplers - Anime</summary>
+
+   ![samplers con anime](images/samplers2.png)
+   </details>
+
+   Corta explicación de la comparación de arriba: `Euler` es un sampler básico. `DDIM` es más rapido mientras que `DPM++ 2M Karras` es mejorado. Mientras tanto `Euler a` o "ancestral" produce resultados más creativos, y `DPM++ 2S a Karras` algo similar ya que también es ancestral. Finalmente `DPM++ SDE Karras` es el más lento y bastante único. Hay muchos otros samplers pero la mayoría están relacionados.
 
 &nbsp;
   
@@ -215,7 +231,7 @@ Un ejemplo de Lora es [Thicker Lines Anime Style](https://civitai.com/models/139
 
 # Imágenes Grandes <a name="upscale"></a>[▲](#index)
 
-Como [mencionamos anteriormente ▲](#parameters), normalmente no debes generar imágenes sobre 768 de ancho y alto. Debes usar Hires fix, con un "upscaler" (algoritmo) y denoising (intensidad) apropiados. Hires fix está limitado por tu VRAM, por lo que te puede interesar [Ultimate Upscaler ▼](#ultimate).
+Como [mencionamos anteriormente ▲](#gen), normalmente no debes generar imágenes sobre 768 de ancho y alto. Debes usar Hires fix, con un "upscaler" (algoritmo) y denoising (intensidad) apropiados. Hires fix está limitado por tu VRAM, por lo que te puede interesar [Ultimate Upscaler ▼](#ultimate).
 
 Es posible descargar upscalers adicionales y ponerlos en tu carpeta `stable-diffusion-webui/models/ESRGAN`. Así funcionarán con Hires fix, Ultimate Upscaler, y Extras.
 
@@ -267,7 +283,7 @@ Los Scripts se encuentran al final de tus opciones de generación de imágenes, 
    Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
 
    <details>
-   <summary>Ejemplo de X/Y/Z Plot, click para expandir</summary>
+   <summary>(Click) Ejemplo de X/Y/Z Plot</summary>
    
    ![X Y Z plot de modelos y países](images/XYZplot.png)
    </details>
@@ -283,11 +299,13 @@ Los Scripts se encuentran al final de tus opciones de generación de imágenes, 
    <a name="matrixneg"></a>Aquí hay una comparación de los negative prompt que te mostré [anteriormente ▲](#prompt). Podemos ver cómo EasyNegative afecta la imagen, cómo el resto del negative prompt afecta la imagen, y luego ambos juntos:
 
    <details>
-   <summary>Ejemplo de Prompt Matrix, click para expandir</summary>
+   <summary>(Click) Ejemplo de Prompt Matrix</summary>
   
    ![Prompt matrix negativo de anime](images/promptmatrix1.png)
    ![Prompt matrix negativo de fotos](images/promptmatrix2.png)
    </details>
+
+   **Tip:** Aumentando el Batch Size puedes crear todo el prompt matrix al mismo tiempo.
 
 * **Ultimate Upscale** <a name="ultimate"></a>[▲](#index)
 
@@ -328,7 +346,7 @@ Primero, debes estar en txt2img y bajar para presionar el menú ControlNet. Una 
    El método Canny extrae los detalles de la imagen de muestra. Es útil para imitar todo tipo de imágenes. Observa:
 
    <details>
-   <summary>Ejemplo de Canny, click para expandir</summary>
+   <summary>(Click) Ejemplo de Canny</summary>
    
    ![Canny preprocessed image](images/canny1.png)
    ![Canny output image](images/canny2.png)
@@ -339,7 +357,7 @@ Primero, debes estar en txt2img y bajar para presionar el menú ControlNet. Una 
    El método Depth extrae los elementos 3D de la imagen de muestra. Es de enorme utilidad cuando deseas imitar ambientes complejos y la composición general de una imagen. Observa:
 
    <details>
-   <summary>Ejemplo de Depth, click para expandir</summary>
+   <summary>(Click) Ejemplo de Depth</summary>
    
    ![Depth preprocessed image](images/depth1.png)
    ![Depth output image](images/depth2.png)
@@ -350,7 +368,7 @@ Primero, debes estar en txt2img y bajar para presionar el menú ControlNet. Una 
    El método Openpose extrae las poses humanas de la imagen de muestra. Es de extrema utilidad para obtener la toma deseada y composición de uno de tus personajes. Observa:
 
    <details>
-   <summary>Ejemplo de Openpose, click para expandir</summary>
+   <summary>(Click) Ejemplo de Openpose</summary>
    
    ![Open Pose preprocessed image](images/openpose1.png)
    ![Open Pose output image](images/openpose2.png)
@@ -361,9 +379,9 @@ Primero, debes estar en txt2img y bajar para presionar el menú ControlNet. Una 
    Scribble te permite hacer un bosquejo y convertirlo en una pieza terminada con ayuda de tu prompt. Este es el único ejemplo de aquí que no comparte la misma imagen de muestra.
 
    <details>
-   <summary>Ejemplo de Scribble, click para expandir</summary>
+   <summary>(Click) Ejemplo de Scribble</summary>
    
-   ![Scribble sample image](images/scribble1.jpg)
+   ![Scribble sample image](images/scribble1.png)
    ![Scribble output image](images/scribble2.png)
    </details>
 
@@ -372,7 +390,7 @@ Podrás notar que hay 2 resultados para cada método. El primero es en paso inte
 En la pestaña Settings habrá una sección ControlNet donde podrás activar *múltiples controlnets al mismo tiempo*. Un uso particularmente útil es cuando uno de ellos es Openpose, para obtener tanto la pose deseada como el ambiente deseado, o con la posición exacta de manos u otros detalles. Observa:
 
 <details>
-<summary>Ejemplo de Openpose+Canny, click para expandir</summary>
+<summary>(Click) Ejemplo de Openpose+Canny</summary>
   
 ![Open Pose + Canny](images/openpose_canny.png)
 </details>
