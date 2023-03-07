@@ -411,7 +411,7 @@ First, you must scroll down in the txt2img page and click on ControlNet to open 
    <details>
    <summary>(Click) Scribble example</summary>
    
-   ![Scribble sample image](images/scribble1.jpg)
+   ![Scribble sample image](images/scribble1.png)
    ![Scribble output image](images/scribble2.png)
    </details>
 
