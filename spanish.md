@@ -138,7 +138,7 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
       * `EasyNegative, worst quality, low quality, 3d, realistic, photorealistic, (loli, child, teen, baby face), zombie, animal, multiple views, text, watermark, signature, artist name, artist logo, censored`
      
    * Fotorealismo
-      * `best quality, 4k, 8k, ultra highres, (realistic, photorealistic, RAW photo:1.4), (hdr, sharp focus:1.2), intricate texture, skin imperfections`
+      * `best quality, 4k, 8k, ultra highres, photorealistic, RAW photo, hdr, sharp focus, intricate texture, skin imperfections`
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
    * **EasyNegative:** <a name="promptneg"></a>El prompt negativo que recomiendo utiliza EasyNegative, un *embedding* o "palabra mágica" que codifica muchas cosas malas para así mejorar tus imágenes. De otra forma tu prompt negativo sería enorme.
