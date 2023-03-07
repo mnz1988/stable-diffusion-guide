@@ -261,39 +261,22 @@ Here are some comparisons. All of them were done at 0.4 denoising strength. Note
 <details>
 <summary>(Click) Comparison 1: Anime, stylized, fantasy</summary>
 
-   **Some details to consider:** The fireballs to the left and right, the texture of the fire around her, the grass and its flowers, the ghost's face, the flowers in her hat, the hands, the eyes (which should be flower-shaped), the things on her waist.
-
-   ![Original](images/upscalers1pre.png)
-
-   ![Comparison](images/upscalers1.png)
-
-   **My personal impression (please ignore):** It's clear that the Latent options offer the most detail, perhaps too much if this piece is supposed to be stylized. Latent Nearest Exact catches my eye the most because of the background and the ghost's face, but Anime6B has some nice flowers which I asked for, and lollypop has my favorite fire texture. Remacri is somewhere in the middle for all of them to me, but not its smoother variant.
+![Original](images/upscalers1pre.png)
+![Comparison](images/upscalers1.png)
 </details>
 
 <details>
 <summary>(Click) Comparison 2: Anime, detailed, soft lighting</summary>
 
-   **Some details to consider:** The background, the flower and symbol on her hat, the flowers on the branches to the sides, the eyes (which should be flower-shaped), the emblem below her neck, The pattern on the lower half of her dress, as well as the nearby frills and folds.
-   
-   ![Original](images/upscalers2pre.png)
-
-   ![Comparison](images/upscalers2.png)
-
-   **My personal impression (please ignore):** Latent made everything blurry while Latent Nearest Exact again has the most detail. Anime6B got the best eyes. Lollypop and Remacri (not smoother) both have nice flowers. It's a hard pick.
-
+![Original](images/upscalers2pre.png)
+![Comparison](images/upscalers2.png)
 </details>
 
 <details>
 <summary>(Click) Comparison 3: Photography, human, nature</summary>
-
-   **Some details to consider:** The eye on the left, the finger creases, the bracelet, the edge trim on the vest, the flower on the vest, the brooches on the vest, the rocks and vegetation on the bottom left, the trees on the top left, the waterfalls of course.
    
-   ![Original](images/upscalers3pre.png)
-
-   ![Comparison](images/upscalers3.png)
-
-   **My personal impression (please ignore):** Because of the eye discoloration and the vest's trim I would go with Latent Nearest Exact, but RealisticRescaler has the best vegetation detail, and NickelbackFS feels the best pronounced. The others are all quite alright.
-
+![Original](images/upscalers3pre.png)
+![Comparison](images/upscalers3.png)
 </details>
 
 &nbsp;
