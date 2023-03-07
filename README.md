@@ -201,13 +201,13 @@ Here you can select your checkpoint and VAE. We will go over what these are and 
       <summary>(Click) Sampler comparison - Photography</summary>
 
       ![samplers with photos](images/samplers1.png)
-   <details>
+   </details>
 
    <details>
       <summary>(Click) Sampler comparison - Anime</summary>
 
       ![samplers with anime](images/samplers2.png)
-   <details>
+   </details>
 
    An explanation of the samplers used above: `Euler` is a basic sampler. `DDIM` is a faster version, while `DPM++ 2M Karras` is an improved version. Meanwhile we have `Euler a` or "ancestral" which produces more creative results, and `DPM++ 2S a Karras` which is also ancestral and thus similar. Finally `DPM++ SDE Karras` is the slowest and quite unique. There are many other samplers not shown here but most of them are related.
 
