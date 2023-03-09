@@ -1,7 +1,7 @@
 # Índice <a name="index"></a>
 
 * [Introducción](#intro)
-* [Google Collab](#colab)
+* [Google Colab](#colab)
 * [Instalación Local (Windows + Nvidia)](#install)
 * [Conceptos Esenciales](#start)
    1. [Modelos](#model)
@@ -35,9 +35,9 @@ Esta guía está actualizada hasta Marzo de 2023. Una semana es como un año par
 
 &nbsp;
 
-# Google Colab <a name="collab"></a>[▲](#index)
+# Google Colab <a name="colab"></a>[▲](#index)
 
-La manera más facil de usar Stable Diffusion es a través de Google Collab. Con él tomas prestado los computadores de Google para usar la IA, con tiempo limitado, comúnmente varias horas al día. Necesitarás al menos una cuenta de Google y utilizaremos el Google Drive para guardar tus imágenes.
+La manera más facil de usar Stable Diffusion es a través de Google Colab. Con él tomas prestado los computadores de Google para usar la IA, con tiempo limitado, comúnmente varias horas al día. Necesitarás al menos una cuenta de Google y utilizaremos el Google Drive para guardar tus imágenes.
 
 Si en su lugar deseas correr el programa en tu propio computador, [baja aquí ▼](#install).
 
@@ -51,7 +51,7 @@ Aquí las instrucciones del colab. Estaremos usando el stable-diffusion-webui de
 
 1. Si ya conoces Stable Diffusion puedes pegar los enlaces a tus recursos deseados en la casilla de texto de `enlaces_adicionales`, bajo **Modelos y otros recursos**. Puede que vayamos a añadir enlaces aquí más adelante en la guía. Los enlaces deben ser **descargas directas** a cada archivo (idealmente de los sitios civitai o huggingface), y deben separarse por comas.
 
-1. Ahora puedes presionar el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Empezar aquí 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será **Running on public URL** lo cual indica que está listo, y puedes abrir ese enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del colab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
+1. Ahora puedes presionar el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Empezar aquí 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será **Running on public URL** lo cual indica que está listo, y puedes abrir ese enlace en una nueva pestaña para utilizar Stable Diffusion. **¡Mantén la pestaña del colab abierta!** (en teléfono intenta el truco en la parte de abajo del colab para evitar que se cierre la pestaña)
 
 1. Ahora estás listo para hacer algunas imágenes. Pero eso no es todo, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para aprender las bases.
 
@@ -417,7 +417,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
 1. Utilizaremos [ESTE COLAB](https://colab.research.google.com/drive/1WVTkW0IOeiBrs6s79XuJ9r1u42fKw81L?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
 
-1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala, sigue al siguiente paso.
+1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala en el servidor de Google, sigue al siguiente paso.
 
 1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de todos los modelos anime y produce los mejores resultados para ello. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
 
