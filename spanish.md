@@ -433,7 +433,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
   
    1. Una vez que tus imágenes y descripciones estén listas, ponlas en una carpeta con la siguiente estructura: Una carpeta con el nombre de tu proyecto, la cual contiene al menos 1 carpeta en el formato `repeticiones_nombre`, la cual contiene tus archivos de entrenamiento. Así:
   
-      ![Estructura de carpetas](images/trainfolder.png)
+      ![Estructura de carpetas](images/trainfolder_spanish.png)
 
    1. Aquí es donde decides tu número de repeticiones, con el nombre de la carpeta interior. Asumiendo que tienes solo 20 imágenes, recomiendo 10 o 20 repeticiones. En tal caso, tu carpeta interior se llamará `10_minuevolora` o algo similar.
   
