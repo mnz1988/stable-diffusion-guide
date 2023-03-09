@@ -421,10 +421,11 @@ To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, 
 You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Colab document for educational purposes.
 
 Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
-* [Lora Training on Rentry](https://rentry.org/lora_train)
-* [Training Science on Rentry](https://rentry.org/lora-training-science)
+* [Classic Lora training guide](https://rentry.org/lora_train)
+* [Lora training science](https://rentry.org/lora-training-science)
 * [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
 * [List of trainer parameters](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
+* [Angry Lora training guide by ao](https://rentry.org/tohoaifaq#opinionated-lora-guide-for-colab)
 
 With those way smarter resources out of the way, I'll try to produce a simple guide for you to make your very own Lora for a character, concept, or artstyle.
 
@@ -440,17 +441,20 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
   
    This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
 
-   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at least 10 images, I'd recommend at least 20. Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases) if you want better results.
+   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at least 10 images, I'd recommend at least 20, but more is almost always better.
+      * Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases).
+      * If you want to do a character, I recommend filtering tags like this: `1girl solo character_name score:>10 -rating:explicit` (the explicit rating may include weird images, so it's fine to exclude them)
   
-   1. If you only have a few images you may tag them yourself, but it may be slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate tags for them. In which case I also recommend you get the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor).
+   1. If you only have a few images you may tag them yourself, but it may be slow and inaccurate. If you're using photographs you should describe each one in detail using simple sentences.
+      * Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate anime tags for them. Instructions are as follows: First add and enable the extension, and restart your entire webui. Then go to the new **Tagger** tab, then *Batch from directory*, and select the folder with your images. Set the output name to `[name].txt` and the threshold at or above 0.2 (this is how closely each tag must match an image to be included). Then **Interrogate** and it will start generating your text files.
   
-   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_name`, which each contain some images and their tags. Like this:
+   1. Once your images and their text files are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_name`, which each contain some images and their tags. Like this:
   
       ![Folder structure for training](images/trainfolder.png)
 
-   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. I recommend that your amount of images multiplied by their repetitions does not exceed a total of 400. So, if you have 20 images, I'd recommend 10 to 20 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
+   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. I recommend that your amount of images multiplied by their repetitions does not exceed a total of 400. So, if you have 20 images, I'd recommend 10 to 20 repetitions. (More files should mean less repetitions). Then, your inner folder should be called `10_repetitions` (you can replace the word "repetitions" with a custom name).
   
-   1. Upload the entire parent folder (the one with your project's name) into your Google Drive's `lora_training/datasets` folder.
+   1. Upload the entire parent folder (the one with your project's name) into your Google Drive's `lora_training/datasets/` folder. Now it's ready.
   
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
@@ -478,17 +482,16 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
 * **Additional tips** <a name="trainchars"></a>[▲](#index)
 
-   The most important thing for characters and concepts is the tags. You do want a dataset varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
+   The most important thing for characters and concepts is the tags. You want a dataset with varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
 
-   When training a character or concept you should place an **activation tag** at the start of every text file, and set `keep_tokens` to 1. An activation tag is how we'll invoke your Lora to work. Having done that, you want to remove or "prune" tags that are intrinsic to your character or concept, such as hair color and eye color. For example, if a character always has cat ears, you want to remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag.
+   When training a character or concept you should place an **activation tag** at the start of every text file, and set `keep_tokens` to 1 before training. An activation tag is how we'll invoke your Lora to work. Having done that, **some people reccommend** removing or "pruning" tags that are intrinsic to your character or concept, such as hair color and eye color. For example, if a character always has cat ears, you would remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag, and makes your Lora easier to use, but less flexible.
+   * You can use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to add an activation tag. Instructions are as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then *Batch Edit Captions*. Write your activation tag under *Edit Tags* and turn on *Prepend additional tags*. Then apply your changes, scroll up and save your changes.
 
-   You may also prune clothing tags, by only listing the most relevant clothes in the tags and removing anything redundant, such as keeping "tie" but removing "red tie". This will make those clothes absorb the relevant details as well. You can even define an additional activation tag for each set of important clothes, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
+   This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc. If you desire you may also prune redundant clothing tags, such as removing "red tie" but keeping "tie". You can even define an additional activation tag for different outfits your character may wear regularly, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
 
-   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights.
+   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights. Tagging different elements in the training images is still important, though.
 
-   This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc.
-
-   Another tip is having multiple folders with different number of repetitions. Give your highest quality images more repetitions, while some unique concepts but with worse style/quality can have less repetitions such as 1.
+   Another tip is having multiple folders with different numbers of repetitions. Give your highest quality images more repetitions, while some unique concepts but with worse style/quality can have less repetitions such as 1.
 
 &nbsp;
 
