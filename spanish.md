@@ -43,17 +43,17 @@ Si en su lugar deseas correr el programa en tu propio computador, [baja aquí �
 
 Aquí las instrucciones del collab. Estaremos usando el stable-diffusion-webui de Automatic1111.
 
-1. Abre [esta página](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
+1. Abre [esta página con el collab de nocrypt en español](https://colab.research.google.com/drive/11-LDA0nvFprS_-g7-ZmTzsDVNpGzRvfO?usp=sharing).
 
 1. Cerca de arriba clickea **Copiar a mi Drive**. Espera que se abra la ventana nueva y cierra la vieja. Ahora tienes tu propio collab el cual puedes configurar a tu gusto, y deberás abrir desde tu Google Drive. En caso de actualizaciones deberás ver el original.
 
-1. Activa las siguientes casillas bajo **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Luego, activa las siguientes casillas bajo **Models, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
+1. Si deseas puedes activar las siguientes casillas bajo **Configuraciones**: `guardar_imagenes_en_drive, guardar_configuracion_en_drive`.
 
-1. Si ya conoces Stable Diffusion puedes pegar los enlaces a tus recursos deseados en la casilla de `custom_urls`. Vamos a añadir enlaces aquí más adelante en la guía. Los enlaces deben ser **descargas directas** a cada archivo (idealmente de los sitios civitai o huggingface), y deben separarse por comas.
+1. Si ya conoces Stable Diffusion puedes pegar los enlaces a tus recursos deseados en la casilla de texto de `enlaces_adicionales`, bajo **Modelos y otros recursos**. Puede que vayamos a añadir enlaces aquí más adelante en la guía. Los enlaces deben ser **descargas directas** a cada archivo (idealmente de los sitios civitai o huggingface), y deben separarse por comas.
 
-1. Presiona el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Start 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será un **public link** lo cual indica que está listo, y puedes abrir este enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del collab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
+1. Ahora puedes presionar el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Empezar aquí 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será un **public link** lo cual indica que está listo, y puedes abrir este enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del collab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
 
-1. Ahora puedes hacer algunas imágenes decentes gracias al modelo por defecto llamado **Anything 4.5**. Pero podemos hacer más que ello, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para aprender las bases.
+1. Ahora estás listo para hacer algunas imágenes. Pero eso no es todo, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para aprender las bases.
 
 &nbsp;
 
@@ -102,7 +102,7 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
    * Para el fotorealismo recomiendo [Deliberate](https://civitai.com/models/4823/deliberate). Puede hacer casi cualquier cosa, pero fotos en especial. Muy detallado.
    * El modelo [URPM](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) es la mayor concentración de pornografía que vas a encontrar.
    
-   Si estás usando el collab de está guía, copia el **enlace directo a la descarga** y pégalo en la casilla llamada `custom_urls`. Separa múltiples enlaces usando comas.
+   Si estás usando el collab de está guía, algunos de estos están disponibles como opciones. Para otros modelos, debes copiar el **enlace directo a la descarga** y pegarlo en la casilla llamada `enlaces_adicionales`. Separa múltiples enlaces usando comas.
 
    En una instalación local, comúnmente los modelos deben ir dentro de la carpeta `stable-diffusion-webui/models/Stable-diffusion`.
 
@@ -114,7 +114,7 @@ Aquí puedes seleccionar un checkpoint y un VAE. Ahora explicaré qué son ambas
 
    La mayoría de checkpoints no viene con VAE incluído. El VAE es un pequeño modelo aparte, el cual "convierte tu imagen a formato humano". Sin un VAE tus imágenes van a tener malos colores y detalles.
 
-   Si usas el collab de esta guía, te hice elegir todos los VAEs antes de iniciar el programa.
+   Si usas el collab de esta guía, ya deberían estar todos los VAEs instalados.
    
    Prácticamente sólo hay 3 VAEs en circulamiento:
    * [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), también conocido como orangemix vae. Todos los modelos de anime lo utilizan.
@@ -280,8 +280,6 @@ Los Scripts se encuentran al final de tus opciones de generación de imágenes, 
 
    Aquí abajo he hecho una comparación de diferentes **modelos** (en las columnas) y rostros de diferentes países con **S/R Prompt** (en las filas):
    
-   Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
-
    <details>
    <summary>(Click) Ejemplo de X/Y/Z Plot</summary>
    
@@ -333,7 +331,7 @@ Los Scripts se encuentran al final de tus opciones de generación de imágenes, 
 
 ControlNet es una tecnología reciente extremadamente poderosa. Te permite analizar una imagen para guiar la creación de tus propias imágenes con Stable Diffusion. Veremos qué significa esto en un momento.
 
-Si estás usando el collab de esta guía activa la casilla de `all_control_models`. Sino, deberás instalar la [extension ControlNet ▲](#extensions), luego ir [aquí](https://civitai.com/models/9251/controlnet-pre-trained-models) y descargar modelos de controlnet que deberás poner en la carpeta `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. Recomiendo los modelos Canny, Depth, Openpose y Scribble, los cuales veremos en un momento.
+Si estás usando el collab de esta guía activa la casilla de `todos_modelos_controlnet` antes de iniciarlo. Sino, deberás instalar la [extension ControlNet ▲](#extensions), luego ir [aquí](https://civitai.com/models/9251/controlnet-pre-trained-models) y descargar modelos de controlnet que deberás poner en la carpeta `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. Recomiendo los modelos Canny, Depth, Openpose y Scribble, los cuales veremos en un momento.
 
 Voy a demostrar cómo ControlNet puede ser usado. Para ello tomaré una imagen popular en internet como nuestra "imagen de muestra". No es necesario que me sigas paso a paso, pero puedes descargar las imágenes y ponerlas en la pestaña **PNG Info** para ver los datos de generación.
 
