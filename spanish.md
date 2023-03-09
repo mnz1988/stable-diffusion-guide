@@ -415,65 +415,69 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
 <a name="traincolab"></a>![Trainer colab](images/trainercollab.png)
 
-1. Utilizaremos [ESTE COLAB](https://colab.research.google.com/drive/1WVTkW0IOeiBrs6s79XuJ9r1u42fKw81L?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
+1. Utilizaremos [ESTE DOCUMENTO DE COLAB](https://colab.research.google.com/drive/1WVTkW0IOeiBrs6s79XuJ9r1u42fKw81L?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
 
 1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala en el servidor de Google, sigue al siguiente paso.
 
-1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de todos los modelos anime y produce los mejores resultados para ello. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
+1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de casi todos los modelos anime. También se dice que `animefull-final-pruned` produce los mejores resultados si puedes encontrarlo. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
 
 1. **Archivos de entrenamiento** <a name="datasets"></a>[▲](#index)
   
    Esta es la mayor parte del entrenamiento de Loras. Necesitarás recopilar un "dataset" o archivos de entrenamiento, los cuales consisten en imágenes y sus correspondientes descripciones (con tags en el caso de anime).
 
-   1. Encuentra imágenes online que representes el personaje/concepto/estilo que deseas entrenar, posiblemente en sitios tales como [safebooru](https://safebooru.org/), [gelbooru](https://gelbooru.com/) o [danbooru](https://danbooru.donmai.us/). Necesitas al menos 10 imágenes, idealmente 20 o más, pero puedes usar cientos si deseas.
+   1. Encuentra imágenes online que representens el personaje/concepto/estilo que deseas entrenar, posiblemente en sitios tales como [gelbooru](https://gelbooru.com/). Asegúrate que sean imágenes de calidad decente en diferentes ángulos, escenas, ropa, etc. Necesitas al menos 10 imágenes, recomiendo 20 o más, y por lo general mientras más mejor.
+      * Opcionalmente, puedes instalar [Grabber](https://github.com/Bionus/imgbrd-grabber/releases) para descargar cientos de imágenes automáticamente. Recomiendo buscar en gelbooru y pixiv, para un personaje sería con estas tags: `1girl solo character_name score:>10 -rating:explicit` (lo explícito suele ser raro y por lo tanto se puede excluir).
   
-   1. Puedes crear los tags tú mismo, lo cual es lento y poco preciso. Opcionalmente puedes agregar la [extensión Tagger](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) a tu programa, la cual analiza todas tus imágenes de entranemiento y genera tags para ellas.
-  
-   1. Opcionalmente puedes agregar otra extensión llamada [Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) la cual te permite editar los tags de todos tus archivos al mismo tiempo.
-  
+   1. Crea los archivos de texto junto a cada imagen, con el mismo nombre de archivo. Puedes escribir los tags tú mismo, aunque puede ser lento y poco preciso. Si son fotografías, descríbelas en detalle con oraciones simples.
+      * Opcionalmente puedes agregar la [extensión Tagger](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) para que analice tus imágenes y cree las tags de anime por ti. Las instrucciones son así: Añade y activa la extensión, y reinicia el programa. Luego dirígete a la nueva pestaña **Tagger**, luego a *atch from directory*, y selecciona la carpeta con tus imágenes. Pon el *output name* como `[name].txt` y el threshold a 0.2 o mayor (éste es la precisión de las tags). Finalmente presiona **Interrogate** y se crearán tus archivos de texto.
+    
    1. Una vez que tus imágenes y descripciones estén listas, ponlas en una carpeta con la siguiente estructura: Una carpeta con el nombre de tu proyecto, la cual contiene al menos 1 carpeta en el formato `repeticiones_nombre`, la cual contiene tus archivos de entrenamiento. Así:
   
       ![Estructura de carpetas](images/trainfolder_spanish.png)
 
-   1. Aquí es donde decides tu número de repeticiones, con el nombre de la carpeta interior. Asumiendo que tienes solo 20 imágenes, recomiendo 10 o 20 repeticiones. En tal caso, tu carpeta interior se llamará `10_minuevolora` o algo similar.
+   1. Aquí es donde decides tu número de repeticiones, con el nombre de la carpeta interior. Recomiendo que tu cantidad de imágenes multiplicada por su número de repeticiones no supere un total de 400. Así que si tienes 20 imágenes, recomiendo 10 o 20 repeticiones, y más imágenes necesitarían menos. En tal caso, tu carpeta interior se llamará `10_repeticiones` (puedes cambiar la palabra "repeticiones" por un nombre a tu gusto).
   
    1. Sube la carpeta exterior y todos sus contenidos (la que tiene el nombre de tu proyecto) a tu Google Drive, en la carpeta `lora_training/datasets/`.
   
 1. **Opciones de entrenamiento** <a name="trainparams"></a>[▲](#index)
 
    * Bajo **Archivos**, no necesitas cambiar nada esta vez.
-   * Bajo **Pasos**, puedes cambiar los epochs y batch size según lo descrito. Más epochs te dan más control sobre el progreso de tu Lora, pero debes reducir las repeticiones.
-   * Bajo **Entrenamiento**, el `unet_lr` or "learning rate" (velocidad de aprendizaje) es el parámetro más importante. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. También está el dim, el cual es el tamaño de tu Lora, y más grande no necesariamente es mejor (recomiendo dim/alpha 16).
+   * Bajo **Pasos**, puedes cambiar los epochs y batch size según lo descrito. Más epochs te dan más control sobre el progreso de tu Lora, y dará más tiempo para que aprenda, pero no exageres. Si tienes muchas imágenes puedes aumentar el batch size.
+   * Bajo **Entrenamiento**, el `unet_aprendizaje` es el parámetro más importante. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. También está el dim, el cual es el tamaño de tu Lora, y más grande no necesariamente es mejor (recomiendo dim 16, alpha 8).
 
-1. Ahora puedes activar *🇨 Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *🇩 Cocinar el Lora*. Debería tomar 20 a 60 minutos. Si encuentras errores intenta contactarme o buscar ayuda.
+1. Ahora puedes activar *🇨 Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *🇩 Cocinar el Lora*. Debería tomar 20 a 60 minutos si pusiste un número apropiado de repeticiones y epochs. Si encuentras errores intenta contactarme o buscar ayuda.
 
 1. **Probar tus resultados** <a name="traintest"></a>[▲](#index)
 
    Ha pasado un rato y tu Lora terminó de entrenar/cocinar. Ve y descárgalo de la carpeta `lora_training/output` en tu google drive. Pero verás que hay más de uno; por defecto, se guarda una copia de tu Lora cada 2 epochs, permitiéndote así comparar su progreso. Si entrenas tu Lora por muchos epochs, podrás identificar el punto óptimo entre que esté "crudo" o "recocido".
 
-   Cuando un Lora está "crudo", no alcanzará a imitar tus datos de entrenamiento. Cuando está "recocido", imita tus datos de entrenamiento *demasiado*, lo cual evita que pueda hacer cualquier otra cosa. Y si no añadiste suficientes datos o datos de baja calidad, ¡puede que esté crudo y recocido al mismo tiempo!
+   Cuando un Lora está "crudo", no alcanzará a imitar tus datos de entrenamiento. Cuando está "recocido", imita tus datos de entrenamiento *demasiado*, y comienza a distorsionar tus imágenes. Si tu dataset o parámetros estan mal, ¡puede que esté crudo y recocido al mismo tiempo!
 
    Usando lo aprendido en [X/Y/Z Plot ▲](#plot), podemos hacer una comparación del progreso de nuestro Lora:
 
    ![Comparación del resultado de Lora](images/loratrain.png)
 
-   Mira eso, ¡se vuelve cada vez más detallado! La última imagen no tiene ningún Lora para comparar. Este parece ser un Lora de personaje exitoso, pero necesitaríamos probar una variedad de semillas, prompts y escenas para estar seguros.
+   Mira eso, ¡se vuelve cada vez más detallado! La última imagen no tiene ningún Lora para comparar. Este parece ser un Lora de personaje exitoso, pero necesitaríamos probar una variedad de seeds, ropas y escenas para estar seguros.
 
-   Es común que tu Lora "queme" o distorsione tus imágenes al ser usado con pesos altos como 1, sobre todo si está recocido. Un peso entre 0.5 y 0.8 es aceptable para nosotros. Puede que necesites ajustar la velocidad de aprendizaje o el dim para esto, u otras variables no encontradas en este colab. Si estás leyendo esto y conoces los secretos de los Lora, háznoslo saber.
-
+   * Si tus resultados no funcionan, puede que hayas entrenado muy poco tiempo o más probablemente tu tasa de aprendizaje era muy pequeña (intenta 5e-4 o en casos extremos 1e-3).
+   * Si tus resultados están distorsionados, intenta bajar la intensidad de tu lora entre 0.5 y 0.8. Si siguen distorsionados o deja de funcionar, y epochs anteriores tampoco funcionan, entonces se te quemó el Lora y debes intentar una menor tasa de aprendizaje (1e-4 o 1e-5).
+   * Si funciona bien pero tu personaje no puede cambiar de ropa/posición, tus imágenes de entrenamiento eran muy similares o sus tags estaban mal.
+   * Si funciona bien pero el estilo se ve mal o con mal sombreado, puede que estés usando un modelo muy avanzado. Recomiendo `animefull-final-pruned` si puedes encontrarlo.
+   
    Después de acostumbrarse a hacer Loras, e interactuar on la comunidad y sus variados recursos, estarás listo para usar otro método más avanzado como el [colab original todo-en-uno de kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Buena suerte.
 
 * **Consejos adicionales** <a name="trainchars"></a>[▲](#index)
 
    La parte más importante para un personaje son los tags. Claro que necesitas imágenes con variadas poses y lugares, pero si las descripciones están mal no servirá de nada.
 
-   Cuando entrenas un personaje o concepto deberías definir una **palabra de activación**, y ajustar el valor de `keep_tokens` a 1. Una palabra de activación es como podremos invocar a tu Lora para que funcione. Habiendo hecho eso, quieres quitar o "limpiar" las tags que son intrínsicas a tu personaje o concepto, tales como el color de pelo y ojos. Por ejemplo, si una chica siempre tiene orejas de gato, quieres quitar las tags tales como `animal ears, animal ear fluff, cat ears`, y así éstas serán "absorbidas" por tu palabra de activación.
+   Cuando entrenas un personaje o concepto deberías definir una **palabra de activación**, y ajustar el valor de `keep_tokens` a 1. Una palabra de activación es como podremos invocar a tu Lora para que funcione. Habiendo hecho eso, **algunas personas recomiendan** quitar o "limpiar" las tags que son intrínsicas a tu personaje o concepto, tales como el color de pelo y ojos. Por ejemplo, si una chica siempre tiene orejas de gato, quieres quitar las tags tales como `animal ears, animal ear fluff, cat ears`, y así éstas serán "absorbidas" por tu palabra de activación. Esto hará tu Lora más fácil de usar pero menos flexible.
+   * Puedes usar [la extensión Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) para añadir una palabra de activación a todos tus archivos al mismo tiempo. Es un poco complejo: Añade la extensión y reinicia tu webui, luego entra a la nueva pestaña **Dataset Tag Editor** y luego a *Batch Edit Captions*. Bajo *Edit Tags* escribe tu palabra de activación y enciende *Prepend additional tags*. Luego aplica los cambios (botón naranja), sube y guarda (botón naranja).
 
-   También puedes limpiar las tags de atuendo, dejando así sólo los aspectos más relevantes de la ropa y eliminando las redundancias, por ejemplo dejar "tie" pero quitar "red tie". Esto facilitará que estas ropas absorban los detalles relevantes. Incluso puedes definir una palabra de activación para cada atuendo importante, por ejemplo personaje-normal, personaje-bikini, etc. Pero hay más de una manera de lograr esto. En cualquier caso, con el uso correcto de tags, tu personaje debería ser capaz de cambiar de ropa fácilmente.
+   Esta "absorción" de detalles no entregados por los tags es la forma en que los Loras funcionan en general, ya que logran aprender y representar los detalles imperceptibles o difíciles de explicar tales como el rostro, acccesorios, composición, etc. También puedes limpiar tags de ropa redundantes, como borrar "red tie" y dejar "tie". Incluso puedes tener una palabra de activación distinta para cada atuendo que tu personaje usa comúnmente, como personaje-normal, personaje-bikini, etc. Pero no es la única forma de hacerlo. En cualquier caso, si tus tags son correctas, tu personaje debería poder cambiar de ropa fácilmente.
 
    Mientras tanto, los Loras de estilo no necesitan palabra de activación, ya que deseamos que siempre estén activos. Absorberán el estilo artístico de forma natural, y funcionará con variados pesos.
 
-   Esta "absorción" de detalles no entregados por los tags es la forma en que los Loras funcionan en general, ya que logran aprender y representar los detalles imperceptibles o difíciles de explicar tales como el rostro, acccesorios, composición, etc.
+   Otro consejo es tener más de una carpeta de repeticiones, y separarlas por calidad: Dar más repeticiones a tus mejores imágenes, y menos repeticiones (incluso 1) a las imágenes que quizá tienen peor estilo pero aún así aportan algo único.
 
 &nbsp;
 
