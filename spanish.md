@@ -51,7 +51,7 @@ Aquí las instrucciones del collab. Estaremos usando el stable-diffusion-webui d
 
 1. Si ya conoces Stable Diffusion puedes pegar los enlaces a tus recursos deseados en la casilla de texto de `enlaces_adicionales`, bajo **Modelos y otros recursos**. Puede que vayamos a añadir enlaces aquí más adelante en la guía. Los enlaces deben ser **descargas directas** a cada archivo (idealmente de los sitios civitai o huggingface), y deben separarse por comas.
 
-1. Ahora puedes presionar el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Empezar aquí 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será un **public link** lo cual indica que está listo, y puedes abrir este enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del collab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
+1. Ahora puedes presionar el botón de reproducción a la izquierda, en cualquier lugar dentro de la gran sección llamada **Empezar aquí 🚀**. Espera un par de minutos para que se instale y corra el programa. Verás aparecer mensajes de progreso más abajo. Eventualmente uno de estos mensajes será **Running on public URL** lo cual indica que está listo, y puedes abrir ese enlace en una nueva pestaña para utilizar Stable Diffusion. **Mantén la pestaña del collab abierta!** (esto puede ser difícil si intentas usarlo desde un teléfono)
 
 1. Ahora estás listo para hacer algunas imágenes. Pero eso no es todo, y además, ¿qué son todas estas opciones? [Baja aquí ▼](#start) para aprender las bases.
 
