@@ -434,30 +434,28 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
 1. Click the play button on *🇦 Mount your google drive* and give it access when it asks you to. Do the same for *🇧 Installation*. Proceed to the next step while it installs on Google's servers.
 
-1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of all anime models. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
+1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using AnythingV3_fp16 as it is the foundation of most anime models. I also recommend `animefull-final-pruned` if you can find it. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
 
 1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
    This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
 
-   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [safebooru](https://safebooru.org/), [gelbooru](https://gelbooru.com/) or [danbooru](https://danbooru.donmai.us/). You will need at least 10 images, ideally 20 or more. You can get hundreds of them if you want.
+   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at least 10 images, I'd recommend at least 20. Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases) if you want better results.
   
-   1. You may tag the images yourself, which is slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate tags for them.
+   1. If you only have a few images you may tag them yourself, but it may be slow and inaccurate. Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate tags for them. In which case I also recommend you get the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor).
   
-   1. Optionally add the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to your webui, through which you can quickly edit the tags of many files at once.
-  
-   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_somename`, which each contain your images and matching tags. Like this:
+   1. Once your images and their tags are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_name`, which each contain some images and their tags. Like this:
   
       ![Folder structure for training](images/trainfolder.png)
 
-   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. If you have only 20 images, I'd recommend 10 to 20 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
+   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. I recommend that your amount of images multiplied by their repetitions does not exceed a total of 400. So, if you have 20 images, I'd recommend 10 to 20 repetitions. More files should mean less repetitions. Then, your inner folder should be called `10_mynewlora` or something similar.
   
    1. Upload the entire parent folder (the one with your project's name) into your Google Drive's `lora_training/datasets` folder.
   
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
    * Under **Files**, you don't need to change anything this time.
-   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress, but if you want more you should decrease your number of repetitions to avoid huge training times. You can also increase the batch size if you have lots of images.
+   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress and more time to learn, but don't go overboard. You can also increase the batch size if you have lots of images.
    * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5. You will also find the dim, which is the size of your Lora. I'd recommend dim 16 for most cases, which produces 18 MB Loras. More dim means more capacity for learning but also more capacity to learn garbage.
 
 1. You can now press play on *🇨 Settings*, wait for the model to download, and finally start the training with *🇩 Cook the Lora*. It should take 20 to 60 minutes if you set a reasonable amount of repetitions and epochs. If it starts counting the steps that means you're in the clear. If you instead encounter an error you can seek troubleshooting or contact me.
