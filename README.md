@@ -467,15 +467,18 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
    Some time has passed and your Lora finished training/cooking. Go and download your Lora from `lora_training/output` in your Google Drive. But hey, there's multiple - by default, a copy of your Lora will save every 2 epochs, allowing you to test its progress. If you train it for many epochs, you may be able to identify the optimal point between "undercooked" and "overcooked".
 
-   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and refuses to do anything other than what it was told. If you didn't have enough training data or it was tagged poorly, it can be both things at once!
+   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and starts distorting the generated images. If your dataset or parameters were poor, it can be both things at once!
 
    Using what we learned in [X/Y/Z Plot ▲](#plot), we can make a chart of the different epochs of our Lora:
 
    ![Comparison of Lora training results](images/loratrain.png)
 
-   Look at that, it gets more detailed over time! The last image is without any Lora for comparison. This was a successful character Lora, at least at first glance. You would need to test different seeds, prompts and scenarios to be sure.
+   Look at that, it gets more detailed over time! The last image is without any Lora for comparison. This was a successful character Lora, at least at first glance. You would need to test different seeds, clothes and scenarios to be sure.
 
-   It is common that your Lora "fries" or distorts your images when used at high weights such as 1, specially if it's overcooked. A weight of 0.5 to 0.8 is acceptable here, you may need to tweak the learning rate and network dim for this, or other variables not found in this colab. If you're reading this and know the magic sauce, let us know.
+   * If your results don't work at all, then you trained for too little time or most likely your learning rate was too small (Try something like 5e-4 or in extreme cases 1e-3).
+   * If your results are distorted, try lowering the Lora's intensity to somewhere between 0.5 and 0.8. If it's still distorted or doesn't work anymore, and earlier epochs don't work either, then your lora is fried and you should try a smaller learning rate (like 1e-4 or 1e-5).
+   * If it works fine but your character can only do one set of clothes or one position, then either your images were too similar to each other or your tagging was done poorly.
+   * If it works fine but the shading looks flat or the style looks wrong, then you may be using a model that's too advanced. Try `animefull-final-pruned` if you can find it.
 
    After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one colab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
 
