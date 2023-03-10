@@ -459,8 +459,8 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
 
    * Under **Files**, you don't need to change anything this time.
-   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress and more time to learn, but don't go overboard. You can also increase the batch size if you have lots of images.
-   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 1e-3 is the default and good for small amounts of images, but it can go as far as 1e-5. You will also find the dim, which is the size of your Lora. I'd recommend dim 16 for most cases, which produces 18 MB Loras. More dim means more capacity for learning but also more capacity to learn garbage.
+   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress and more time to learn, but don't go overboard.
+   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 5e-4 unet is the default in this guide and good for characters, but you can try 1e-3 if you have very few images, or 1e-4/1e-5 if you have lots of images and want slower cooking. You can leave the rest of the settings on the default values this time.
 
 1. You can now press play on *🇨 Settings*, wait for the model to download, and finally start the training with *🇩 Cook the Lora*. It should take 20 to 60 minutes if you set a reasonable amount of repetitions and epochs. If it starts counting the steps that means you're in the clear. If you instead encounter an error you can seek troubleshooting or contact me.
 
@@ -477,7 +477,8 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
    Look at that, it gets more detailed over time! The last image is without any Lora for comparison. This was a successful character Lora, at least at first glance. You would need to test different seeds, clothes and scenarios to be sure.
 
    * If your results don't work at all, then you trained for too little time or most likely your learning rate was too small (Try something like 5e-4 or in extreme cases 1e-3).
-   * If your results are distorted, try lowering the Lora's intensity to somewhere between 0.5 and 0.8. If it's still distorted or doesn't work anymore, and earlier epochs don't work either, then your lora is fried and you should try a smaller learning rate (like 1e-4 or 1e-5).
+   * If your results are distorted, try lowering the Lora's intensity to somewhere between 0.5 and 0.8. If it's still distorted or doesn't work anymore, and earlier epochs don't work either, then your lora is burnt and you should try a smaller learning rate (like 1e-4 or 1e-5).
+   * If it fails no matter what you do, you probably got the repetitions wrong in your folder name or you accidentally changed a setting to an impossible value.
    * If it works fine but your character can only do one set of clothes or one position, then either your images were too similar to each other or your tagging was done poorly.
    * If it works fine but the shading looks flat or the style looks wrong, then you may be using a model that's too advanced. Try `animefull-final-pruned` if you can find it.
 
@@ -492,7 +493,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
    This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc. If you desire you may also prune redundant clothing tags, such as removing "red tie" but keeping "tie". You can even define an additional activation tag for different outfits your character may wear regularly, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
 
-   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights. Tagging different elements in the training images is still important, though.
+   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights. We can even set the text encoder learning rate to 0 as we don't care much about the text. Tagging different elements in the training images is still important, though.
 
    Another tip is having multiple folders with different numbers of repetitions. Give your highest quality images more repetitions, while some unique concepts but with worse style/quality can have less repetitions such as 1.
 
