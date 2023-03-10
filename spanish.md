@@ -17,6 +17,7 @@
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Entrenamiento de Loras para novatos](#train)
+    * [Colab de entrenamiento](#traincolab)
     * [Archivos de entrenamiento](#datasets)
     * [Opciones de entrenamiento](#trainparams)
     * [Probar tus resultados](#traintest)
@@ -413,7 +414,8 @@ He aquí unos recursos clásicos si deseas leer sobre el tema en profundidad. Pu
 
 Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir una guía simple para que puedas hacer tu propio Lora, de un personaje, concepto o estilo.
 
-<a name="traincolab"></a>![Trainer colab](images/trainercollab.png)
+**Colab de entrenamiento** <a name="traincolab"></a>[▲](#index)
+![Trainer colab](images/trainercollab.png)
 
 1. Utilizaremos [ESTE DOCUMENTO DE COLAB](https://colab.research.google.com/drive/1dkiziaR1rizn7f6jRM7jwH6KxpaoY0-w?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
 
