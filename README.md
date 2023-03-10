@@ -430,8 +430,7 @@ Here are some classic resources if you want to read about the topic in depth. Re
 
 With those way smarter resources out of the way, I'll try to produce a simple guide for you to make your very own Lora for a character, concept, or artstyle.
 
-**Trainer Colab** <a name="traincolab"></a>
-![Trainer colab](images/trainercollab.png)
+**Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
 
 1. We will be using [THIS COLAB DOCUMENT](https://colab.research.google.com/drive/1zEm1DlzMfLQe19ly1bAob6Kd22BAl3qL?usp=sharing). You can copy it into your own Google Drive if you want.
 
