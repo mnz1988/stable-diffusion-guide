@@ -415,7 +415,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
 <a name="traincolab"></a>![Trainer colab](images/trainercollab.png)
 
-1. Utilizaremos [ESTE DOCUMENTO DE COLAB](https://colab.research.google.com/drive/1WVTkW0IOeiBrs6s79XuJ9r1u42fKw81L?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
+1. Utilizaremos [ESTE DOCUMENTO DE COLAB](https://colab.research.google.com/drive/1dkiziaR1rizn7f6jRM7jwH6KxpaoY0-w?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
 
 1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala en el servidor de Google, sigue al siguiente paso.
 
