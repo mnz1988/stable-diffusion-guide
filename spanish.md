@@ -464,7 +464,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
    * Si tus resultados no funcionan, puede que hayas entrenado muy poco tiempo o más probablemente tu tasa de aprendizaje era muy pequeña (intenta 5e-4 o en casos extremos 1e-3).
    * Si tus resultados están distorsionados, intenta bajar la intensidad de tu lora entre 0.5 y 0.8. Si siguen distorsionados o deja de funcionar, y epochs anteriores tampoco funcionan, entonces se te quemó el Lora y debes intentar una menor tasa de aprendizaje (1e-4 o 1e-5).
    * Si funciona bien pero tu personaje no puede cambiar de ropa/posición, tus imágenes de entrenamiento eran muy similares o sus tags estaban mal.
-   * Si funciona bien pero el estilo se ve mal o con mal sombreado, puede que estés usando un modelo muy avanzado. Recomiendo `animefull-final` si puedes encontrarlo.
+   * Si funciona bien pero el estilo se ve mal o con mal sombreado, puede que estés usando un modelo muy avanzado. Recomiendo `animefull-final-pruned` si puedes encontrarlo.
    
    Después de acostumbrarse a hacer Loras, e interactuar on la comunidad y sus variados recursos, estarás listo para usar otro método más avanzado como el [colab original todo-en-uno de kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Buena suerte.
 
