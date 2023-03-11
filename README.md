@@ -436,7 +436,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
 1. Click the play button on *🇦 Mount your google drive* and give it access when it asks you to. Do the same for *🇧 Installation*. Proceed to the next step while it installs on Google's servers.
 
-1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using `animefull-final` as it is the foundation of most anime models. Otherwise `AnythingV3` works too. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)). In that case remember to change the `model_type` to safetensors.
+1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using `animefull-final` as it is the foundation of most anime models and produces the most consistent results. Otherwise `AnythingV3` works too. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)).
 
 1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
