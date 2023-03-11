@@ -421,7 +421,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
 
 1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala en el servidor de Google, sigue al siguiente paso.
 
-1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos AnythingV3_fp16 ya que es la base de casi todos los modelos anime. También se dice que `animefull-final-pruned` produce los mejores resultados si puedes encontrarlo. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
+1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos `animefull-final` ya que es la base de casi todos los modelos anime y produce los resultados más consistentes. De otra forma recomendaría `AnythingV3`. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)). Recuerda también cambiar el `model_type` a safetensors en tal caso.
 
 1. **Archivos de entrenamiento** <a name="datasets"></a>[▲](#index)
   
@@ -464,7 +464,7 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
    * Si tus resultados no funcionan, puede que hayas entrenado muy poco tiempo o más probablemente tu tasa de aprendizaje era muy pequeña (intenta 5e-4 o en casos extremos 1e-3).
    * Si tus resultados están distorsionados, intenta bajar la intensidad de tu lora entre 0.5 y 0.8. Si siguen distorsionados o deja de funcionar, y epochs anteriores tampoco funcionan, entonces se te quemó el Lora y debes intentar una menor tasa de aprendizaje (1e-4 o 1e-5).
    * Si funciona bien pero tu personaje no puede cambiar de ropa/posición, tus imágenes de entrenamiento eran muy similares o sus tags estaban mal.
-   * Si funciona bien pero el estilo se ve mal o con mal sombreado, puede que estés usando un modelo muy avanzado. Recomiendo `animefull-final-pruned` si puedes encontrarlo.
+   * Si funciona bien pero el estilo se ve mal o con mal sombreado, puede que estés usando un modelo muy avanzado. Recomiendo `animefull-final` si puedes encontrarlo.
    
    Después de acostumbrarse a hacer Loras, e interactuar on la comunidad y sus variados recursos, estarás listo para usar otro método más avanzado como el [colab original todo-en-uno de kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Buena suerte.
 
