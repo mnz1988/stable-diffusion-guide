@@ -332,7 +332,7 @@ Los Scripts se encuentran al final de tus opciones de generación de imágenes, 
 
 ControlNet es una tecnología reciente extremadamente poderosa. Te permite analizar una imagen para guiar la creación de tus propias imágenes con Stable Diffusion. Veremos qué significa esto en un momento.
 
-Si estás usando el colab de esta guía activa la casilla de `todos_modelos_controlnet` antes de iniciarlo. Sino, deberás instalar la [extension ControlNet ▲](#extensions), luego ir [aquí](https://civitai.com/models/9251/controlnet-pre-trained-models) y descargar modelos de controlnet que deberás poner en la carpeta `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. Recomiendo los modelos Canny, Depth, Openpose y Scribble, los cuales veremos en un momento.
+Si estás usando el colab de esta guía activa la casilla de `todos_modelos_controlnet` antes de iniciarlo. Sino, deberás instalar la [extension ControlNet ▲](#extensions), luego ir [aquí](https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main) y descargar modelos de controlnet que deberás poner en la carpeta `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. Recomiendo los modelos Canny, Depth, Openpose y Scribble, los cuales veremos en un momento.
 
 Voy a demostrar cómo ControlNet puede ser usado. Para ello tomaré una imagen popular en internet como nuestra "imagen de muestra". No es necesario que me sigas paso a paso, pero puedes descargar las imágenes y ponerlas en la pestaña **PNG Info** para ver los datos de generación.
 
