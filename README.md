@@ -419,9 +419,9 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, but there are many variables involved, and a lot of work depending on your workflow. It's somewhere between an art and a science.
 
-You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Colab document for educational purposes.
+You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Colab document for educational purposes during Step 2.
 
-Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
+Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may need to use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
 * [Classic Lora training guide](https://rentry.org/lora_train)
 * [Lora training science](https://rentry.org/lora-training-science)
 * [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
@@ -430,39 +430,43 @@ Here are some classic resources if you want to read about the topic in depth. Re
 
 With those way smarter resources out of the way, I'll try to produce a simple guide for you to make your very own Lora for a character, concept, or artstyle.
 
-**Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
-
-1. We will be using [THIS COLAB DOCUMENT](https://colab.research.google.com/drive/1zEm1DlzMfLQe19ly1bAob6Kd22BAl3qL?usp=sharing). You can copy it into your own Google Drive if you want.
-
-1. Click the play button on *🇦 Mount your google drive* and give it access when it asks you to. Do the same for *🇧 Installation*. Proceed to the next step while it installs on Google's servers.
-
-1. Scroll down to *🇨 Settings* but don't run it yet. Here in **Setup** you may give any name you want to your project. You may also change the base model for training, but we'll be using `animefull-final` as it is the foundation of most anime models and produces the most consistent results. Otherwise `AnythingV3` works too. If you want to train with photographs you may copy the link to the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realistic model you wish to use in the end (such as [Deliberate](https://civitai.com/api/download/models/15236)).
-
 1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
   
    This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
 
-   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at least 10 images, I'd recommend at least 20, but more is almost always better.
+   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at the very least 5 images, but I'd recommend at least 20, and more is almost always better.
       * Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases). If you want to do a character, I recommend selecting gelbooru and pixiv, and filtering tags like this: `1girl solo character_name score:>10 -rating:explicit` (the explicit rating may include weird images, so it's fine to exclude them)
   
    1. Create your text files next to each image, with the same filename. If you only have a few images you may tag them yourself, but it may be slow and inaccurate. If you're using photographs you should describe each one in detail using simple sentences.
       * Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate anime tags for them. Instructions are as follows: First add and enable the extension, and restart your entire webui. Then go to the new **Tagger** tab, then *Batch from directory*, and select the folder with your images. Set the output name to `[name].txt` and the threshold at or above 0.2 (this is how closely each tag must match an image to be included). Then **Interrogate** and it will start generating your text files.
   
-   1. Once your images and their text files are ready, put them all in a folder following this structure: A folder with your project name, containing at least 1 folder in the format `repetitions_name`, which each contain some images and their tags. Like this:
-  
-      ![Folder structure for training](images/trainfolder.png)
+   1. Once your images and their text files are ready, put them all in the same folder and proceed to the next step. 
+    
+2. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
 
-   1. At this point when naming your folders you get to choose the number of repetitions for your dataset. I recommend that your amount of images multiplied by their repetitions does not exceed a total of 400. So, if you have 20 images, I'd recommend 10 to 20 repetitions. (More files should mean less repetitions). Then, your inner folder should be called `10_repetitions` (you can replace the word "repetitions" with a custom name).
-  
-   1. Upload the entire parent folder (the one with your project's name) into your Google Drive's `lora_training/datasets/` folder. Now it's ready.
-  
-1. **Training Parameters** <a name="trainparams"></a>[▲](#index)
+   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1zEm1DlzMfLQe19ly1bAob6Kd22BAl3qL?usp=sharing). Here's what settings you should use under each section:
+   
+   * **▶️Setup**
 
-   * Under **Files**, you don't need to change anything this time.
-   * Under **Steps**, you can change your number of epochs. More epochs means more control over your Lora's progress and more time to learn, but don't go overboard.
-   * Under **Training**, the `unet_lr` or "learning rate" is the most important parameter. 5e-4 unet is the default in this guide and good for characters, but you can try 1e-3 if you have very few images, or 1e-4/1e-5 if you have lots of images and want slower cooking. You can leave the rest of the settings on the default values this time.
+      Name your project anything you like, but it can't contain spaces. Then, you must create the following folders in your Google Drive: `lora_training/datasets/your_project_name` - Here you will upload all your images and text files. For example, here's my project called "ina": ![folders](images/drivefolders.png)
+ 
+      You can also change the base model for training, but we'll be using `animefull-final` as it is the foundation of most anime models and produces the most consistent results. Otherwise `AnythingV3` works too. If you want to train with photographs you may use the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realism model you wish to use in the end.
 
-1. You can now press play on *🇨 Settings*, wait for the model to download, and finally start the training with *🇩 Cook the Lora*. It should take 20 to 60 minutes if you set a reasonable amount of repetitions and epochs. If it starts counting the steps that means you're in the clear. If you instead encounter an error you can seek troubleshooting or contact me.
+   * **▶️Files**
+  
+      Here's a few options about how your files will be treated during training, but you can leave them all as they are. Feel free to read their descriptions though.
+
+   * **▶️Steps**
+
+      Your number of repeats and your number of epochs are very important. I recommend that your amount of images multiplied by their repeats equals somewhere between 200 and 400, as I have found this will let it learn pretty consistently. Then, set your epochs between 10 and 30 depending on how long you want to train. We can try just 10 this time.
+
+   * **▶️Training**
+   
+      The `unet_lr` or "learning rate" is the most important parameter. 5e-4 unet is the default in this guide and good for characters, but you can try 1e-3 if you have very few images, or 1e-4/1e-5 if you have lots of images and want slower cooking. You can ignore the rest of the settings this time.
+
+   * **▶️Ready**
+  
+      You can now press the play button that's been floating on the left side. It will set up the training environment then start the process. Check the progress via the outputs at the bottom. Good luck! If you encounter an error, read it carefully in case it's easy to fix, otherwise seek help online or contact me.
 
 1. **Testing your results** <a name="traintest"></a>[▲](#index)
 
@@ -484,7 +488,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
    After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one colab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
 
-* **Additional tips** <a name="trainchars"></a>[▲](#index)
+1 **Additional tips** <a name="trainchars"></a>[▲](#index)
 
    The most important thing for characters and concepts is the tags. You want a dataset with varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
 
@@ -494,8 +498,6 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
    This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc. If you desire you may also prune redundant clothing tags, such as removing "red tie" but keeping "tie". You can even define an additional activation tag for different outfits your character may wear regularly, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
 
    Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights. We can even set the text encoder learning rate to 0 as we don't care much about the text. Tagging different elements in the training images is still important, though.
-
-   Another tip is having multiple folders with different numbers of repetitions. Give your highest quality images more repetitions, while some unique concepts but with worse style/quality can have less repetitions such as 1.
 
 &nbsp;
 
