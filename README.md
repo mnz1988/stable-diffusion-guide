@@ -443,7 +443,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
     
 2. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
 
-   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1zEm1DlzMfLQe19ly1bAob6Kd22BAl3qL?usp=sharing). Here's what settings you should use under each section:
+   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1fs7oHytA4Va0IzDK-F8q_q9RIJRIh5Dv?usp=sharing). Here's what settings you should use under each section:
    
    * **▶️Setup**
 
