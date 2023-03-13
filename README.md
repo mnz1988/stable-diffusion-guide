@@ -30,6 +30,7 @@ language:
    1. [Generation parameters](#gen)
 * [Extensions](#extensions)
 * [Loras](#lora)
+   * [Lycoris](#lycoris)
 * [Upscaling](#upscale)
 * [Scripts](#imgscripts)
    * [X/Y/Z Plot](#plot)
@@ -222,6 +223,7 @@ Here you can select your checkpoint and VAE. We will go over what these are and 
 Here are some useful extensions. If you're using the colab in this guide you already have most of these, otherwise I hugely recommend you manually add the first 2:
 * [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and prompts without them usually don't work, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
+* [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) - Lets you use LoCons and LoHas. More info [below ▼](#lycoris).
 * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you analyze any image and use it as an referene for your own image. Practically speaking, it can create any pose or environment you want.
 * [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
 * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
@@ -241,6 +243,16 @@ Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if 
 ![Extra Networks](images/extranetworks.png)
 
 An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
+
+* Lycoris <a name="lycoris"></a>[▲](#index)
+
+   LyCORIS is a new development that lets LoRAs learn more layers. [Learn about it here](https://github.com/KohakuBlueleaf/Lycoris). You'll need [this extension](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) to use them.
+
+   As of now there are 2 new LoRA types:
+   * **LoCon** - Said to be good with styles
+   * **LoHa** - Said to be good with styles that also contain characters
+ 
+   You can make your own in the [trainer further down ▼](#traincolab).
 
 &nbsp;
 
@@ -443,7 +455,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
     
 2. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
 
-   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1fs7oHytA4Va0IzDK-F8q_q9RIJRIh5Dv?usp=sharing). Here's what settings you should use under each section:
+   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1fs7oHytA4Va0IzDK-F8q_q9RIJRIh5Dv?usp=sharing). It has been revamped to be easier to use and have more options, as well as [LoCon and LoHa ▲](#lycoris) support. Here's what settings you should use under each section:
    
    * **▶️Setup**
 
@@ -462,6 +474,10 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
    * **▶️Training**
    
       The `unet_lr` or "learning rate" is the most important parameter. 5e-4 unet is the default in this guide and good for characters, but you can try 1e-3 if you have very few images, or 1e-4/1e-5 if you have lots of images and want slower cooking. You can ignore the rest of the settings this time.
+
+   * **▶️Lora Type**
+  
+      Don't touch this if you don't know what it is.
 
    * **▶️Ready**
   
