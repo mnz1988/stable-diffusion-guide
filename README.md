@@ -465,7 +465,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
    * **▶️Ready**
   
-      You can now press the play button that's been floating on the left side. It will set up the training environment then start the process. Check the progress via the outputs at the bottom. Good luck! If you encounter an error, read it carefully in case it's easy to fix, otherwise seek help online or contact me.
+      You can now press the play button that's been floating on the left side. It will set up the training environment then start the process. Check the progress via the outputs at the bottom, it should take 20 to 60 minutes. Good luck! If you encounter an error, read it carefully in case it's easy to fix, otherwise seek help online or contact me.
 
 1. **Testing your results** <a name="traintest"></a>[▲](#index)
 
