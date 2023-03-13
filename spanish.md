@@ -17,9 +17,8 @@
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Entrenamiento de Loras para novatos](#train)
-    * [Colab de entrenamiento](#traincolab)
     * [Archivos de entrenamiento](#datasets)
-    * [Opciones de entrenamiento](#trainparams)
+    * [Colab de entrenamiento](#traincolab)
     * [Probar tus resultados](#traintest)
     * [Consejos adicionales](#trainchars)
 * [...vtubers?](#vtubers)
@@ -414,14 +413,6 @@ He aquí unos recursos clásicos si deseas leer sobre el tema en profundidad. Pu
 
 Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir una guía simple para que puedas hacer tu propio Lora, de un personaje, concepto o estilo.
 
-**Colab de entrenamiento** <a name="traincolab"></a>[▲](#index)
-![Trainer colab](images/trainercollab.png)
-
-1. Utilizaremos [ESTE DOCUMENTO DE COLAB](https://colab.research.google.com/drive/1dkiziaR1rizn7f6jRM7jwH6KxpaoY0-w?usp=sharing). Puedes copiarlo a tu Google Drive si deseas.
-
-1. Presiona el botón de reproducción de *🇦 Montar tu google drive* y dale acceso cuando lo pida. Haz lo mismo con *🇧 Instalación*. Mientras se instala en el servidor de Google, sigue al siguiente paso.
-
-1. Baja a *🇨 Configuración* pero aún no lo actives. Aquí en **Inicio** puedes darle cualquier nombre a tu proyecto. También puedes cambiar el modelo base que utilizaremos, pero para esta guía utilizaremos `animefull-final` ya que es la base de casi todos los modelos anime y produce los resultados más consistentes. De otra forma recomendaría `AnythingV3`. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar (tal como [Deliberate](https://civitai.com/api/download/models/15236)).
 
 1. **Archivos de entrenamiento** <a name="datasets"></a>[▲](#index)
   
@@ -433,21 +424,33 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
    1. Crea los archivos de texto junto a cada imagen, con el mismo nombre de archivo. Puedes escribir los tags tú mismo, aunque puede ser lento y poco preciso. Si son fotografías, descríbelas en detalle con oraciones simples.
       * Opcionalmente puedes agregar la [extensión Tagger](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) para que analice tus imágenes y cree las tags de anime por ti. Las instrucciones son así: Añade y activa la extensión, y reinicia el programa. Luego dirígete a la nueva pestaña **Tagger**, luego a *atch from directory*, y selecciona la carpeta con tus imágenes. Pon el *output name* como `[name].txt` y el threshold a 0.2 o mayor (éste es la precisión de las tags). Finalmente presiona **Interrogate** y se crearán tus archivos de texto.
     
-   1. Una vez que tus imágenes y descripciones estén listas, ponlas en una carpeta con la siguiente estructura: Una carpeta con el nombre de tu proyecto, la cual contiene al menos 1 carpeta en el formato `repeticiones_nombre`, la cual contiene tus archivos de entrenamiento. Así:
-  
-      ![Estructura de carpetas](images/trainfolder_spanish.png)
+   1. Una vez que tus imágenes y descripciones estén listas, ponlas en una misma carpeta y sigue al siguiente paso.
+    
+1. **Colab de entrenamiento** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab_spanish.png)
 
-   1. Aquí es donde decides tu número de repeticiones, con el nombre de la carpeta interior. Recomiendo que tu cantidad de imágenes multiplicada por su número de repeticiones no supere un total de 400. Así que si tienes 20 imágenes, recomiendo 10 o 20 repeticiones, y más imágenes necesitarían menos. En tal caso, tu carpeta interior se llamará `10_repeticiones` (puedes cambiar la palabra "repeticiones" por un nombre a tu gusto).
-  
-   1. Sube la carpeta exterior y todos sus contenidos (la que tiene el nombre de tu proyecto) a tu Google Drive, en la carpeta `lora_training/datasets/`.
-  
-1. **Opciones de entrenamiento** <a name="trainparams"></a>[▲](#index)
+   Utilizaremos [MI NUEVO COLAB](https://colab.research.google.com/drive/1WqbmYr0K9ytXjZtRfpiOQwOhXicPlSHY?usp=sharing). Usaremos las siguientes configuraciones:
 
-   * Bajo **Archivos**, no necesitas cambiar nada esta vez.
-   * Bajo **Pasos**, puedes cambiar los epochs y batch size según lo descrito. Más epochs te dan más control sobre el progreso de tu Lora, y dará más tiempo para que aprenda, pero no exageres. Si tienes muchas imágenes puedes aumentar el batch size.
-   * Bajo **Entrenamiento**, el `unet_aprendizaje` es el parámetro más importante. 1e-3 es el valor por defecto y funciona cuando tienes pocas imágenes, pero puede ir hasta 1e-5. También está el dim, el cual es el tamaño de tu Lora, y más grande no necesariamente es mejor (recomiendo dim 16, alpha 8).
+   * **▶️Inicio**
+   
+      Puedes darle cualquier nombre a tu proyecto, pero sin espacios. Luego, debes crear las siguientes carpetas en tu Google Drive: `lora_training/datasets/nombre_de_proyecto` - Aquí subirás todas tus imágenes y textos. Por ejemplo, mi proyecto se llama "ina": ![carpetas](images/drivefolders.png)
 
-1. Ahora puedes activar *🇨 Configuración*, esperar que el modelo se descarge, y finalmente comenzar el entrenamiento con *🇩 Cocinar el Lora*. Debería tomar 20 a 60 minutos si pusiste un número apropiado de repeticiones y epochs. Si encuentras errores intenta contactarme o buscar ayuda.
+      También puedes cambiar el modelo base, pero para esta guía utilizaremos `animefull-final` ya que es la base de casi todos los modelos anime y produce los resultados más consistentes. De otra forma recomendaría `AnythingV3`. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar.
+
+   * **▶️Archivos**
+
+      Aquí hay algunas opciones sobre cómo tus archivos serán usados en el entrenamiento, pero esta vez no necesitas cambiar nada. Échales un vistazo si deseas.
+     
+   * **▶️Pasos**
+   
+      Tu número de repeticiones y epochs son muy importantes. Recomiendo que tu cantidad de imágenes multiplicada por las repeticiones esté entre 200 y 400, ya que da resultados consistentes. Luego elige entre 10 y 30 epochs dependiendo de cuánto deseas entrenar, podemos probar con 10.
+   
+   * **▶️Entrenamiento**
+   
+      El `aprendizaje_unet` es el parámetro más importante. 5e-4 es el valor por defecto y lo recomiendo para personajes, pero puedes probar 1e-3 si tienes pocas imágenes y 1e-4 o 1e-5 si tienes muchas y/o deseas entrenar más tiempo. Puedes ignorar el resto esta vez.
+
+   * **▶️Listo**
+   
+      Ahora puedes apretar el botón circular de la izquierda para correr el colab. Primero realizará la instalación y luego comenzará. Revisa el progreso en los resultados de abajo, debería tomar de 20 a 60 minutos. ¡Buena suerte! Si encuentras un error ve si puedes solucionarlo o si necesitas ayuda online. También puedes contactarme.
 
 1. **Probar tus resultados** <a name="traintest"></a>[▲](#index)
 
