@@ -445,6 +445,10 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
   
    This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
 
+   **New:** Create your anime dataset in minutes with [my dataset maker colab](https://colab.research.google.com/drive/1-D58Nx782_aj_BYtJS0uPU79WAhS1ldL?usp=sharing).
+
+   Otherwise:
+
    1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at the very least 5 images, but I'd recommend at least 20, and more is almost always better.
       * Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases). If you want to do a character, I recommend selecting gelbooru and pixiv, and filtering tags like this: `1girl solo character_name score:>10 -rating:explicit` (the explicit rating may include weird images, so it's fine to exclude them)
   
@@ -453,7 +457,7 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
   
    1. Once your images and their text files are ready, put them all in the same folder and proceed to the next step. 
     
-2. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
+1. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
 
    We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1fs7oHytA4Va0IzDK-F8q_q9RIJRIh5Dv?usp=sharing). It has been revamped to be easier to use and have more options, as well as [LoCon and LoHa ▲](#lycoris) support. Here's what settings you should use under each section:
    
@@ -503,12 +507,12 @@ With those way smarter resources out of the way, I'll try to produce a simple gu
 
    After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one colab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
 
-1 **Additional tips** <a name="trainchars"></a>[▲](#index)
+1. **Additional tips** <a name="trainchars"></a>[▲](#index)
 
    The most important thing for characters and concepts is the tags. You want a dataset with varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
 
    When training a character or concept you should place an **activation tag** at the start of every text file, and set `keep_tokens` to 1 before training. An activation tag is how we'll invoke your Lora to work. Having done that, **some people reccommend** removing or "pruning" tags that are intrinsic to your character or concept, such as hair color and eye color. For example, if a character always has cat ears, you would remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag, and makes your Lora easier to use, but less flexible.
-   * You can use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to add an activation tag to all files at the same time. Instructions are as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then *Batch Edit Captions*. Turn off "Show only the tags...", turn on "Prepend additional tags", then add your activation tag inside the *Edit Tags* text box. Then apply your changes, scroll up and save your changes. This will add a new tag at the beginning of every text file.
+   * You can use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to add an activation tag to all files or selected files at the same time. Instructions are as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then *Batch Edit Captions*. Turn off "Show only the tags...", turn on "Prepend additional tags", then add your activation tag inside the *Edit Tags* text box. Then apply your changes, scroll up and save your changes. This will add a new tag at the beginning of every text file.
 
    This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc. If you desire you may also prune redundant clothing tags, such as removing "red tie" but keeping "tie". You can even define an additional activation tag for different outfits your character may wear regularly, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
 
