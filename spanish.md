@@ -418,6 +418,10 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
   
    Esta es la mayor parte del entrenamiento de Loras. Necesitarás recopilar un "dataset" o archivos de entrenamiento, los cuales consisten en imágenes y sus correspondientes descripciones (con tags en el caso de anime).
 
+   **Nuevo:** Puedes usar mi [colab preparador de lora](https://colab.research.google.com/drive/17v2DeLO8VOjgD9PRwBtRkX7Qyq2WjB_t) para recopilar y tagear cientos de imágenes de anime en solo minutos.
+
+   De otra forma:
+
    1. Encuentra imágenes online que representens el personaje/concepto/estilo que deseas entrenar, posiblemente en sitios tales como [gelbooru](https://gelbooru.com/). Asegúrate que sean imágenes de calidad decente en diferentes ángulos, escenas, ropa, etc. Necesitas al menos 10 imágenes, recomiendo 20 o más, y por lo general mientras más mejor.
       * Opcionalmente, puedes instalar [Grabber](https://github.com/Bionus/imgbrd-grabber/releases) para descargar cientos de imágenes automáticamente. Recomiendo buscar en gelbooru y pixiv, para un personaje sería con estas tags: `1girl solo character_name score:>10 -rating:explicit` (lo explícito suele ser raro y por lo tanto se puede excluir).
   
@@ -476,13 +480,11 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
    La parte más importante para un personaje son los tags. Claro que necesitas imágenes con variadas poses y lugares, pero si las descripciones están mal no servirá de nada.
 
    Cuando entrenas un personaje o concepto deberías definir una **palabra de activación**, y ajustar el valor de `keep_tokens` a 1. Una palabra de activación es como podremos invocar a tu Lora para que funcione. Habiendo hecho eso, **algunas personas recomiendan** quitar o "limpiar" las tags que son intrínsicas a tu personaje o concepto, tales como el color de pelo y ojos. Por ejemplo, si una chica siempre tiene orejas de gato, quieres quitar las tags tales como `animal ears, animal ear fluff, cat ears`, y así éstas serán "absorbidas" por tu palabra de activación. Esto hará tu Lora más fácil de usar pero menos flexible.
-   * Puedes usar [la extensión Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) para añadir una palabra de activación a todos tus archivos al mismo tiempo. Es un poco complejo: Añade la extensión y reinicia tu webui, luego entra a la nueva pestaña **Dataset Tag Editor** y luego a *Batch Edit Captions*. Bajo *Edit Tags* escribe tu palabra de activación y enciende *Prepend additional tags*. Luego aplica los cambios (botón naranja), sube y guarda (botón naranja).
-
+   * Puedes usar [mi preparador de lora](https://colab.research.google.com/drive/17v2DeLO8VOjgD9PRwBtRkX7Qyq2WjB_t) o [la extensión Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) para añadir una palabra de activación a todos tus archivos al mismo tiempo. 
+   
    Esta "absorción" de detalles no entregados por los tags es la forma en que los Loras funcionan en general, ya que logran aprender y representar los detalles imperceptibles o difíciles de explicar tales como el rostro, acccesorios, composición, etc. También puedes limpiar tags de ropa redundantes, como borrar "red tie" y dejar "tie". Incluso puedes tener una palabra de activación distinta para cada atuendo que tu personaje usa comúnmente, como personaje-normal, personaje-bikini, etc. Pero no es la única forma de hacerlo. En cualquier caso, si tus tags son correctas, tu personaje debería poder cambiar de ropa fácilmente.
 
    Mientras tanto, los Loras de estilo no necesitan palabra de activación, ya que deseamos que siempre estén activos. Absorberán el estilo artístico de forma natural, y funcionará con variados pesos.
-
-   Otro consejo es tener más de una carpeta de repeticiones, y separarlas por calidad: Dar más repeticiones a tus mejores imágenes, y menos repeticiones (incluso 1) a las imágenes que quizá tienen peor estilo pero aún así aportan algo único.
 
 &nbsp;
 
