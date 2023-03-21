@@ -428,101 +428,28 @@ There are also alternative **diff** versions of each ControlNet model, which pro
 
 # Lora Training for beginners <a name="train"></a>[▲](#index)
 
-To train a [Lora ▲](#lora) yourself is an achievement. It's certainly doable, but there are many variables involved, and a lot of work depending on your workflow. It's somewhere between an art and a science.
+To train a [Lora ▲](#lora) is regarded as a difficult task. However, my new guide covers everything you need to know to get started for free, thanks to Google Colab:
 
-You can do it on your own computer if you have at least 8 GB of VRAM. However, I will be using a Google Colab document for educational purposes during Step 2.
+**[🎴 Read my Lora making guide here](https://civitai.com/models/22530)**
 
-Here are some classic resources if you want to read about the topic in depth. Rentry may be blocked by your internet provider, in which case you may need to use a VPN or try putting it through [Google Translate](https://translate.google.cl/?op=websites).
-* [Classic Lora training guide](https://rentry.org/lora_train)
-* [Lora training science](https://rentry.org/lora-training-science)
-* [Original Kohya Trainer (Dreambooth method)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
-* [List of trainer parameters](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
-* [Angry Lora training guide by ao](https://rentry.org/tohoaifaq#opinionated-lora-guide-for-colab)
+You can also train a Lora on your own computer if you have at least 8 GB of VRAM. For that, I will list a few resources below:
 
-With those way smarter resources out of the way, I'll try to produce a simple guide for you to make your very own Lora for a character, concept, or artstyle.
-
-1. **Creating a dataset** <a name="datasets"></a>[▲](#index)
-  
-   This is the largest part of Lora training. You will need to create a "dataset" of images to train with, along with corresponding text files containing descriptions for those images (tags in the case of anime).
-
-   **New:** Create your anime dataset in minutes with [my dataset maker colab](https://colab.research.google.com/drive/1-D58Nx782_aj_BYtJS0uPU79WAhS1ldL?usp=sharing).
-
-   Otherwise:
-
-   1. Find some images online representing the character/artstyle/concept you want to convey, possibly on sites such as [gelbooru](https://gelbooru.com/). You will need at the very least 5 images, but I'd recommend at least 20, and more is almost always better.
-      * Optionally, you can get hundreds of them using [Grabber](https://github.com/Bionus/imgbrd-grabber/releases). If you want to do a character, I recommend selecting gelbooru and pixiv, and filtering tags like this: `1girl solo character_name score:>10 -rating:explicit` (the explicit rating may include weird images, so it's fine to exclude them)
-  
-   1. Create your text files next to each image, with the same filename. If you only have a few images you may tag them yourself, but it may be slow and inaccurate. If you're using photographs you should describe each one in detail using simple sentences.
-      * Optionally, add the [Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) to your webui, through which you can automatically analyze all your training images and generate accurate anime tags for them. Instructions are as follows: First add and enable the extension, and restart your entire webui. Then go to the new **Tagger** tab, then *Batch from directory*, and select the folder with your images. Set the output name to `[name].txt` and the threshold at or above 0.2 (this is how closely each tag must match an image to be included). Then **Interrogate** and it will start generating your text files.
-  
-   1. Once your images and their text files are ready, put them all in the same folder and proceed to the next step. 
-    
-1. **Trainer Colab** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab.png)
-
-   We will be using [MY NEW TRAINER COLAB](https://colab.research.google.com/drive/1fs7oHytA4Va0IzDK-F8q_q9RIJRIh5Dv?usp=sharing). It has been revamped to be easier to use and have more options, as well as [LoCon and LoHa ▲](#lycoris) support. Here's what settings you should use under each section:
-   
-   * **▶️Setup**
-
-      Name your project anything you like, but it can't contain spaces. Then, you must create the following folders in your Google Drive: `lora_training/datasets/your_project_name` - Here you will upload all your images and text files. For example, here's my project called "ina": ![folders](images/drivefolders.png)
- 
-      You can also change the base model for training, but we'll be using `animefull-final` as it is the foundation of most anime models and produces the most consistent results. Otherwise `AnythingV3` works too. If you want to train with photographs you may use the [base SD 1.5 model](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) or the realism model you wish to use in the end.
-
-   * **▶️Files**
-  
-      Here's a few options about how your files will be treated during training, but you can leave them all as they are. Feel free to read their descriptions though.
-
-   * **▶️Steps**
-
-      Your number of repeats and your number of epochs are very important. I recommend that your amount of images multiplied by their repeats equals somewhere between 200 and 400, as I have found this will let it learn pretty consistently. Then, set your epochs between 10 and 30 depending on how long you want to train. We can try just 10 this time.
-
-   * **▶️Training**
-   
-      The `unet_lr` or "learning rate" is the most important parameter. 5e-4 unet is the default in this guide and good for characters, but you can try 1e-3 if you have very few images, or 1e-4/1e-5 if you have lots of images and want slower cooking. You can ignore the rest of the settings this time.
-
-   * **▶️Lora Type**
-  
-      Don't touch this if you don't know what it is.
-
-   * **▶️Ready**
-  
-      You can now press the play button that's been floating on the left side. It will set up the training environment then start the process. Check the progress via the outputs at the bottom, it should take 20 to 60 minutes. Good luck! If you encounter an error, read it carefully in case it's easy to fix, otherwise seek help online or contact me.
-
-1. **Testing your results** <a name="traintest"></a>[▲](#index)
-
-   Some time has passed and your Lora finished training/cooking. Go and download your Lora from `lora_training/output` in your Google Drive. But hey, there's multiple - by default, a copy of your Lora will save every 2 epochs, allowing you to test its progress. If you train it for many epochs, you may be able to identify the optimal point between "undercooked" and "overcooked".
-
-   When a Lora is undercooked, it doesn't fit your training data very well. When it is overcooked, it fits your data *too* well, and starts distorting the generated images. If your dataset or parameters were poor, it can be both things at once!
-
-   Using what we learned in [X/Y/Z Plot ▲](#plot), we can make a chart of the different epochs of our Lora:
-
-   ![Comparison of Lora training results](images/loratrain.png)
-
-   Look at that, it gets more detailed over time! The last image is without any Lora for comparison. This was a successful character Lora, at least at first glance. You would need to test different seeds, clothes and scenarios to be sure.
-
-   * If your results don't work at all, then you trained for too little time or most likely your learning rate was too small (Try something like 5e-4 or in extreme cases 1e-3).
-   * If your results are distorted, try lowering the Lora's intensity to somewhere between 0.5 and 0.8. If it's still distorted or doesn't work anymore, and earlier epochs don't work either, then your lora is burnt and you should try a smaller learning rate (like 1e-4 or 1e-5).
-   * If it fails no matter what you do, you probably got the repetitions wrong in your folder name or you accidentally changed a setting to an impossible value.
-   * If it works fine but your character can only do one set of clothes or one position, then either your images were too similar to each other or your tagging was done poorly.
-   * If it works fine but the shading looks flat or the style looks wrong, then you may be using a model that's too advanced. Try `animefull-final-pruned` if you can find it.
-
-   After getting used to making Loras, and hopefully interacting with various resources and the community, you will be ready to use a different method including the [advanced all-in-one colab by kohya](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb). Good luck.
-
-1. **Additional tips** <a name="trainchars"></a>[▲](#index)
-
-   The most important thing for characters and concepts is the tags. You want a dataset with varying poses and scenarios, but if they're tagged incorrectly it's not gonna work.
-
-   When training a character or concept you should place an **activation tag** at the start of every text file, and set `keep_tokens` to 1 before training. An activation tag is how we'll invoke your Lora to work. Having done that, **some people reccommend** removing or "pruning" tags that are intrinsic to your character or concept, such as hair color and eye color. For example, if a character always has cat ears, you would remove tags such as `animal ears, animal ear fluff, cat ears`, etc. This way they become "absorbed" by your activation tag, and makes your Lora easier to use, but less flexible.
-   * You can use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) to add an activation tag to all files or selected files at the same time. Instructions are as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then *Batch Edit Captions*. Turn off "Show only the tags...", turn on "Prepend additional tags", then add your activation tag inside the *Edit Tags* text box. Then apply your changes, scroll up and save your changes. This will add a new tag at the beginning of every text file.
-
-   This "absorption" of details not provided by tags is also how Loras work at all, by representing things normally imperceptible or hard to describe like faces, accessories, brushstrokes, etc. If you desire you may also prune redundant clothing tags, such as removing "red tie" but keeping "tie". You can even define an additional activation tag for different outfits your character may wear regularly, eg. character-default, character-bikini, etc. But there's more than one way to do it. In any case, with the correct usage of tags, your character should easily be able to change clothes.
-
-   Style Loras meanwhile don't really need an activation tag, as we want them to always be active. They will absorb the artstyle naturally, and will work at varying weights. We can even set the text encoder learning rate to 0 as we don't care much about the text. Tagging different elements in the training images is still important, though.
+* For training, use [bmaltais' Kohya GUI](https://github.com/bmaltais/kohya_ss). It has all the same settings as my trainer colab and more, so you can follow my guide too. Also there are youtube tutorials available in this link.
+* Also, here's an [angry Lora training guide by ao](https://rentry.org/tohoaifaq#opinionated-lora-guide-for-colab)
+* To collect your images from Gelbooru like in my guide, install [Grabber](https://github.com/Bionus/imgbrd-grabber/releases).
+* To tag your dataset use the [WD1.4 Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) for webui. First add and enable the extension, and restart your entire webui. Then go to the new **Tagger** tab, then **Batch from directory**, and select the folder with your images. Set the output name to `[name].txt` and the threshold at or above 0.35 (this is how closely each tag must match an image to be included). Then **Interrogate** and it will start generating your text files.
+* To curate your tags like in my guide use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) for webui. It has all the features you need like sorting, pruning, replacing and merging tags. To add an activation tag it's as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then **Batch Edit Captions**. Turn off "*Show only the tags...*", turn on "*Prepend additional tags*", then add your activation tag inside the **Edit Tags** text box. Then apply your changes, scroll up and save your changes. Only then will it modify your files and add a new tag at the beginning of every text file.
 
 &nbsp;
 
 # ...vtubers? <a name="vtubers"></a>[▲](#index)
 
-That's it, that's the end of this guide for now. Thank you for reading. If you want to correct me or contribute to the guide you can open an issue or pull request and I'll take a look soon.
+That's it, that's the end of this guide for now. I'd be grateful if you want to contribute on missing topics like:
+* img2img
+* Inpainting
+* Controlnet t2i adapters
+
+Thank you for reading!
 
 I have [a separate repo that aggregates vtuber Loras, specially Hololive](https://huggingface.co/hollowstrawberry/holotard). If you're interested in that.
 
