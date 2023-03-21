@@ -38,10 +38,6 @@ language:
    * [Ultimate Upscaler](#ultimate)
 * [ControlNet](#controlnet)
 * [Lora Training for beginners](#train)
-   1. [Creating a dataset](#datasets)
-   1. [Trainer Colab](#traincolab)
-   1. [Testing your results](#traintest)
-   1. [Additional tips](#trainchars)
 * [...vtubers?](#vtubers)
  
 &nbsp;
