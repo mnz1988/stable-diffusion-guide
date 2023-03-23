@@ -405,20 +405,13 @@ Entrenar un [Lora ▲](#lora) tú mismo es una especie de logro. No es la gran c
 
 Puedes entranar Loras en tu propio computador si tienes al menos 8 GB de VRAM. Sin embargo utilizaré un documento de Google Colab por motivos educacionales.
 
-He aquí unos recursos clásicos si deseas leer sobre el tema en profundidad. Puede que Rentry esté bloqueado por tu proveedor de internet, en tal caso puedes usar un VPN o intentar poner la página a través de [Google Translate](https://translate.google.cl/?op=websites).
-* [Entrenamiento de Loras, en Rentry](https://rentry.org/lora_train)
-* [Ciencia de Loras, en Rentry](https://rentry.org/lora-training-science)
-* [Entrenador original de Kohya (método Dreambooth)](https://colab.research.google.com/github/Linaqruf/kohya-trainer/blob/main/kohya-LoRA-dreambooth.ipynb)
-* [Lista de parámetros del entrenador](https://github.com/derrian-distro/LoRA_Easy_Training_Scripts#list-of-arguments)
-
-Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir una guía simple para que puedas hacer tu propio Lora, de un personaje, concepto o estilo.
-
+Tengo una [guía más actualizada y detallada](https://civitai.com/models/22530) en inglés.
 
 1. **Archivos de entrenamiento** <a name="datasets"></a>[▲](#index)
   
    Esta es la mayor parte del entrenamiento de Loras. Necesitarás recopilar un "dataset" o archivos de entrenamiento, los cuales consisten en imágenes y sus correspondientes descripciones (con tags en el caso de anime).
 
-   **Nuevo:** Puedes usar mi [colab preparador de lora](https://colab.research.google.com/drive/17v2DeLO8VOjgD9PRwBtRkX7Qyq2WjB_t) para recopilar y tagear cientos de imágenes de anime en solo minutos.
+   **Nuevo:** Puedes usar mi [colab preparador de lora](https://colab.research.google.com/github/hollowstrawberry/kohya-colab/blob/main/Spanish_Dataset_Maker.ipynb) para recopilar y tagear cientos de imágenes en solo minutos.
 
    De otra forma:
 
@@ -432,13 +425,13 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
     
 1. **Colab de entrenamiento** <a name="traincolab"></a>[▲](#index) ![Trainer colab](images/trainercollab_spanish.png)
 
-   Utilizaremos [MI NUEVO COLAB](https://colab.research.google.com/drive/1WqbmYr0K9ytXjZtRfpiOQwOhXicPlSHY?usp=sharing). Usaremos las siguientes configuraciones:
+   Utilizaremos [mi nuevo colab entrenador](https://colab.research.google.com/github/hollowstrawberry/kohya-colab/blob/main/Spanish_Lora_Trainer.ipynb). Usaremos las siguientes configuraciones:
 
    * **▶️Inicio**
    
       Puedes darle cualquier nombre a tu proyecto, pero sin espacios. Luego, debes crear las siguientes carpetas en tu Google Drive: `lora_training/datasets/nombre_de_proyecto` - Aquí subirás todas tus imágenes y textos. Por ejemplo, mi proyecto se llama "ina": ![carpetas](images/drivefolders.png)
 
-      También puedes cambiar el modelo base, pero para esta guía utilizaremos `animefull-final` ya que es la base de casi todos los modelos anime y produce los resultados más consistentes. De otra forma recomendaría `AnythingV3`. Si deseas entrenar con fotografías puedes copiar el enlace al modelo base de [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) o al modelo realista que desees utilizar.
+      También puedes cambiar el modelo base, pero para esta guía utilizaremos `animefull-final` ya que es la base de casi todos los modelos anime y produce los resultados más consistentes. Si deseas entrenar con fotografías cambia el modelo a `sd-v1-5` o al modelo realista que desees utilizar.
 
    * **▶️Archivos**
 
@@ -446,11 +439,11 @@ Con dichos recursos mucho más inteligentes puestos de lado, intentaré producir
      
    * **▶️Pasos**
    
-      Tu número de repeticiones y epochs son muy importantes. Recomiendo que tu cantidad de imágenes multiplicada por las repeticiones esté entre 200 y 400, ya que da resultados consistentes. Luego elige entre 10 y 30 epochs dependiendo de cuánto deseas entrenar, podemos probar con 10.
+      Tu número de repeticiones y epochs son muy importantes. Recomiendo que tu cantidad de imágenes multiplicada por las repeticiones esté entre 200 y 400, ya que da resultados consistentes. Luego elige entre 10 y 30 epochs dependiendo de cuánto deseas entrenar, podemos probar con 15.
    
    * **▶️Entrenamiento**
    
-      El `aprendizaje_unet` es el parámetro más importante. 5e-4 es el valor por defecto y lo recomiendo para personajes, pero puedes probar 1e-3 si tienes pocas imágenes y 1e-4 o 1e-5 si tienes muchas y/o deseas entrenar más tiempo. Puedes ignorar el resto esta vez.
+      El `aprendizaje_unet` es el parámetro más importante. 5e-4 es el valor por defecto y lo recomiendo para personajes, pero puedes probar 1e-3 si tienes pocas imágenes y 1e-4 si tienes muchas y/o deseas entrenar más tiempo. Puedes ignorar el resto esta vez.
 
    * **▶️Listo**
    
