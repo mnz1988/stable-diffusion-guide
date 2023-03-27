@@ -217,7 +217,7 @@ Here you can select your checkpoint and VAE. We will go over what these are and 
 ![Extensions](images/extensions.png)
 
 Here are some useful extensions. If you're using the colab in this guide you already have most of these, otherwise I hugely recommend you manually add the first 2:
-* [Image Browser (fixed fork)](https://github.com/aka7774/sd_images_browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
+* [Image Browser (updated)](https://github.com/AlUlkesh/stable-diffusion-webui-images-browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
 * [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and prompts without them usually don't work, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
 * [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) - Lets you use LoCons and LoHas. More info [below ▼](#lycoris).
 * [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you analyze any image and use it as an referene for your own image. Practically speaking, it can create any pose or environment you want.
