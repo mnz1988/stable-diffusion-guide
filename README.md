@@ -51,25 +51,27 @@
 
 # نصب روی کامپیوتر شخصی (Windows + Nvidia) <a name="install"></a>[▲](#index)
 
-برای اجرای استیبل دیفیوژن روی کامپیوتر خود حداقل به 16 گیگابایت رم و گرافیکی با حداقل 4 گیگابایت وی رم (8 گیگ توصیه می شود) نیاز دارید. این راهنما بصورت عمومی ویندوز 10 و 11 را با استفاده از کارت گرافیک NVIDIA سری های 16XX, 20XX یا 30XX پشتیبانی می کند. پوزش از کاربران لینوکس و مکس و همچنین صاحبین کارت های گرافیک AMD چون این راهنما آنها را در بر نمیگیرد و راه اندازی استیبل دیفیوژن برای آنها بسیار پر دردسر و پر از ایرادات فنی است. توصسه میشود از همان آموزش کولب که در مرحله قبل شد استفاده کنید.   
+برای اجرای استیبل دیفیوژن روی کامپیوتر خود حداقل به 16 گیگابایت رم و گرافیکی با حداقل 4 گیگابایت وی رم (8 گیگ توصیه می شود) نیاز دارید. این راهنما بصورت عمومی ویندوز 10 و 11 را با استفاده از کارت گرافیک NVIDIA سری های 16XX, 20XX یا 30XX پشتیبانی می کند. پوزش از کاربران لینوکس، مک و همچنین صاحبین کارت های گرافیک AMD چون این راهنما آنها را در بر نمیگیرد و راه اندازی استیبل دیفیوژن برای آنها پر دردسرتر و پر از ایرادات فنی است. توصسه میشود از همان آموزش کولب که در مرحله قبل ارائه شد استفاده کنید.   
 
-1. Get the latest release from [this page](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases). 
+1. آخرین نسخه ریلیز را [از این صفحه](https://github.com/EmpireMediaScience/A1111-Web-UI-Installer/releases) دانبود کنید. 
 
-1. Run the installer, choose an easy and accessible location to install to, and wait for it to finish.
+2. فایل اینستالر را اجرا کنید و فولدری که میخواهید آنجا نصب شود را مشخص کنید و تا پایان نصب صبر کنید.
 
-1. Run the program. You will see a few options. First, turn on **medvram** and **xformers**. You may skip medvram if you have 12 or more GB of VRAM.
+3. برنامه را اجرا کنید. گزینه های **medvram** و **xformers** را فعال کنید. اگر وی رم گرافیک شما 12 گیگ یا بیشتر است نیاز به فعال کردن medvram نیست. 
+ 
+4. تنظیمات اضافی (**Additional Launch Options**) را به این روش میتوانید انجام دهید: `--opt-channelslast --no-half-vae --theme dark` . هر نوع تنظیم دیگری را که مایل باشید میتوانید اضافه کنید و با اسپیس (فضای خالی) آنها را از هم جدا کنید.
+   * اگر وی رم کارت گرافیک شما 4تا6 گیگابایت است مقدار `--opt-split-attention-v1` را نیز اضافه کنید چون ممکن است بتوانید از وی رم کمتری استفاده کنید.
+   * اگر میخواهید برنامه را روی کامپیوتر خود اجرا کنید ولی از دستگاه دیگری برای کار کردن با برنامه استفاده کنید (مثلا با موبایل)، مقدار `--listen --enable-insecure-extension-access` را نیز اضافه کنید. پس از اجرا، آی پی لوکال خود را میتوانید از یک وای فای که هردو دستگاه به آن متصل هستند استفاده کنید تا رابط کاربری را مشاهده کنید. همچنین میتوانید روی آن رمز هم بگذارید، فقط کافیست مقداری مثللا مشابه این را نیز اضافه کنید `--gradio-auth name:1234` 
+   * لیست کامل کارامترهای قابل استفاده را میتوانید [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings) بینید. 
 
-1. Set your **Additional Launch Options** to: `--opt-channelslast --no-half-vae --theme dark` . Any extra options should be separated by spaces.
-    * If your graphics card has 4-6 GB of VRAM, add `--opt-split-attention-v1` as it may lower vram usage even further.
-    * If you want to run the program from your computer but want to use it in another device, such as your phone, add `--listen --enable-insecure-extension-access` . After launching, use your computer's local IP in the same WiFi network to access the interface. You can also add a password like `--gradio-auth name:1234` .
-    * Full list of possible parameters [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings)
+5.   بر روی **Launch** کلیک کنید و منتظر بمانید تا صفحه رابط کاربری آن در مرورگر شما باز شود. برای اولین بار مقداری طول میکشد تا دانلودها انجام شود یا هروقت نیاز به فایلی باشد که بر روی سیستم موجود نیست برنامه اتوماتیک آن را دانلود میکند. 
 
-1. Click **Launch** and wait for a browser window to open with the interface. It may take a while the first time.
-
-1. The page is now open. It's your own private website. The starting page is where you can make your images. But first, we'll go to the **Settings** tab. There will be sections of settings on the left.
-    * In the *Stable Diffusion* section, scroll down and increase **Clip Skip** from 1 to 2. This is said to produce better images, specially for anime.
-    * In the *User Interface* section, scroll down to **Quicksettings list** and change it to `sd_model_checkpoint, sd_vae`
-    * Scroll back up, click the big orange **Apply settings** button, then **Reload UI** next to it.
+6. صفحه حالا باز شده. این یک وبسایت خصوصی متعلق به شماست. صفحه ابتدایی همان جاییست میتوانید از طریق وارد کردن متن یک یا چند تصویر ایجاد کنید. اما قبل از شروع به تب تنظیمات(**Settings**) بروید. سکشن تنظیمات در بخش چپ صفحه است.
+   * در سکشن *Stable Diffusion* به پایین اسکرول کنید و مقدار **Clip Skip** را از 1 به 2 تغییر دهید. این کار برای ایجاد تصاویر بهتر (به خصوص برای انیمه) کمک میکند. 
+   * در سکشن *User Interface* به پایین اسکرول کنید و **Quicksettings list** را به `sd_model_checkpoint, sd_vae` تغییر دهید
+   * با اسرول به بالا برگردید و بر روی دکمه نارنجی رنگ بزرگ که برروی آن نوشته **Apply settings** بزنید و بعد **Reload UI** کنار آن را بزنید.
+    
+8. 
 
 1. You are more than ready to generate some images, but you only have the basic model available. It's not great, at most it can make some paintings. Also, what are all of these options? See [below ▼](#start) to get started.
 
