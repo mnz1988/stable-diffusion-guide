@@ -1,70 +1,49 @@
----
-license: wtfpl
-tags:
-- guide
-- stable diffusion
-- webui
-- automatic1111
-- stable-diffusion-webui
-- lora
-language:
-- en
----
-
-**[⭐ CLICK HERE TO OPEN THIS DOCUMENT IN FULL WIDTH](README.md#index)**  
-**(The index won't work otherwise).**
-
-[🇪🇸🇲🇽 HAZ CLICK AQUÍ PARA VER ESTA GUÍA EN ESPAÑOL](spanish.md#index)
-
-&nbsp;
-
 # Index <a name="index"></a>
 
-* [Introduction](#intro)
-* [Google Colab](#colab)
-* [Local Installation (Windows + Nvidia)](#install)
-* [Getting Started](#start)
-   1. [Models](#model)
-   1. [VAEs](#vae)
-   1. [Prompts](#prompt)
-   1. [Generation parameters](#gen)
-* [Extensions](#extensions)
-* [Loras](#lora)
-   * [Lycoris](#lycoris)
-* [Upscaling](#upscale)
-* [Scripts](#imgscripts)
-   * [X/Y/Z Plot](#plot)
-   * [Prompt Matrix](#matrix)
-   * [Ultimate Upscaler](#ultimate)
-* [ControlNet](#controlnet)
-* [Lora Training for beginners](#train)
-* [...vtubers?](#vtubers)
+* [معرفی](#intro)
+* [نصب روی کامپیوتر شخصی (Windows + Nvidia)](#install)
+* [شروع توضیحات](#start)
+   1. [مدل ها](#model)
+   1. [توضیحات VAE](#vae)
+   1. [درخواست ها](#prompt)
+   1. [معیارهای تولید تصویر](#gen)
+* [افزودنی ها](#extensions)
+* [توضیحات Lora](#lora)
+   * [توضیحات Lycoris](#lycoris)
+* [بزرگ کردن اندازه](#upscale)
+* [اسکریپت ها](#imgscripts)
+   * [پلات اکس/وای/زی - X/Y/Z Plot](#plot)
+   * [ماتریکس درخواست - Prompt Matrix](#matrix)
+   * [توضیحات Ultimate Upscaler](#ultimate)
+* [کنترل نت(#controlnet)
+* [آموزش دادن Lora برای تازه کارها](#train)
+* [توضیحات ...vtuberها](#vtubers)
  
 &nbsp;
 
-# Introduction <a name="intro"></a>[▲](#index)
+# معرفی <a name="intro"></a>[▲](#index)
+استیبل دیفیوژن (که به اختسار به آن SD میگوییم) یک نرم افزار قدرتمند تولید تصویر هوش مصنوعی است که میتوانید آن را بصورت آنلاین و یا بر روی کامپیوتر شخصی نصب و استفاده کنید (فعلا کاملا رایگان است و متن باز). SD از مدل ها "models" که شبیه به مغز هوش مصنوعی عمل میکنند و افرادی آن را آموزش داده اند تا فعالیت های مشخصی انجام دهد استفاده میکند و تقریبا میتواند هر چیزی بسازد. بیشترین استفاده های کاربران فعلا برای انیمه، تصاویر مشابه حقیقی و محتوای NSFW (نا مناسب برای کار/محتوای بزرگسالان/محتوای زننده یا تحریک کننده) است.  
 
-Stable Diffusion is a very powerful AI image generation software you can run on your own home computer. It uses "models" which function like the brain of the AI, and can make almost anything, given that someone has trained it to do it. The biggest uses are anime art, photorealism, and NSFW content.
+از نگاه قانونی شما مسئول هر نوع تولیدی با آن هستید و افراد سازنده آن مسئولیتی ندارند. 
 
-The images you create may be used for any purpose, depending on the used model's license. Whether they are "yours" in a legal sense varies by local laws and is often inconclusive. Neither I or any of the people involved in Stable Diffusion or its models are responsible for anything you make, and you are expressively forbidden from creating illegal or harmful content.
-
-This guide is up to date with the best practices as of March 2023. One week is like a year in AI time, so hopefully it is still useful by the time you read it.
+آخرین تغییرات این راهنما بر اساس نرم افزار آپدیت شده در مارچ 2023 می باشد و با توجه به اینکه یک هفته زمان مثل یک سال در صنعت هوش مصنوعی می ماند، ممکن است در زمان مطالعه این راهنما، تغییراتی در نرم افزار ایجاد شده باشد. 
 
 &nbsp;
 
-# Google Colab <a name="colab"></a>[▲](#index)
+# نصب و استفاده آنلاین با استفاده از Google Colab
 
-The easiest way to use Stable Diffusion is through Google Colab. It borrows Google's computers to use AI, with variable time limitations, usually a few hours every day. You will need at least one Google account and we will be using Google Drive to store your settings and resulting images.
+راهی راحت و برای استفاده از SD بصورت آنلاین و بدون داشتن سخت افزار شخصی استفاده از این سرویس است که از کامپیوترهای گوگل به جای سخت افزار خودتان استفاده میکنید. برای ذخیره تنظیمات و همچنین تصاویر تولید شده از گوگل درایو استفاده میکنیم. 
 
-If you instead want to run it on your own computer, [scroll down ▼](#install).
+اگر میخواهید از کامپیوتر شخصی استفاده کنید [اسکرول به پایین صفحه ▼](#install).
 
-1. Open [THIS PAGE](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
+1. رفتن به لینک مورد نظر [این صفحه](https://colab.research.google.com/drive/1wEa-tS10h4LlDykd87TF5zzpXIIQoCmq).
 
-1. Near the top, click **Copy to Drive**. Wait for the new window to open and close the old one. This is now your personalized colab which will save your settings, and you should open it from your Google Drive from now on. If the original receives an update you'll have to replace yours to benefit from it.
+2. نزدیک به بالای صفحه روی **Copy to Drive** کلیک کنید.منتظر شوید تا صفحه جدید باز شود و صفحه قدیمی را ببندید. حالا داخل صفحه کولب شخصی خود هستید که تنظیمات سفارشی شما را نگه میدارد که از این به بعد باید آن را از داخل گوگل درایوتان باز کنید. اگر برای محتوای اصلی (صفحه قدیمی) آپدیتی ارائه شود شما نیز باید آن را جایگزین کنید تا بتواید از مزایای آن استفاده کنید.  
 
-1. Turn on the following options under **Configurations**: `output_to_drive, configs_in_drive, no_custom_theme`. Then, turn on the following options under **Models, VAEs, etc**: `anything_vae`, `wd_vae`, `sd_vae`.
+3. در بخش **Configurations** این تنظیمات را فعال کنید: `output_to_drive, configs_in_drive, no_custom_theme` و در بخش **Models, VAEs, etc** اینها را فعال کنید:`anything_vae`, `wd_vae`, `sd_vae` 
 
-1. If you're already familiar with Stable Diffusion, you may paste links to your desired resources in the `custom_urls` text box. We will add some links later in this guide. Links must be **direct downloads** to each file (ideally from civitai or huggingface), and must be separated by commas.
+4. اگر از قبل با SD آشنایی کمی داشته باشید میتوانید با استفاده از باکس متنی `custom_urls` از لینک های منابع مورد نظرتان نیز استفاده کنید که تعدادی از آنها را معرفی کرده ایم. لینکها باید بصورت مستقیم(**direct downloads**) باشند تا هر فایل (ترجیحا از civitai یا huggingface باشند) نصب شود و لینکها می بایست با کاما از هم جدا شوند. 
+
 
 1. Press the play button to the left, anywhere in the first section of the page labeled **Start 🚀**. Wait a few minutes for it to finish, while a few progress messages appear near the bottom. Then, a **public link** will be created, which you can open in a new tab to start using Stable Diffusion. **Keep the colab tab open!** (On mobile try the trick at the bottom of the colab to keep the tab open)
 
