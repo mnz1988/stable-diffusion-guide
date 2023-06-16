@@ -103,17 +103,19 @@
 
    چک پوینت ها یا مدل هایی که فایل آنها با پسوند `.safetensors` ارائه شده اند برای استفاده امن هستند. فایل هایی که با پسوند `.ckpt` ارائه میشوند **می توانند/ممکن است** حاوی ویروس باشند پس ابتدا از منبع ارائه دهنده فایل مطمئن شوید. همچنین در زمان انتخاب فایل ها ممکن است گزینه های متعددی مثل fp32، fp16 و pruned را مشاهده کنید، تمام آنها برای تولید تصاویر نتایج تقریبا مشابهی با خطای خیلی کمی ارائه میدهند پس استفاده از فایل های با حجم کمتر (pruned-fp16) نتایج مناسبی دارد و نیاز به استفاده از فایل های حجیم تر نیست. اما اگر میخواهید از فایل ها برای آموزش چک پوینت اختصاصی خود و یا مرج کردن چند مدل با هم استفاده کنید از فایل های حجیم تر استفاده کنید.  
 
- **توضیحات VAEs** <a name="vae"></a>[▲](#index)
+ **توضیحات VAEها** <a name="vae"></a>[▲](#index)
 
-   Most checkpoints don't come with a VAE built in. The VAE is a small separate model, which "converts your image into human format". Without it, you'll get faded colors and ugly eyes, among other things.
+   بیشتر چک پوینت ها با VAE درونی ارائه نمی شوند. VAE یک مدل مجزای کوچک است که "تصاویر را به فرمت انسانی تبدیل میکند". بدون آن شما رنگ های فید شده، چشم های زشت و دیگر چیزهای نامناسب را در خروجی خواهید دید.
+   
+   ما سه مدل مختلف VAE در حال استفاده داریم:
 
-   If you're using the colab in this guide, you should already have the below VAEs, as I told you to select them before running.
+   مدل [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt) که با نام اورنج میکس هم شناخته می شود و بیشتر مدل های انیمه از آن استفاده می کنند.
 
-   There are practically only 3 different VAEs in circulation:
-   * [anything vae](https://huggingface.co/WarriorMama777/OrangeMixs/resolve/main/VAEs/orangemix.vae.pt), also known as the orangemix vae. All anime models use this.
-   * [vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors), the latest from Stable Diffusion itself. Used by photorealism models and such.
-   * [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt), also known as the Waifu Diffusion VAE, it is older and produces more saturated results. Used by Pastel Mix.
+   مدل [vae-ft-mse](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/blob/main/vae-ft-mse-840000-ema-pruned.safetensors) که توسط خود استیبل دیفیوژن ارائه شده است و توسط بیشتر مدل های فوتوریلیسم و مشابه آن استفاده می شود
 
+   مدل [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt) که به وایفو دیفیوژن هم شناخته می شود که قدیمی تر است و بیشتر نتایج اشباع شده ارائه می دهد که توسط Pastel Mix و امثال آن استفاده می شود.
+   
+   
    The VAEs normally go into the `stable-diffusion-webui/models/VAE` folder.
    
    If you did not follow this guide up to this point, you will have to go into the **Settings** tab, then the **Stable Difussion** section, to select your VAE.
