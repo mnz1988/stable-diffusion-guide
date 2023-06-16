@@ -80,26 +80,26 @@
 ![Top](images/top.png)
 
 
-Here you can select your checkpoint and VAE. We will go over what these are and how you can get some. The colab has additional settings here too, you should ignore them for now.
+اینجا میتوانید چک پوینت ها (مدل ها) و VAE را انتخاب کنید. در حالت استفاده از کولب گزینه های اضافه دیگری هم هست که فعلا از آنها چشم پوشی میکنیم تا توضیحات اصلی را بیان کنیم 
 
-1. **Models** <a name="model"></a>[▲](#index)
+**مدل ها (چک پوینت)** <a name="model"></a>[▲](#index)
 
-   The **model**, also called **checkpoint**, is the brain of your AI, designed for the purpose of producing certain types of images. There are many options, most of which are on [civitai](https://civitai.com). But which to choose? These are my recommendations:
-   * For anime, [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) has a nice aesthetic similar to anime movies, while [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) *(__Note:__ scroll down there and choose the AOM3 option)* offers more realism in the form of advanced lighting and softer shading, as well as more lewdness. I merged these two options into [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix).
-   * While AOM3 is extremely capable for NSFW, the popular [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) hentai model may also fit your needs.
-   * For general art go with [DreamShaper](https://civitai.com/models/4384/dreamshaper), there are few options quite like it in terms of creativity. An honorable mention goes to [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model), which has a beautiful and unique aesthetic with the addition of anime.
-   * For photorealism go with [Deliberate](https://civitai.com/models/4823/deliberate). It can do almost anything, but specially photographs. Very intricate results.
-   * The [Uber Realistic Porn Merge](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) is self-explanatory.
+   همانطور که گفته شد مدل ها را چک پینت نیز می نامند که مغز هوش مصنوعی شما هستند و برای اهداف تولید انواع مختلفی از تصاویر طراحی شده اند. گزینه های بسیار زیاد و متنوعی از آنها وجود دارد (به خصوص در پلتفرم [civitai](https://civitai.com) ) اما کدام را انتخاب کنیم؟ تعدادی پیشنهاد به شما ارائه میدهم: 
+   
+   مدل [7th Heaven Mix](https://civitai.com/models/4669/corneos-7th-heaven-mix) برای انیمه قابلیت های مشابه تصاویر سینمایی خوبی دارد و مدل [Abyss Orange Mix 3](https://civitai.com/models/9942/abyssorangemix3-aom3) تصاویری واقع گرایانه تر با شیدینگ نرم تر و نورپردازی حرفه ای تر ارائه می دهد. نویسنده این راهنما (نسخه انگلیسی) این دو مدل را با هم مرج کرده و در اختیار شما گذاشته است [Heaven Orange Mix](https://civitai.com/models/14305/heavenorangemix) که ترکیبی از هردو است.
+   مدل های معرفی شده برای تصاویر NSFW قدرتمند هستند و رقیب محبوبی نیز به اسم [Grapefruit](https://civitai.com/models/2583/grapefruit-hentai-model) دارند که برای hentai استفاده می شود.
+   برای آثار هنری بصورت عمومی مدل [DreamShaper](https://civitai.com/models/4384/dreamshaper) گزینه های مناسبی برای خلاقیت ارائه می دهد. همچنین استفاده از [Pastel Mix](https://civitai.com/models/5414/pastel-mix-stylized-anime-model) میتواند آثار هنری زیبا و منحصر به فردی را برایتان فراهم کند. 
+   برای فوتوریلیسم استفاده از [Deliberate](https://civitai.com/models/4823/deliberate) نتایج بسیار جالبی ارائه میدهد. 
+   کاربرد مدل [Uber Realistic Porn Merge](https://civitai.com/models/2661/uber-realistic-porn-merge-urpm) نیز که از نام آن مشخص است و نیازی به توضیح ندارد. 
+   
 
-   If you're using the colab in this guide, copy the **direct download link to the file** and paste it in the text box labeled `custom_urls`. Multiple links are separated by commas.
+   اگر از colab در این راهنما استفاده میکنید **لینک مستقیم فایل مدل** را کپی کنید و در باکس متنی ای که با لیبل `custom_urls` مشخص شده است قرار دهید تا بتوانید نصبشان کنید. همچنین لینک های متعدد را با کاما از هم جدا کنید تا بتوانید همزمان این کار را انجام دهید. 
+   اگر برنامه را روی کامپیوتر شخصی استفاده می کنید مدل ها را معمولا در پوشه `stable-diffusion-webui/models/Stable-diffusion` قرار میدهند
 
-   If you're running the program locally, the models normally go into the `stable-diffusion-webui/models/Stable-diffusion` folder.
 
-   Please note that checkpoints in the format `.safetensors` are safe to use while `.ckpt` **may** contain viruses, so be careful. Additionally, when choosing models you may have a choice between fp32, fp16 and pruned. They all produce the same images within a tiny margin of error, so just go with the smallest file (pruned-fp16). If you want to use them for training or merging, go with the largest one instead.
+   چک پوینت ها یا مدل هایی که فایل آنها با پسوند `.safetensors` ارائه شده اند برای استفاده امن هستند. فایل هایی که با پسوند `.ckpt` ارائه میشوند **می توانند/ممکن است** حاوی ویروس باشند پس ابتدا از منبع ارائه دهنده فایل مطمئن شوید. همچنین در زمان انتخاب فایل ها ممکن است گزینه های متعددی مثل fp32، fp16 و pruned را مشاهده کنید، تمام آنها برای تولید تصاویر نتایج تقریبا مشابهی با خطای خیلی کمی ارائه میدهند پس استفاده از فایل های با حجم کمتر (pruned-fp16) نتایج مناسبی دارد و نیاز به استفاده از فایل های حجیم تر نیست. اما اگر میخواهید از فایل ها برای آموزش چک پوینت اختصاصی خود و یا مرج کردن چند مدل با هم استفاده کنید از فایل های حجیم تر استفاده کنید.  
 
-   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to its dropdown.
-
-1. **VAEs** <a name="vae"></a>[▲](#index)
+ **توضیحات VAEs** <a name="vae"></a>[▲](#index)
 
    Most checkpoints don't come with a VAE built in. The VAE is a small separate model, which "converts your image into human format". Without it, you'll get faded colors and ugly eyes, among other things.
 
