@@ -116,46 +116,48 @@
    مدل [kl-f8-anime2](https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/vae/kl-f8-anime2.ckpt) که به وایفو دیفیوژن هم شناخته می شود که قدیمی تر است و بیشتر نتایج اشباع شده ارائه می دهد که توسط Pastel Mix و امثال آن استفاده می شود.
    
    
-   The VAEs normally go into the `stable-diffusion-webui/models/VAE` folder.
+   فایل های مربوط به VAE ها معمولا در پوشه `stable-diffusion-webui/models/VAE` قرار میگیرند 
    
-   If you did not follow this guide up to this point, you will have to go into the **Settings** tab, then the **Stable Difussion** section, to select your VAE.
 
-   **Tip:** Whenever you place a new file manually you can either restart the UI at the bottom of the page or press the small 🔃 button next to its dropdown.
 
-1. **Prompts** <a name="prompt"></a>[▲](#index)
+   **درخواست ها / Prompts** <a name="prompt"></a>[▲](#index)
 
-   On the first tab, **txt2img**, you'll be making most of your images. This is where you'll find your *prompt* and *negative prompt*.  
-   Stable Diffusion is not like Midjourney or other popular image generation software, you can't just ask it what you want. You have to be specific. *Very* specific.  
-   Most people have found a prompt that works for them and they swear by it, often recommended by other people. I will show you my own personal example of a prompt and negative prompt:
+   در اولین تب **txt2img** شما بیشتر تصاویرتان را می سازید. اینجا جاییست که درخواست *prompt* خود و چیزهایی که نمیخواهید در آن باشد (*negative prompt*/درخواست منفی) را وارد میکنید. استیبل فیوژن مثل میدجرنی () یا دیگر نرم افزارهای مشابه نیست که فقط از آنها درخواستی کلی برای تولید چیزی کنید، باید به طور واضح آن را مشخص کنید، *خیلی* واضح. اغلب مردم یک پرامپت (درخواست) پیدا میکنند که کارشان را راه می اندازد و از آن استفاده میکنند یا از دیگران برای پیشنهادات کمک میک می گیرند. اینجا چند نمونه پرامپت و پرامپت منفی شخصی را نشان میدهم:
    
-   * Anime
+   * برای انیمه:
       * `2d, masterpiece, best quality, anime, highly detailed face, highly detailed background, perfect lighting`
       * `EasyNegative, worst quality, low quality, 3d, realistic, photorealistic, (loli, child, teen, baby face), zombie, animal, multiple views, text, watermark, signature, artist name, artist logo, censored`
      
-   * Photorealism
+   * برای فتورلیسم: 
       * `best quality, 4k, 8k, ultra highres, raw photo in hdr, sharp focus, intricate texture, skin imperfections, photograph of`
       * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
 
-   * **EasyNegative:** <a name="promptneg"></a>The negative prompts above use EasyNegative, which is an *embedding* or "magic word" that encodes many bad things to make your images better. Otherwise you'd have to use a huge negative prompt.
-      * If you're using the colab in this guide you already have this installed. Otherwise, you will have to [download this tiny file](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors), put it in your `stable-diffusion-webui/embeddings` folder, then go to the bottom of your WebUI page and click *Reload UI*. It will then work when you type that word.
+   * **توضیح EasyNegative:** <a name="promptneg"></a>
+   استفاده از این پرامپت منفی که بصورت *embedding* یا کلمه جادویی "magic word" عمل میکند در واقع شامل تعداد زیادی پرامپت منفی است که به تولید تصاویر بهتر کمک میکند که اگر از آن استفاده نکنیم نیاز به نوشتن تعداد زیادی پرامپ منفی داریم که در پرامپت محدودیت کاراکتر داریم
 
-   A comparison with and without these negative prompts including EasyNegative can be seen [further down ▼](#matrixneg).
+      برای دانلود این فایل کوچک و نصب آن از [این لینک](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors) استفاده کنید و آن را در پوشه `stable-diffusion-webui/embeddings` قرار دهید و اگر برنامه در حال اجراست آن را ریلود *Reload UI* کنید. و هروقت آن کلمه را بنویسید (EasyNegative) عمل میکند 
+
 
    ![Prompts](images/prompt.png)
 
-   After a "base prompt" like the above, you may then start typing what you want. For example `young woman in a bikini in the beach, full body shot`. Feel free to add other terms you don't like to your negatives such as `old, ugly, futanari, furry`, etc.  
-   You can also save your prompts to reuse later with the buttons below Generate. Click the small 💾 *Save style* button and give it a name. Later, you can open your *Styles* dropdown to choose, then click 📋 *Apply selected styles to the current prompt*.
+   بعد از نوشتن پرامپت ابتدایی یا پایه ای (شبیه پرامپت های بالا که مثال زده شد) خواسته های خود را اضافه میکنیم. مثلا `young woman in a bikini in the beach, full body shot` را اضافه میکنیم. همچنین برا پرامپت منفی نیز چیزهایی که مایل نیستیم در تصویر باشد را اضافه میکنیم...
+   
+   برای ذخیره کردن پرامپت های خود که بعدا از آنها بخواهید استفاده کنید بر روی دکمه 💾 *Save style* بزنید و برای آن اسمی قرار دهید تا بدانید به چه موضوعی اشاره دارد. بعدا از بخش *Styles* کشوی پایین رونده را باز کنید و آن را انتخاب کنید و علامت 📋 *Apply selected styles to the current prompt* را کلیک کنید تا از آن استفاده کنید. 
 
-   <a name="promptweight"></a>One important technique when writing prompts are emphasis and de-emphasis. When you surround something in `(parentheses)`, it will get more emphasis or **weight** in your resulting image, basically telling the AI that part is more important. The normal weight for every word is 1, and each parentheses will multiply by 1.1 (you can use multiple). You can also specify the weight yourself, like this: `(full body:1.4)`. You can also go below 1 to de-emphasize a word: `[brackets]` will multiply by 0.9, but you'll still need parentheses to go lower, like `(this:0.5)`.
+   یک تکنیک مهم برای نوشتن پرامپت تاکید (مثبت) و نفی کردن (تاکید منفی) بر کلمات است. وقتی چیزی را داخل پرانتز () میگذاریم برنامه **وزن** بیشتری در نتیجه تولید تصویر برای آن قائل می شود و به هوش مصنوعی میگوید که این قسمت مهمتر است. وزن معمول برای همه چیز برابر با 1 است و هر پرانتز آن را در 1.1 ضرب میکند تا وزن بیشتری بگیرد.(همچنین میتوانید از چندین پرانتر ((())) برای بالا بردن وزن استفاده کنید) 
 
-   Also note that hands and feet are famously difficult for AI to generate. These methods improve your chances, but you may need to do photoshopping, inpainting, or advanced techniques with [ControlNet ▼](#controlnet) to get it right.
+   همچنین میتوانید وزن کلمات را بصورت مشخص نیز در پرامپت خود وارد کنید، مثل این نمونه: `(full body:1.4)`. و برای کاهش وزن آن میتوانید از براکت ها [] استفاده کنید تا وزن آن را در 0.9 ضرب کند ولی برای کاهش بیشتر هنوز اشاره مستقیم داخل پرانتز نیاز دارید مثل این:  `(this:0.5)`
 
-1. **Generation parameters** <a name="gen"></a>[▲](#index)
+   موضوع دیگر که باید به خاطر داشته باشید این است که فعلا برای هوش مصنوعی طراحی دست ها و پا مشکل است و این روش ها فقط شانس شما را افزایش میدهند و ممکن است برای کیفیت، دقت، ایده گرفتن و بالا بردن سطح کار به [ControlNet ▼](#controlnet) نیاز داشته باشید تا پیشرفته تر عمل کنید
 
-   The rest of the parameters in the starting page will look something like this:
+   
+   **معیارهای تولید تصویر/Generation parameters** <a name="gen"></a>[▲](#index)
+
+   دیگر پارامترهای تولید تصویر شبیه به این هستند:
    
    ![Parameters](images/parameters.png)
 
+   * بخش **Sampling method**: این الگوریتم تصویر شما را فرموله میکند و 
    * **Sampling method:** This is the algorithm that formulates your image, and each produce different results. The default of `Euler a` is often the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`. See below for a comparison.
    * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find consistently good results. See below for a comparison.
    * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires fix`.
