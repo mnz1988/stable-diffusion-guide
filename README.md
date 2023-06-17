@@ -16,7 +16,7 @@
    * [ماتریکس درخواست - Prompt Matrix](#matrix)
    * [توضیحات Ultimate Upscaler](#ultimate)
 * [کنترل نت](#controlnet)
-* [آموزش دادن Lora برای تازه کارها](#train)
+* [آموزش دادن Lora ](#train)
 * [توضیحات ...vtuberها](#vtubers)
  
 &nbsp;
@@ -184,7 +184,7 @@
 
 &nbsp;
   
-# بخش Extensions <a name="extensions"></a>[▲](#index) 
+# بخش Extension ها <a name="extensions"></a>[▲](#index) 
 
 *استیبل دیفیوژن با رابط کاربری وب* یا *Stable Diffusion WebUI* از اضافات *extensions* که کاربردها و کیفیت های بسیار زیادی دارند پشتیبانی می کند. با مراجعه به تب **Extensions** میتوانید آنها را به برنامه اضافه کنید و با قرار دادن لینک آنها در قسمت **Install from URL** و کلیک بر روی دکمه *Install* آنها را به راحتی نصب کنید و پس از پایان نصب به قسمت **Installed** مراجعه کنید و با زدن روی دکمه *Apply and restart UI* از آنها استفاده کنید. 
 تعداد محدودی اکستنشن هم هستند که برای فعال سازی نیاز به ری استارت کامل برنامه دارند و معمولا در توضیحات آنها ذکر می شود.
@@ -193,7 +193,7 @@
 
 معرفی تعدادی از اکستنشن های کاربردی: اگر از کولب این راهنما استفاده میکنید تعداد زیادی از آنها را در حال حاض دارید در غیر اینصورت میتوانید آنها را خودتان اضافه کنید.
    * اکستنشن [Image Browser](https://github.com/AlUlkesh/stable-diffusion-webui-images-browser) - به شما قابلیت مرورتصاویر تولید شده قبلی را بصورت بسیار مفیدی ارائه می دهد و میتوانید مستقیما پرامپت ها و پرارامترهای استفاده شده درتصاویر را به txt2img یا img2img و دیگر بخش های مورد نیاز ارسال کنید.
-   * اکستنشن [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - اساسی و ضروری برای انیمه آرت که شما تگ های booruی منطبق را در حین تایپ نشان می دهد. انیمه مدل ها با تگ های booru کار میکنند و پرامپت ها معمولا بدون آنها درست کار نمیکنند پس دانستن آنها در حد گادمود است (اطلاعات خداگونه) به خصوص اگر تگ های نایابی باشند.
+   * اکستنشن [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - اساسی و ضروری برای انیمه آرت است که به شما تگ های booruی منطبق را در حین تایپ کردن نشان می دهد. انیمه مدل ها با تگ های booru کار میکنند و پرامپت ها معمولا بدون آنها درست کار نمیکنند پس دانستن آنها در حد گادمود است (اطلاعات خداگونه) به خصوص اگر تگ های نایابی باشند.
    * اکستنشن [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) به شما اجازه می دهد تا از LoCon ها و LoHa ها استفاده کنید. اطلاعات بیشتر [در ادامه راهنما ▼](#lycoris) موجود است.
    * اکستنشن [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - اکستنشنی عظیم که نیاز به [راهنمای اختصاصی ▼](#controlnet) خود را دارد. این اکستنشن به شما اجازه می دهد تا آنالیز کنید و از آن برای رفرنس تصویری که میخواهید بسازید استفاده کنید. در عمل میتوانید برای هر نوع ژست/*pose* یا محیطی از آن استفاده کنید.
    * اکستنشن [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - اسکریپتی کاربردی در بخش img2img برای ساخت تصاویر بسیار بزرگ است که وابسته به میزان VRAM کارت گرافیک میتوانید اندازه را بالا ببرید. توضیحات آن را [در ادامه راهنما ▼](#ultimate) میتوانید ببینید
@@ -243,42 +243,21 @@
 
 اسکریپت ها را در بخش پایینی پارامترهای تولید تصویر در txt2img یا img2img پیدا کنید.
 
-* توضیحات **X/Y/Z Plot** <a name="plot"></a>[▲](#index)
+* توضیحات **Plot X/Y/Z** <a name="plot"></a>[▲](#index)
 
-   Capable of generating a series of images, usually with the exact same seed, but varying parameters of your choice. Can compare almost anything you want, including different models, parts of your prompt, sampler, upscaler and much more. You can have 1, 2, or 3 variable parameters, hence the X, Y and Z.
-
-   Your parameters in X/Y/Z Plot are separated by commas, but anything else can go inbetween. The most common parameter to compare is **S/R Prompt**, where the first term is a phrase in your prompt and each term afterwards will replace the original. Knowing this, you can compare, say, Lora intensity, like this:
-
-   `<lora:my lora:0.4>, <lora:my lora:0.6>, <lora:my lora:0.8>, <lora:my lora:1>`
-
-   Here I made a comparison between different **models** (columns) and faces of different ethnicities via **S/R Prompt** (rows):
-
-   <details>
-   <summary>(Click) X/Y/Z Plot example</summary>
-   
-   ![X Y Z plot of models and ethnicities](images/XYZplot.png)
-   </details>
-
-   **Tip:** It appears possible to do S/R with commas by using quotes like this (note no spaces between the commas and quotes): `"term 1, term 2","term 3, term 4","term 5, term 6"`
-
-* **Prompt Matrix** <a name="matrix"></a>[▲](#index)
-
-   Similar conceptually to S/R from before, but more in-depth. It works by showing each possible combination of terms listed between the `|` symbol in your prompt, for example: `young man|tree|city` will always contain "young man", but we'll see what happens when we add or remove "tree" and "city". You can use commas and spaces just fine between the `|`.
-
-   Inside the script, you will choose either your prompt or your negative prompt to make a matrix of, and whether the variable terms should be put at the start or the end.
-
-   <a name="matrixneg"></a>Here is a comparison using the negative prompts I showed you in [Prompts ▲](#prompt). We can see how EasyNegative affects the image, as well as how the rest of the prompt affects the image, then both together:
-
-   <details>
-   <summary>(Click) Prompt matrix examples</summary>
+   پلات اکس وای زی قادر به تولید، سری تصاویر که معمولا برایشان سید کاملا یکسان اما پارامترهای متغیر انتخاب کرده اید، است. تقریبا میتواند هرچیزی که بخواهید را مقایسه کند که میتواند شامل مدل های مختلف، قسمتی از پرامپت، سمپلر، آپ اسکیلر و ... باشد. میتوانید 1، 2 و یا 3 پارامتر متغیر با توجه به X، Y و Z داشته باشید. پارامترها را با کاما از هم جدا میکنیم اما هرچیزی میتواند بین آنها قرار بگیرد. بیشترین پرامپ عمومی برای مقایسه **S/R Prompt** است که اولین شرط آن جملات پرامپت خودتان است و هر شرطی بعد از آن با نسخه اصلی جایگزین میشود. با دانستن چنین موضوعی مثلا میتوانید شدت Lora را با هم مقایسه کنید. چیزی شبیه این: `<lora:my lora:0.4>, <lora:my lora:0.6>, <lora:my lora:0.8>, <lora:my lora:1>`.
+  **نکته**: با استفاده از علامت کوت "نقل قول" (بدون فاصله بین علامت کوت و کاما) هم میتوانید از مقایسه S/R استفاده کنید، به این شکل: `"term 1, term 2","term 3, term 4","term 5, term 6"` 
   
-   ![Prompt matrix of anime negative prompt sections](images/promptmatrix1.png)
-   ![Prompt matrix of photorealistic negative prompt sections](images/promptmatrix2.png)
-   </details>
 
-   **Tip:** When using prompt matrix, the Batch Size will let you generate multiple images or the whole grid all at once.
 
-* **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
+* توضیحات **Prompt Matrix** <a name="matrix"></a>[▲](#index)
+
+  شبیه مفهوم مقایسه S/R که در بالا با آن آشنا شدیم است اما بصورت عمیق تری. عملکرد آن به این شکل است که به ما هر ترکیب شرط های قابل انجامی را که میان علامت `|` در پرامپت قرار پرفته اند را نشان می دهد. برای نمونه: در پرامپت `young man|tree|city` کلمات "young man" همیشه وجود دارند اما حالت های وجود داشتن یا وجود نداشتن "tree" و "city" را بررسی می کنیم. استفاده از کاما و فاصله در بین علامت های `|` مجاز است و مشکلی ایجاد نمیکند.
+  درون اسکریپت، میتوانید انتخاب کنید که این ماتریکس روی پرامپت انجام شود یاپرامپت منفی و همچنین شرایط متغیر را برای شروع یا پایان پرامپت در نظر بگیرد.
+   **نکته**: هنگام استفاده از این اسکریپت، بچ سایز به شما اجازه می دهد که تصاویر متعددی داشته باشید یا کل گرید را با هم داشته باشید. 
+  
+
+* توضیحات **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
    An improved version of a builtin script, it can be added as an [extension ▲](#extensions) and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
 
