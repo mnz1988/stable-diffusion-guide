@@ -12,7 +12,7 @@
    * [توضیحات Lycoris](#lycoris)
 * [بزرگ کردن اندازه](#upscale)
 * [اسکریپت ها](#imgscripts)
-   * [پلات اکس/وای/زی - X/Y/Z Plot](#plot)
+   * [توضیحات - X/Y/Z Plot](#plot)
    * [ماتریکس درخواست - Prompt Matrix](#matrix)
    * [توضیحات Ultimate Upscaler](#ultimate)
 * [کنترل نت](#controlnet)
