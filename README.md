@@ -157,54 +157,49 @@
    
    ![Parameters](images/parameters.png)
 
-   * بخش **Sampling method**: این الگوریتم تصویر شما را فرموله میکند و 
-   * **Sampling method:** This is the algorithm that formulates your image, and each produce different results. The default of `Euler a` is often the best. There are also very good results for `DPM++ 2M Karras` and `DPM++ SDE Karras`. See below for a comparison.
-   * **Sampling steps:** These are "calculated" beforehand, and so more steps doesn't always mean more detail. I always go with 30, you may go from 20-50 and find consistently good results. See below for a comparison.
-   * **Width and Height:** 512x512 is the default, and you should almost never go above 768 in either direction as it may distort and deform your image. To produce bigger images see `Hires fix`.
-   * **Batch Count and Batch Size:** Batch *size* is how many images your graphics card will generate at the same time, which is limited by its VRAM. Batch *count* is how many times to repeat those. Batches have consecutive seeds, more on seeds below.
-   * **CFG Scale:** "Lower values produce more creative results". You should almost always stick to 7, but 4 to 10 is an acceptable range.
-   * **Seed:** A number that guides the creation of your image. The same seed with the same prompt and parameters produces the same image every time, except for small details and under some circumstances.
-  
-   **Hires fix:** Lets you create larger images without distortion. Often used at 2x scale. When selected, more options appear:
-   * **Upscaler:** The algorithm to upscale with. `Latent` and its variations produce creative and detailed results, but you may also like `R-ESRGAN 4x+` and its anime version. [More explanation and some comparisons further down ▼](#upscale). 
-   * **Hires steps:** I recommend at least half as many as your sampling steps. Higher values aren't always better, and they take a long time, so be conservative here.
-   * **Denoising strength:** The most important parameter. Near 0.0, no detail will be added to the image. Near 1.0, the image will be changed completely. I recommend something between 0.2 and 0.6 depending on the image, to add enough detail as the image gets larger, without *destroying* any original details you like.
-    
-   Others:
-   * **Restore faces:** May improve realistic faces. I never need it with the models and prompts listed in this guide as well as hires fix.
-   * **Tiling:** Used to produce repeating textures to put on a grid. Not very useful.
-   * **Script:** Lets you access useful features and extensions, such as [X/Y/Z Plot ▼](#plot) which lets you compare images with varying parameters on a grid. Very powerful.
+   * بخش **Sampling method**: این الگوریتم تصویر شما را فرموله میکند و هر کدام نتیجه متفاوتی ایجاد میکنند. پیش فرض `Euler a` معمولا بهترین نتیجه را دارد. همچنین نتایج خوبی را از `DPM++ 2M Karras` و `DPM++ SDE Karras` میتوانید بگیرید
+   
+   * بخش **Sampling steps**: اینها تعداد "محاسبات" از پیش تعیین شده را مشخص میکنند. نکته اول این است که همیشه تعداد بالاتر استپ ها به معنی جزئیات و نتیجه بهتر نیست. من معمولا از عدد 30 استفاده میکنم و شما ممکن است دوست داشتهباشید از 20 تا 50 را امتحان کنید تا مقدار مناسب خود را پیدا کنید که نتیجه دلخواه را برایتان داشته باشد.
+     
+   * بخش **Width** و **Height**: ابعاد پیشفرض 512در512 برای طول و عرض تصویر هستند و تقریبا میشود گفت که نباید بالاتر از 768 برای هر کدام از پارامترها بروید چون معمولا باعث خراب شدن تصویر میشود و همچنین سرعت پردازش را کاهش میدهد. برای بدست آوردن تصاویر با سایز بزرگتر به بخش `Hires fix` مراجعه کنید.
+     
+   * بخش **Batch Count** و **Batch Size**: بچ سایز یعنی کارت گرافیک چه تعداد تصویر را در یک زمان توید کند که محدود به میزان VRAM آن است. بچ کانت هم یعنی چندبار این فعالیت تکرار شود. بچ ها وابسته به سید هستند. توضیحات سید را در بخش `seeds`ببینید.
+     
+   * بخش **CFG Scale**: مقدار کمتر این پارامتر خلاقیت بیشتری در نتایج ایجاد میکند. شما تقریبا همیشه از 7 استفاده میکنید اما رنج قابل قبول از 4 تا 10 می باشد.
+     
+   * بخش **Seed**: یک عدد راهنما برای تولید تصاویر است. یک سید با پرامپت مشابه و پارامترهای مشابه معمولا هربار تصویر یکسانی تولید میکند، بجز در مورد بعضی جزئیات کوچک در بعضی شرایط.
 
-   Here is a comparison of a few popular samplers and various sampling steps:
-
-   <details>
-      <summary>(Click) Sampler comparison - Photography</summary>
-
-      ![samplers with photos](images/samplers1.png)
-   </details>
-
-   <details>
-      <summary>(Click) Sampler comparison - Anime</summary>
-
-      ![samplers with anime](images/samplers2.png)
-   </details>
-
-   An explanation of the samplers used above: `Euler` is a basic sampler. `DDIM` is a faster version, while `DPM++ 2M Karras` is an improved version. Meanwhile we have `Euler a` or "ancestral" which produces more creative results, and `DPM++ 2S a Karras` which is also ancestral and thus similar. Finally `DPM++ SDE Karras` is the slowest and quite unique. There are many other samplers not shown here but most of them are related.
+   * بخش **Hires fix**: این گزینه به شما امکان تولید تصاویر بزرگتر بدون آسیب رسیدن به مراحل تولید تصویر ابتدایی را میدهد. معمولا برای بزرگ کردن دوبرابری استفاده میشود. وقتی آن را فعال کنید آپشن های بیشتری نمایان می شوند:
+      * بخش **Upscaler**: الگوریتمی که بر اساس آن بزرگتر کردن ابعاد را انجام میدهد. الگوریتم `Latent` و متغیرهای آن تصاویر خلاقانه و با جزئیات ایجاد میکنند اما شاید `R-ESRGAN 4x+` را هم دوست داشته باشید، به خصوص ورژن انیمه آن را.
+      * بخش **Hires steps**: توصیه میکنم که عددش را حداقل نصف مقدار sampling steps قرار دهید. مقادیر بزرگتر همیشه به معنی نتایج بهتر نیست و همچنین زمان بیشتری را برای تولید نیاز دارد، پس اینجا محافظه کارانه تصمیم بگیرید.
+      * بخش **Denoising strength**: یکی از مهم ترین پارامترها است. نزدیک به 0.0 یعنی جزئیاتی به تصویر اضافه نمیشود و نزدیک به 1.0 تصویر بصورت کامل تغییر می کند. توصیه من عددی بین 0.2 و 0.6 است که البته به تصویر شما بستگی دارد که چه مقدار جزئیات به آن اضافه کند بدون اینکه جزئیات تصویر اصلی که دوست دارید از بین برود.
+   
+   بخش های دیگر:
+   * بخش **Restore faces**: ممکن است بتواند تصاویر صورت واقع گرایانه را بهبود دهد. من هیچوقت به آن نیاز نداشته ام چون از مدل ها و پرامپت هایی که در راهنما لیست شده اند استفاده میکنم و همچنین `Hires fix` نیز کار مشابه را انجام میدهد.
+   * بخش **Tiling**: برای تولید تکتچرهای تکرار شونده و قرار دادن در grid استفاده می شود.
+   * بخش **Script**: به شما اجازه میدهد تا به ویژگی ها و اکستنشن های خوبی همچون [X/Y/Z Plot ▼](#plot) که برای مقایسه تصاویر با پارامترهای متغیر در گرید استفاده می شود، دسترسی داشته باشید. (مهم و قدرتمند) 
+   
+   
+   مقایسه Sampler ها: سمپلر `Euler` یکی از سمپلرهای پایه ای است و سمپلر `DDIM` ورژن سریعتر آن است و سمپلر `DPM++ 2M Karras` ورژن بهبودیافته است. همچنین سمپلر `Euler a` یا `Euler ancestral` را داریم که بیشترین نتایج خلاقانه را تولید میکند و سمپلر `DPM++ 2S a Karras` مشابه آن است. در نهایت سمپلر `DPM++ SDE Karras` را داریم که کندترین و منحصربه فرد ترین است. تعداد زیادی سمپلر دیگر وجود دارد که به آنها نپرداخته ایم ولی کلیات آنها به همین صورت مرتبط هستند. 
 
 &nbsp;
   
-# Extensions <a name="extensions"></a>[▲](#index)
+# بخش Extensions <a name="extensions"></a>[▲](#index) 
 
-*Stable Diffusion WebUI* supports extensions to add additional functionality and quality of life. These can be added by going into the **Extensions** tab, then **Install from URL**, and pasting the links found here or elsewhere. Then, click *Install* and wait for it to finish. Then, go to **Installed** and click *Apply and restart UI*.
+*استیبل دیفیوژن با رابط کاربری وب* یا *Stable Diffusion WebUI* از اضافات *extensions* که کاربردها و کیفیت های بسیار زیادی دارند پشتیبانی می کند. با مراجعه به تب **Extensions** میتوانید آنها را به برنامه اضافه کنید و با قرار دادن لینک آنها در قسمت **Install from URL** و کلیک بر روی دکمه *Install* آنها را به راحتی نصب کنید و پس از پایان نصب به قسمت **Installed** مراجعه کنید و با زدن روی دکمه *Apply and restart UI* از آنها استفاده کنید. 
+تعداد محدودی اکستنشن هم هستند که برای فعال سازی نیاز به ری استارت کامل برنامه دارند و معمولا در توضیحات آنها ذکر می شود.
  
 ![Extensions](images/extensions.png)
 
-Here are some useful extensions. If you're using the colab in this guide you already have most of these, otherwise I hugely recommend you manually add the first 2:
-* [Image Browser (updated)](https://github.com/AlUlkesh/stable-diffusion-webui-images-browser) - This will let you browse your past generated images very efficiently, as well as directly sending their prompts and parameters back to txt2img, img2img, etc.
-* [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - Absolutely essential for anime art. It will show you the matching booru tags as you type. Anime models work via booru tags, and prompts without them usually don't work, so knowing them is godmode. Not all tags will work well in all models though, specially if they're rare.
-* [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) - Lets you use LoCons and LoHas. More info [below ▼](#lycoris).
-* [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - A huge extension deserving of [its own guide ▼](#controlnet). It lets you analyze any image and use it as an referene for your own image. Practically speaking, it can create any pose or environment you want.
-* [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - A script usable from the img2img section to make really large images, where normally you can only go as high as your VRAM allows. See [Ultimate Upscaler ▼](#ultimate).
+معرفی تعدادی از اکستنشن های کاربردی: اگر از کولب این راهنما استفاده میکنید تعداد زیادی از آنها را در حال حاض دارید در غیر اینصورت میتوانید آنها را خودتان اضافه کنید.
+   * اکستنشن [Image Browser](https://github.com/AlUlkesh/stable-diffusion-webui-images-browser) - به شما قابلیت مرورتصاویر تولید شده قبلی را بصورت بسیار مفیدی ارائه می دهد و میتوانید مستقیما پرامپت ها و پرارامترهای استفاده شده درتصاویر را به txt2img یا img2img و دیگر بخش های مورد نیاز ارسال کنید.
+   * اکستنشن [TagComplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) - اساسی و ضروری برای انیمه آرت که شما تگ های booruی منطبق را در حین تایپ نشان می دهد. انیمه مدل ها با تگ های booru کار میکنند و پرامپت ها معمولا بدون آنها درست کار نمیکنند پس دانستن آنها در حد گادمود است (اطلاعات خداگونه) به خصوص اگر تگ های نایابی باشند.
+   * اکستنشن [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) به شما اجازه می دهد تا از LoCon ها و LoHa ها استفاده کنید. اطلاعات بیشتر [در ادامه راهنما ▼](#lycoris) موجود است.
+   * اکستنشن [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - اکستنشنی عظیم که نیاز به [راهنمای اختصاصی ▼](#controlnet) خود را دارد. این اکستنشن به شما اجازه می دهد تا آنالیز کنید و از آن برای رفرنس تصویری که میخواهید بسازید استفاده کنید. در عمل میتوانید برای هر نوع ژست/*pose* یا محیطی از آن استفاده کنید.
+   * اکستنشن [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - اسکریپتی کاربردی در بخش img2img برای ساخت تصاویر بسیار بزرگ است که وابسته به میزان VRAM کارت گرافیک میتوانید اندازه را بالا ببرید. توضیحات آن را [در ادامه راهنما ▼](#ultimate) میتوانید ببینید
+
+
+* 
 * [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
 * [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
 * [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
