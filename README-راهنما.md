@@ -197,81 +197,53 @@
    * اکستنشن [Locon](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) به شما اجازه می دهد تا از LoCon ها و LoHa ها استفاده کنید. اطلاعات بیشتر [در ادامه راهنما ▼](#lycoris) موجود است.
    * اکستنشن [ControlNet](https://github.com/Mikubill/sd-webui-controlnet) - اکستنشنی عظیم که نیاز به [راهنمای اختصاصی ▼](#controlnet) خود را دارد. این اکستنشن به شما اجازه می دهد تا آنالیز کنید و از آن برای رفرنس تصویری که میخواهید بسازید استفاده کنید. در عمل میتوانید برای هر نوع ژست/*pose* یا محیطی از آن استفاده کنید.
    * اکستنشن [Ultimate Upscale](https://github.com/Coyote-A/ultimate-upscale-for-automatic1111) - اسکریپتی کاربردی در بخش img2img برای ساخت تصاویر بسیار بزرگ است که وابسته به میزان VRAM کارت گرافیک میتوانید اندازه را بالا ببرید. توضیحات آن را [در ادامه راهنما ▼](#ultimate) میتوانید ببینید
-
-
-* 
-* [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - Normally you can't create more than one distinct character in the same image without them blending together. This extension lets you divide the image into parts; full, left side, right side; allowing you to make nice 2-character images.
-* [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - A script to let you generate randomly chosen elements in your image, among other things.
-* [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - Lets you convert most 7GB/4GB models down to 2GB, by choosing `safetensors`, `fp16`, and `no-ema`. These pruned models work "almost the same" as the full models, which is to say, there is no appreciable difference due to math reasons. Most models come in 2 GB form nowadays regardless.
+   * اکستنشن [Two-shot](https://github.com/opparco/stable-diffusion-webui-two-shot) - معمولا نمیتوانید دو کاراکتر متفاوت در یک تصویر را بدون اینکه در هم تنیده شوند ایجاد کنید اما این اکستنشن به شما اجازه میدهد که تصویر را به قسمت های مختلفی تقسیم کنید، تمام تصویر *full*، سمت چپ *left side* و سمت راست *right side*.
+   * اکستنشن [Dynamic Prompts](https://github.com/adieyal/sd-dynamic-prompts) - یک اسکریپت برای اضافه کردن المان های تصادفی به تصویر تولید شده.
+   * اکستنشن [Model Converter](https://github.com/Akegarasu/sd-webui-model-converter) - برای تبدیل بیشتر مدل ها با حجم 7GB/4GB به حجم 2GB و با قابلیت انتخاب `safetensors`، `fp16` و `no-ema`. این نوع مدل های هرس شده "تقریبا همان خروجی" مدل های حجیم را ایجاد میکنند که دلیل آن محاسبات ریاضی است و مدل های جدیدتر معمولا با حجم های 2 گیگابایتی ارائه میشوند.
+     
 
 &nbsp;
 
-# Loras <a name="lora"></a>[▲](#index)
+# توضیحات Lora ها <a name="lora"></a>[▲](#index)
 
-LoRA or *Low-Rank Adaptation* is a form of **Extra Network** and the latest technology that lets you append a sort of smaller model to any of your full models. They are similar to embeddings, one of which you might've seen [earlier ▲](#promptneg), but Loras are larger and often more capable. Technical details omitted.
+کلمه LoRA که مخفف *Low-Rank Adaptation* یا انطباق سطح پایین است یکی از فرم های **Extra Network** است که جدید ترین تکنولوژی برای پیوست مدل های کوچک به مدل کامل شما است. آنها شبیه *embedding* ها هستند که [قبلا ▲](#promptneg) با آن آشنا شدیم اما معمولا حجیم تر و قدرتمند تر هستند. توضیحات فنی آنها را از راهنما حذف کرده ام. 
 
-Loras can represent a character, an artstyle, poses, clothes, or even a human face (though I do not endorse this). Checkpoints are usually capable enough for general work, but when it comes to specific details with little existing examples, you'll need a Lora. They can be downloaded from [civitai](https://civitai.com) or [elsewhere (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) and are 144 MB by default, but they can go as low as 1 MB. Bigger Loras are not always better. They come in `.safetensors` format, same as most checkpoints.
+آنها (LoRA ها) میتوانند نمایانگر یک کاراکتر، یک سبک هنری، ژست، لباس ها یا حتی صورت یک انسان باشند. چک پینت ها (مدل ها) معمولا برای کارهای عمومی خوب هستند اما وقتی میخواهیم سراغ جزئیات مشخص با مثال های موجود کم برویم، شما نیاز به یک LoRA دارید. آنها را میتوانید در [civitai](https://civitai.com) یا [جاهای دیگری (NSFW)](https://gitgud.io/gayshit/makesomefuckingporn#lora-list) پیدا و دانلود کنید و معمولا با حجم 144 مگابایت بصورت پیشفرض ارائه می شوند اما میتوانند به کوچکی 1 مگابایت هم برسند. همیشه فایل های بزرگتر به معنی نتایج بهتر نیستند. آنها با فرمت های مشابه با مدل ها ارائه می شوند پس بهتر است از فرمت `.safetensors` استفاده کنید.
 
-Place your Lora files in the `stable-diffusion-webui/models/Lora` folder, or if you're using the colab in this guide paste the direct download link into the `custom_urls` text box. Then, look for the 🎴 *Show extra networks* button below the big orange Generate button. It will open a new section either directly below or at the very bottom. Click on the Lora tab and press the **Refresh** button to scan for new Loras. When you click a Lora in that menu it will get added to your prompt, looking like this: `<lora:filename:1>`. The start is always the same. The filename will be the exact filename in your system without the `.safetensors` extension. Finally, the number is the weight, like we saw [earlier ▲](#promptweight). Most Loras work between 0.5 and 1 weight, and too high values might "fry" your image, specially if using multiple Loras at the same time.
+فایل های مربوط به LoRA ها را در فولدر `stable-diffusion-webui/models/Lora` قرار دهید. یا اگر از کولب استفاده می کنید لینک مستقیم آنها را در باکس متنی `custom_urls` قرار دهید. بعد از آن دنبال دکمه 🎴 *Show extra networks* که زیر دکمه نارنجی رنگ بزرگ Generate است بگردید. بخش جدیدی مستقیما زیر آن یا در پایین صفحه برایتان باز می شود. بر روی تب Lora کلیک کنید و دکمه **Refresh** را بفشارید تا فایل های جدید را اسکن کند. وقتی روی یک Lora  در آن منو کلیک کنید به پرامپت موجود اضافه میشود، به این شکل: `<lora:filename:1>`. بخش ابتدایی همیشه ثابت است و بخش دوم نام فایل در سیستم بدون ذکر فرمت است و در نهایت عدد مشخص شده وزن آن را مشخص میکند که [قبلا با آن آشنا شدیم ▲](#promptweight). بیشتر Lora ها با وزن 0.5 تا 1 کار میکنند و مقدار زیاد میتواند تصویر شما را خراب کند به خصوص زمانی که همزمان از چندین Lora ی مختلف استفاده می کنید. 
 
-![Extra Networks](images/extranetworks.png)
 
-An example of a Lora is [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix), which is perfect if you want your images to look more like traditional anime.
+![**شبکه های اضافی / Extra Networks**](images/extranetworks.png)
 
-* Lycoris <a name="lycoris"></a>[▲](#index)
+برای نمونه [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix) یک Lora است که مناسب زمانی است که میخواهید تصویر شما بیشتر شبیه انیمه های سنتی شود.
 
-   LyCORIS is a new development that lets LoRAs learn more layers. [Learn about it here](https://github.com/KohakuBlueleaf/Lycoris). You'll need [this extension](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) to use them.
 
-   As of now there are 2 new LoRA types:
-   * **LoCon** - Said to be good with styles
-   * **LoHa** - Said to be good with styles that also contain characters
- 
-   You can make your own in the [trainer further down ▼](#traincolab).
+* توضیحات Lycoris <a name="lycoris"></a>[▲](#index)
 
-&nbsp;
+   توسعه جدیدی به نام LyCORIS انجام گرفته است که به LoRA ها اجازه میدهد درباره لایه های بیشتری یاد بگیرند. در صورت تمایل [اینجا میتوانید بیشتر در مورد آن یاد بگیرید](https://github.com/KohakuBlueleaf/Lycoris). شما به [این اکستنشن](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) برای استفاده از آنها نیاز دارید.
 
-# Upscaling <a name="upscale"></a>[▲](#index)
-
-As mentioned in [Generation Parameters ▲](#gen), normally you shouldn't go above 768 width or height when generating an image. Instead you should use `Hires fix` with your choice of upscaler and an appropiate denoising level. Hires fix is limited by your VRAM however, so you may be interested in [Ultimate Upscaler ▼](#ultimate) to go even larger.
-
-You can download additional upscalers and put them in your `stable-diffusion-webui/models/ESRGAN` folder. They will then be available in Hires fix, Ultimate Upscaler, and Extras.
-
-The colab in this guide comes with several of them, including **Remacri**, which is a great all-around upscaler for all sorts of images.
-
-* A few notable ones can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN).
-* LDSR is an advanced yet slow upscaler, its model and config can be [found here](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) and both must be placed in `stable-diffusion-webui/models/LDSR`.
-* The [Upscale Wiki](https://upscale.wiki/wiki/Model_Database) contains dozens of historical choices.
-
-Here are some comparisons. All of them were done at 0.4 denoising strength. Note that some of the differences may be completely up to random chance.
-
-<details>
-<summary>(Click) Comparison 1: Anime, stylized, fantasy</summary>
-
-![Original](images/upscalers1pre.png)
-![Comparison](images/upscalers1.png)
-</details>
-
-<details>
-<summary>(Click) Comparison 2: Anime, detailed, soft lighting</summary>
-
-![Original](images/upscalers2pre.png)
-![Comparison](images/upscalers2.png)
-</details>
-
-<details>
-<summary>(Click) Comparison 3: Photography, human, nature</summary>
-   
-![Original](images/upscalers3pre.png)
-![Comparison](images/upscalers3.png)
-</details>
+  فعلا دو تیپ LoRA استفاده می شود:
+     * تیپ **LoCon** که گفته می شود با استایل ها *styles* خوب عمل می کند
+     * تیپ **LoHa** که گفته می شود با استایل هایی که شامل کاراکتر ها هم می شوند خوب عمل می کند
+ شما میتوانید لورای اختصاصی خود را پس از آشنایی با بخش [آموزش آنها ▼](#traincolab) که در ادامه راهنما آمده است بسازید.
 
 &nbsp;
 
-# Scripts <a name="imgscripts"></a>[▲](#index)
+# بزرگ کردن اندازه ها/Upscaling <a name="upscale"></a>[▲](#index)
 
-Scripts can be found at the bottom of your generation parameters in txt2img or img2img.
+همانطور که در [توضیحات قبلی ▲](#gen) گفته شد معمولا بهتر است که از ابعاد 768 برای طول یا عرض تصویر فراتر نروید. به جای آن از `Hires fix` و انتخاب upscaler مناسب و سطح حذف نویز (denoising level) مناسب با آن استفاده کنید تا نتایج بهتری بدست آورید. شما میتوانید upscaler های متعددی را دانلود کنید (نصب مستقیم با کولب) و در فولدر `stable-diffusion-webui/models/ESRGAN` قرار دهید. **Remacri** که در نسخه مربوط به کولب اضافه شده است یک upscaler خوب همه جانبه و عمومی است. 
 
-* **X/Y/Z Plot** <a name="plot"></a>[▲](#index)
+   *تعداد قابل توجهی را میتوانید [ینجا پیدا کنید](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/ESRGAN) و درصورت تمایل آنها را نصب کنید.
+   *یکی از پیشرفته ترین upscaler ها که فعلا کند است LDSR می باشد. شامل فایل مدل و کانفیگ است که میتوانید [اینجا هر دو فایل را دانلود کنید](https://huggingface.co/hollowstrawberry/upscalers-backup/tree/main/LDSR) و سپس آنها را در فولدر `stable-diffusion-webui/models/LDSR` قرار دهید. 
+
+
+&nbsp;
+
+# اسکریپت ها/Scripts <a name="imgscripts"></a>[▲](#index)
+
+اسکریپت ها را در بخش پایینی پارامترهای تولید تصویر در txt2img یا img2img پیدا کنید.
+
+* توضیحات **X/Y/Z Plot** <a name="plot"></a>[▲](#index)
 
    Capable of generating a series of images, usually with the exact same seed, but varying parameters of your choice. Can compare almost anything you want, including different models, parts of your prompt, sampler, upscaler and much more. You can have 1, 2, or 3 variable parameters, hence the X, Y and Z.
 
