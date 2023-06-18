@@ -16,8 +16,8 @@
    * [ماتریکس درخواست - Prompt Matrix](#matrix)
    * [توضیحات Ultimate Upscaler](#ultimate)
 * [کنترل نت](#controlnet)
-* [آموزش دادن Lora ](#train)
-* [توضیحات ...vtuberها](#vtubers)
+* [آموزش دادن Lora برای تازه کارها](#train)
+* [بخش های جا مانده](#vtubers)
  
 &nbsp;
 
@@ -259,7 +259,8 @@
 
 * توضیحات **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
-   An improved version of a builtin script, it can be added as an [extension ▲](#extensions) and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
+  یک 
+  An improved version of a builtin script, it can be added as an [extension ▲](#extensions) and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
 
    1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
 
