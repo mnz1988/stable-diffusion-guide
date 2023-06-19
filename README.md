@@ -326,7 +326,7 @@
 
 &nbsp;
 
-# Lora Training for beginners <a name="train"></a>[▲](#index)
+# آموزش دادن Lora برای تازه کارها <a name="train"></a>[▲](#index)
 
 To train a [Lora ▲](#lora) is regarded as a difficult task. However, my new guide covers everything you need to know to get started for free, thanks to Google Colab:
 
