@@ -259,96 +259,70 @@
 
 * توضیحات **Ultimate Upscaler** <a name="ultimate"></a>[▲](#index)
 
-  یک 
-  An improved version of a builtin script, it can be added as an [extension ▲](#extensions) and used from within **img2img**. Its purpose is to resize an image and add more detail way past the normal limits of your VRAM by splitting it into chunks, although slower. Here are the steps:
+  یک ورژن بهینه شده از اسکریپت داخلی برنامه است که میتوان آن را بصورت [اکستنشن ▲](#extensions) نصب کرد و برای بخش **img2img** از آن استفاده کرد. هدف آن تغییر اندازه تصویر و اضافه کردن جزئیات بیشتر و گذر از محدودیت های VRAM کارت گرافیک شماست که با تقسیم کردن آنها به تکه های کوچک این کار را انجام می دهد، هرچند کند تر. روش کار:
+  
 
-   1. Generate your image normally up to 768 width and height, you can then apply hires fix if you are able to.
+  * تصویر را بصورت نرمال و تا ماکزیمم 768 پیکسل برای عرض و ارتفاع تولید کنید، و سپس می توانید گزینه hires fix را نیز اعمال کنید.
+  * از بخش txt2img و یا از اکستنشن Image Browser تصویر را مستقیم به img2img منتقل کنید.
+  * مقدار **Denoising** را بین 0.1 و 0.4 تنظیم کنید. اگر مقدار را بالاتر ببرید ممکن است جهش های ناخواسته ای را در نتیجه مشاهده کنید.
+  * به بخش اسکریپت ها (**Scripts**) رفته و گزینه **Ultimate SD Upscale** را انتخاب کنید. سپس، پارامترهایی مشابه به این را با اندازه های مورد نظرتان را تنظیم کنید و بعد **Type** را روی **Chess** قرار دهید:
 
-   1. From txt2img or the Image Browser extension send it directly into img2img, carrying its prompt and parameters.
-
-   1. Set the **Denoising** somewhere between 0.1 and 0.4. If you go higher you most likely will experience mutations.
-
-   1. Go down to **Scripts** and choose **Ultimate SD Upscale**. Then, set your parameters like this, with your desired size and upscaler, and the **"Chess" Type**:
-   
       ![Ultimate upscale parameters](images/ultimate.png)
 
-      * If you have enough VRAM, you may increase the **Tile width** as well as the **Padding**. For example, doubling both of them. **Tile height** can remain at 0 and it'll match the width.
+      *اگر میزان VRAM کافی دارید، ممکن است تمایل داشته باشید مقدار **Tile width** را همانند **Padding** افزایش دهید. برای مثال، هر دو را دوبرابر کنید. مقدار **Tile height** میتواند هماند 0 باشد تا با عرض هماهنگ باشد.
+      * ضرورتی در تنظیم مقدار **Seams fix** نیست مگر اینکه درزهایی در بخش هایی از تصویر نهایی مشاهده شود. 
+      
      
-      * It is not necessary to set the **Seams fix** unless you encounter visible seams between regions in the final image.
-     
-   1. Generate your image and wait. You can watch the squares get sharper if you have image previews enabled.
+   * تولید تصویر را بزنید و منتظر بمانید. اگر پیش نمایش تصویر فعال باشد میتوانید مربع هایی که در حال شارپتر شدن هستند را ببینید.    
 
 &nbsp;
 
-# ControlNet <a name="controlnet"></a>[▲](#index)
+# کنترل نت / ControlNet <a name="controlnet"></a>[▲](#index)
 
-ControlNet is an extremely powerful recent technology for Stable Diffusion. It lets you analyze information about any previously existing image and use it to guide the generation of your AI images. We'll see what this means in a moment.
+کنترل نت یکی از تکنولوژی های جدید و فوق العاده قدرتمند برای استیبل دیفیوژن است و به شما اجازه می دهد تا اطلاعات هر تصویری را تحلیل کنید و از آن به عنوان راهنمای تولید تصاویر برای هوش مصنوعی استفاده کنید. با هم ببینیم چطور عمل می کند:
 
-If you're using the colab in this guide, you should enable the `all_control_models` option. Otherwise, you should first install the ControlNet [extension ▲](#extensions), then go [here](https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main) to download some models which you'll need to place in `stable-diffusion-webui/extensions/sd-webui-controlnet/models`. I recommend at least Canny, Depth, Openpose and Scribble, which I will show here.
-
-I will demonstrate how ControlNet may be used. For this I chose a popular image online as our "sample image". It's not necessary for you to follow along, but you can download the images and put them in the **PNG Info** tab to view their generation data.
-
-First, you must scroll down in the txt2img page and click on ControlNet to open the menu. Then, click *Enable*, and pick a matching *preprocessor* and *model*. To start with, I chose Canny for both. Finally I upload my sample image. Make sure not to click over the sample image or it will start drawing. We can ignore the other settings.
+اگر از کولب این راهنما استفاده می کنید، باید آپشن `all_control_models` را فعال کنید، در غیر اینصورت ابتدا نیاز است که [اکستنشن ▲](#extensions) ControlNet را نصب کنید، سپس به [این لینک بروید](https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main) تا تعدادی مدل دانلود کنید و آنها را در فولدر `stable-diffusion-webui/extensions/sd-webui-controlnet/models` قرار دهید. توصیه میکنم حداقل Canny, Depth, Openpose و Scribble را دانلود کنید. 
+به شما نشان می دهم که کنترل نت چطور عمل میکند. برای این منظور از تصویر محبوب اینترنتی برای "sample image" خود استفاده می کنیم. 
+ابتدا، در صفحه txt2img اسکرول کنید و روی ControlNet کلیک کنید تا منویش باز شود. بعد روی *Enable* کلیک کنید و یک *preprocessor* و *model* هماهنگ را برگزینید. در شروع Canny را برای هر دو انتخاب میکنم. و در نهایت تصویر نمونه را آپلود میکنم. مراقبم که روی تصویر نمونه کلیک نکنم چون شروع به ترسیم میکند. و میتوانم از بقیه تنظیمات صرفنظر کنم.
 
 ![Control Net](images/controlnet.png)
 
-* **Canny**
+* متد **Canny**
 
-   The Canny method extracts the hard edges of the sample image. It is useful for many different types of images, specially where you want to preserve small details and the general look of an image. Observe:
-
-   <details>
-   <summary>(Click) Canny example</summary>
+   این متد لبه های تیز را از تصویر نمونه استخراج میکند و در موارد بسیار متفاوتی از تصاویر کاربرد دارد، به خصوص زمانی که میخواهید جزیاتی کوچک را حفظ کنید و همچنین حالت کلی تصویر را داشته باشید. مشاهده نمایید: 
    
    ![Canny preprocessed image](images/canny1.png)
    ![Canny output image](images/canny2.png)
-   </details>
 
-* **Depth**
+* متد **Depth**
 
-   The Depth method extracts the 3D elements of the sample image. It is best suited for complex environments and general composition. Observe:
-
-   <details>
-   <summary>(Click) Depth example</summary>
+   این متد المانهای سه بعدی در تصویر نمونه را استخراج میکند و برای محیط های پیچیده و همچنین کامپوزیشن های عمومی مناسب است. مشاهده نمایید:
    
    ![Depth preprocessed image](images/depth1.png)
    ![Depth output image](images/depth2.png)
-   </details>
 
-* **Openpose**
+* متد **Openpose**
 
-   The Openpose method extracts the human poses of the sample image. It helps tremendously to get the desired shot and composition of your generated characters. Observe:
-
-   <details>
-   <summary>(Click) Openpose example</summary>
+   این متد پوزهای (ژست های) انسان را در تصویر نمونه استخراج میکند و به شکل فوق العاده ای به کامپوزیشن کاراکتری که تولید کرده اید برای شات مورد نظرتان کمک میکند. مشاهده نمایید: 
    
    ![Open Pose preprocessed image](images/openpose1.png)
    ![Open Pose output image](images/openpose2.png)
-   </details>
 
-* **Scribble**
+* متد**Scribble**
 
-   Lets you make a simple sketch and convert it into a finished piece with the help of your prompt. This is the only example not using the sample image above.
-
-   <details>
-   <summary>(Click) Scribble example</summary>
+   به شما اجازه میدهد که یک اسکچ ساده را با کمک پرامپی که نوشته اید به یک تصویر نهایی تبدیل کنید. این تنها مثالی است که از تصویر نمونه بالا استفاده نمیکند. مشاهده نمایید: 
    
    ![Scribble sample image](images/scribble1.png)
    ![Scribble output image](images/scribble2.png)
-   </details>
+  
+همانطور که متوجه شده اید برای همه متدها بجز Scribble، دو نتیجه به وجود می آید. اولین آن intermediate step یا قدم واسطه ایست و *preprocessed image* را فراخوانی میکند که سپس از آن برای تولید تصویر نهایی استفاده می شود. شما میتوانید این تصویر را خودتان به هوش مصنوعی بدهید که در اینصورت باید تنظیم preprocessor را روی *None* قرار دهید. اگر این را با ابزارهای گرافیکی همانند Blender و Photoshop ترکیب کنید به ابزاری فوق العاده قدرتمند تبدیل می شود.
 
-You will notice that there are 2 results for each method except Scribble. The first is an intermediate step called the *preprocessed image*, which is then used to produce the final image. You can supply the preprocessed image yourself, in which case you should set the preprocessor to *None*. This is extremely powerful with external tools such as Blender and Photoshop.
+در تب تنظمات (Settings) سکشن ControlNet وجد دارد که میتوانید حالت *multiple controlnets at once* را در آن فعال کنید. یک کاربرد منحصرا خوب برای آن زمانی است که میخواهید از Openpose برای ژست ویژه کاراکتر خود در محیط ویژه موردنظرتان استفاده کنید یا وقتی حالت ویژه ای را برای دست در نظر دارید یا جزئیات خاصی می خواهید. میتوانید آن را با ترکیب Openpose+Canny امتحان کنید.
 
-In the Settings tab there is a ControlNet section where you can enable *multiple controlnets at once*. One particularly good use is when one of them is Openpose, to get a specific character pose in a specific environment, or with specific hand gestures or details. Observe:
 
-<details>
-<summary>(Click) Openpose+Canny example</summary>
+همچنین میتوانید از کنترل نت در img2img استفاده کنید که هردو تصویر نمونه و تصویر ورودی تاثیر قطعی بر نتیجه خواهند داشت. 
 
-![Open Pose + Canny](images/openpose_canny.png)
-</details>
-
-You can also use ControlNet in img2img, in which the input image and sample image both will have a certain effect on the result. I do not have much experience with this method.
-
-There are also alternative **diff** versions of each ControlNet model, which produce slightly different results. You can [try them](https://civitai.com/models/9868/controlnet-pre-trained-difference-models) if you want, but I personally haven't.
+جایگزین های مختلفی برای هر مدل کنترل نتی هم وجود دارد که در صورت تمایل میتوانید آنها را [اینجا امتحان کنید](https://civitai.com/models/9868/controlnet-pre-trained-difference-models)، البته خودم آنها را امتحان نکرده ام.
 
 &nbsp;
 
