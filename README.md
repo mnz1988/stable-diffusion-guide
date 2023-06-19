@@ -308,7 +308,7 @@
    ![Open Pose preprocessed image](images/openpose1.png)
    ![Open Pose output image](images/openpose2.png)
 
-* متد**Scribble**
+* متد **Scribble**
 
    به شما اجازه میدهد که یک اسکچ ساده را با کمک پرامپی که نوشته اید به یک تصویر نهایی تبدیل کنید. این تنها مثالی است که از تصویر نمونه بالا استفاده نمیکند. مشاهده نمایید: 
    
@@ -328,31 +328,25 @@
 
 # آموزش دادن Lora برای تازه کارها <a name="train"></a>[▲](#index)
 
-To train a [Lora ▲](#lora) is regarded as a difficult task. However, my new guide covers everything you need to know to get started for free, thanks to Google Colab:
+آموزش یک Lora جزء کارهای سخت در نظر گرفته می شود، گرچه در راهنمای آموزشی من تمام چیزهایی که برای شروع رایگان این کار را نیاز دارید، به لطف Google Colab در اختیار خواهید داشت: 
 
-**[🎴 Read my Lora making guide here](https://civitai.com/models/22530)**
 
-You can also train a Lora on your own computer if you have at least 8 GB of VRAM. For that, I will list a few resources below:
+**[🎴 راهنمای ساخت یک Lora را اینجا مطالعه کنید](https://civitai.com/models/22530)**
 
-* For training, use [bmaltais' Kohya GUI](https://github.com/bmaltais/kohya_ss). It has all the same settings as my trainer colab and more, so you can follow my guide too. Also there are youtube tutorials available in this link.
-* Also, here's an [angry Lora training guide by ao](https://rentry.org/tohoaifaq#opinionated-lora-guide-for-colab)
-* To collect your images from Gelbooru like in my guide, install [Grabber](https://github.com/Bionus/imgbrd-grabber/releases).
-* To tag your dataset use the [WD1.4 Tagger extension](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) for webui. First add and enable the extension, and restart your entire webui. Then go to the new **Tagger** tab, then **Batch from directory**, and select the folder with your images. Set the output name to `[name].txt` and the threshold at or above 0.35 (this is how closely each tag must match an image to be included). Then **Interrogate** and it will start generating your text files.
-* To curate your tags like in my guide use the [Tag Editor extension](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) for webui. It has all the features you need like sorting, pruning, replacing and merging tags. To add an activation tag it's as follows: After adding the extension and restarting your webui, go to the new **Dataset Tag Editor** tab then **Batch Edit Captions**. Turn off "*Show only the tags...*", turn on "*Prepend additional tags*", then add your activation tag inside the **Edit Tags** text box. Then apply your changes, scroll up and save your changes. Only then will it modify your files and add a new tag at the beginning of every text file.
+همچنین میتوانید یک Lora را روی کامپیوتر شخصی خود نیز آموزش دهید، فقط کافیست که کارت گرافیک شما دارای حداقل 8 گیگا بایت VRAM باشد. در اینجا لیستی از چندین منبع آموزشی مختلف را برایتان میگذارم:
+* برای آموزش دادن از [bmaltais' Kohya GUI](https://github.com/bmaltais/kohya_ss) استفاده کنید. این ابزار تمام تنظیماتی را که در راهنمای بالا که در کولب انجام می شود را دارد (و حتی بیشتر) پس میتوانید از آن هم استفاده کنید. همچنین آنجا میتوانید چندین لینک آموزشی موجود در یوتیوب را هم پیدا کنید.
+* همچنین میتوانید از [angry Lora training guide by ao](https://rentry.org/tohoaifaq#opinionated-lora-guide-for-colab) استفاده کنید
+* برای جمع آوری کردن تصاویر از Gelbooru همانند راهنمای من، [Grabber](https://github.com/Bionus/imgbrd-grabber/releases) را نصب کنید.
+* برای تگ زدن dataset خود می توانید از [WD1.4 Tagger اکستنشن](https://github.com/toriato/stable-diffusion-webui-wd14-tagger) برای WebUI استفاده کنید. ابتدا اکستنشن را اضافه و فعال کنید، سپس بصورت کامل WebUI را ریست کنید و بعد به تب جدید **Tagger** بروید، سپس **Batch from directory** و سپس فولدری که تصاویرتان در آن است را انتخاب کنید. نام خروجی را `[name].txt` تنظیم کنید و threshold را روی 0.35 یا بالاتر قرار دهید (اینگونه نزدیک بودن هر تگ در هماهنگی با تصویری که باید آن را شامل شود مشخص کرده ایم). سپس **Interrogate** و برنامه تولید فایل متنی شما را آغاز خواهد کرد.
+* برای سرپرستی و مدیریت تگ هایتان از اکستنشن [Tag Editor](https://github.com/toshiaki1729/stable-diffusion-webui-dataset-tag-editor) برای WebUI استفاده کنید. تمام ویژگی هایی مانندsorting, pruning, replacing و merging tags را که نیاز دارید به شما می دهد.
+* برای اضافه کردن activation tag این مسیر را پیش بگیرید: بعد از اضافه کردن اکستنشن و ریست کامل WebUI، به تب **Dataset Tag Editor** بروید، سپس **Dataset Tag Editor**. آپشن "*Show only the tags...*" را خاموش کنید، "*Prepend additional tags*" را روشن کنید، سپس تگ فعالسازی خود را داخل باکس متنی **Edit Tags** قرار دهید. سپس تغییرات را اعمال کنید، به بالای صفحه اسکرول کنید و تغییرات را ذخیره کنید. فقط پس از این مراحل فایل های شما را اصلاح میکند و یک تگ جدید را در آغاز هر فایل متنی اضافه می کند. 
+
 
 &nbsp;
 
-# ...vtubers? <a name="vtubers"></a>[▲](#index)
+# بخش های جا مانده <a name="vtubers"></a>[▲](#index)
 
-That's it, that's the end of this guide for now. I'd be grateful if you want to contribute on missing topics like:
-* img2img
-* Inpainting
-* Controlnet t2i adapters
+اینجا فعلا پایان این راهنماست. اگر تمایل دارید برای بخش های جا مانده همانند img2img و Inpainting و Controlnet t2i adapters و ... به تکمیل این راهنما کمک کنید بسیار قدردان خواهم بود. راه ارتباطی با من از طریق حساب توییتری @MNZ_co می باشد
 
-Thank you for reading!
-
-I have [a separate repo that aggregates vtuber Loras, specially Hololive](https://huggingface.co/hollowstrawberry/holotard). If you're interested in that.
-
-Cheers.
-
+سپاس از اینکه مطالعه کردید.
 &nbsp;
