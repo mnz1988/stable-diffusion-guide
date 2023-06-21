@@ -136,9 +136,10 @@
      
    * برای فتورلیسم: 
       * `best quality, 4k, 8k, ultra highres, raw photo in hdr, sharp focus, intricate texture, skin imperfections, photograph of`
-      * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`
+      * `EasyNegative, worst quality, low quality, normal quality, child, painting, drawing, sketch, cartoon, anime, render, 3d, blurry, deformed, disfigured, morbid, mutated, bad anatomy, bad art`.
 
-    **توضیح EasyNegative:** <a name="promptneg"></a>
+   **توضیح EasyNegative:** <a name="promptneg"></a>
+   
    استفاده از این پرامپت منفی که بصورت *embedding* یا کلمه جادویی "magic word" عمل میکند در واقع شامل تعداد زیادی پرامپت منفی است که به تولید تصاویر بهتر کمک میکند که اگر از آن استفاده نکنیم نیاز به نوشتن تعداد زیادی پرامپ منفی داریم که در پرامپت محدودیت کاراکتر داریم
 
       برای دانلود این فایل کوچک و نصب آن از [این لینک](https://huggingface.co/datasets/gsdf/EasyNegative/resolve/main/EasyNegative.safetensors) استفاده کنید و آن را در پوشه `stable-diffusion-webui/embeddings` قرار دهید و اگر برنامه در حال اجراست آن را ریلود *Reload UI* کنید. و هروقت آن کلمه را بنویسید (EasyNegative) عمل میکند 
