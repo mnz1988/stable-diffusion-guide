@@ -226,7 +226,7 @@
 برای نمونه [Thicker Lines Anime Style](https://civitai.com/models/13910/thicker-lines-anime-style-lora-mix) یک Lora است که مناسب زمانی است که میخواهید تصویر شما بیشتر شبیه انیمه های سنتی شود.
 
 
-توضیحات **Lycoris <a name="lycoris"></a>[▲](#index)**
+# توضیحات Lycoris <a name="lycoris"></a>[▲](#index)
 
    توسعه جدیدی به نام LyCORIS انجام گرفته است که به LoRA ها اجازه میدهد درباره لایه های بیشتری یاد بگیرند. در صورت تمایل [اینجا میتوانید بیشتر در مورد آن یاد بگیرید](https://github.com/KohakuBlueleaf/Lycoris). شما به [این اکستنشن](https://github.com/KohakuBlueleaf/a1111-sd-webui-locon) برای استفاده از آنها نیاز دارید.
 
