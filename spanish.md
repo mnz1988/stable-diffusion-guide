@@ -487,6 +487,4 @@ Y así llegamos la final de la guía. Gracias por leer. Si tienes correcciones o
 
 Tengo [otra página dedicada a Loras de vtubers, en especial Hololive](https://huggingface.co/hollowstrawberry/holotard). Si es que es de tu interés.
 
-Saludos.
-
 &nbsp;
